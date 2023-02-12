@@ -1,0 +1,112 @@
+---
+import "./body.css";
+import EasterEgg from "./EasterEgg.astro";
+import Card from "./Card.astro";
+
+const mySVGMap = [
+    { image: "js-logo.svg", classes: "pop-out-card normal" },
+    { image: "node-logo.svg", classes: "pop-out-card wide" },
+    { image: "sql-logo.svg", classes: "pop-out-card normal" },
+    { image: "mongo-logo.svg", classes: "pop-out-card wide" },
+    { image: "mocha-logo.svg", classes: "pop-out-card normal" },
+    { image: "jasmine-logo.svg",classes: "pop-out-card wide",},
+    { image: "npm-logo.svg",classes: "pop-out-card wide",},
+    { image: "docker-logo.svg",classes: "pop-out-card normal",},
+    { image: "code-logo.svg",classes: "pop-out-card normal",},
+    { image: "git-logo.svg",classes: "pop-out-card normal",},
+    { image: "github-logo.svg",classes: "pop-out-card normal",},
+    { image: "gitlab-logo.svg",classes: "pop-out-card normal",},
+    { image: "kubectl-logo.svg",classes: "pop-out-card normal",},
+    { image: "bash-logo.svg",classes: "pop-out-card normal",},
+    { image: "linux-logo.svg",classes: "pop-out-card normal",},
+];
+
+const mySVGContacts = [
+    { link: "https://github.com/xanderon",image: "github-logo.svg",classes: "pop-out-card normal",},
+    { link: "https://www.instagram.com/al3xnutu/",image: "instagram-logo.svg",classes: "pop-out-card normal",},
+    { link: "https://twitter.com/alexnutu",image: "twitter-logo.svg",classes: "pop-out-card normal",},
+    { link: "https://www.linkedin.com/in/alexnutu/",image: "linkedin-logo.svg",classes: "pop-out-card normal",},
+];
+---
+
+<div class="body">
+    <script>
+        import "./body.js";
+    </script>
+    <section class="hero hidden">
+        <h1>
+            Hello, I'm <span class="text-gradient">Alex</span> 👋
+        </h1>
+        <h2>I'm a software engineer</h2>
+    </section>
+
+    <img class="portrait hidden" />
+
+    <section class="hero hidden">
+        <h3>I like to solve problems and I'm committed to creating user-friendly solutions</h3>
+        I'm a father of two, husband and I love to <span class="text-gradient">&lt;code&gt;</span>
+    </section>
+
+    <EasterEgg />
+
+    <section class="hidden">
+        <h2>Technologies<span class="text-gradient">.I'mUsing();</span></h2>
+    </section>
+
+    <div class="techGrid hidden">
+        {
+            mySVGMap.map((data) => (
+                <Card
+                    image={data.image}
+                    classes={data.classes}
+                />
+            ))
+        }
+    </div>
+
+    <section class="hidden">
+        <h2>
+            Work<span class="text-gradient">.experience();</span>
+        </h2>
+    </section>
+    
+    <section class="hidden container">
+        <div class="my-div">
+            Lenovo
+            <div class="overlay">
+                <p class="work-p">Currently working @Lenovo</p>
+                <p class="work-p">New role: scrum master</p>
+                <p class="work-p">Here I've gained new skills and improved my existing ones through self-study and hands-on experience</p>
+                <p class="work-p">Working on Lenovo XClarity Orchestrator</p>
+                <p class="work-p" id="time-worked"></p>
+            </div>
+        </div>
+        <div class="my-div">
+            SAP
+            <div class="overlay">
+                <p class="work-p">Worked @SAP untill 2020</p>
+                <p class="work-p">First programming job as back-end dev.</p>
+                <p class="work-p">Learned various new techniques and technologies and collaboration with talented individuals.</p>
+                <p class="work-p">Worked on SAP Product Lifecycle Costing</p>
+                <p class="work-p">@SAP from 2017 to 2020</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h3>Find me on</h3>
+        <div class="contactGrid hidden">
+            {
+                mySVGContacts.map((data) => (
+                    <Card
+                        link={data.link}
+                        image={data.image}
+                        classes={data.classes}
+                    />
+                ))
+            }
+        </div>
+    </section>
+</div>
+
+

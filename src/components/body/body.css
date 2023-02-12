@@ -1,0 +1,220 @@
+.body {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    row-gap: 1em;
+    /* margin-top: clamp(5rem, 15vw, 30rem); */
+    /* padding: 1rem; */
+    /* border-style: dotted; */
+    /* width: clamp(80vw, 80vw, 1200px); */
+    line-height: 1.5rem;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: clamp(2rem, 6vw, 4.2rem);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: clamp(1rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+}
+
+/* Animated Transition */
+.hidden {
+    opacity: 0;
+    filter: blur (5px);
+    transform: translate(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduce-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+/* Animated Transition */
+
+.portrait {
+
+    width: clamp(250px, 20%, 300px);
+    border-top: 3px solid var(--Bright-Orange);
+    border-bottom: 3px solid var(--Bright-Orange);
+    /* background-image: url("portrait-light.jpg"); */
+    border-radius: 5rem;
+}
+
+.portrait:hover {
+    transform: scale(1.1);
+}
+
+img.portrait {
+    content: var(--theme-portrait);
+}
+
+/* Tech I Use Grid */
+.techGrid {
+    box-sizing: border-box;
+    display: grid;
+    row-gap: 0.25em;
+    column-gap: 0.25em;
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 500px) {
+    .techGrid {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 0.5em;
+        column-gap: 0.5em;
+    }
+}
+
+@media (min-width: 750px) {
+    .techGrid {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 1em;
+        column-gap: 1em;
+    }
+}
+
+@media (min-width: 900px) {
+    .techGrid {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 1em;
+        column-gap: 1em;
+    }
+}
+/* Tech I Use Grid */
+
+/* Contact Grid */
+.contactGrid {
+    box-sizing: border-box;
+    display: grid;
+    row-gap: 0.25em;
+    column-gap: 0.25em;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 900px) {
+    .contactGrid {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 1em;
+        column-gap: 1em;
+    }
+}
+/* Contact Grid */
+
+/* Work experience - to do move this code somewhere else? */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    justify-content: center;
+    margin: 0 auto;
+    width: 300px;
+    padding: 10px;
+}
+
+.my-div {
+    background-color: var(--theme-card-color);
+    content: "text";
+    width: 8em;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+    /* border-style: dashed; */
+    /* font  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.my-div:hover .overlay {
+    top: 0;
+    transition: top 0.5s ease-in-out;
+    overflow: visible;
+}
+
+.overlay {
+    content: "text";
+    position: absolute;
+    top: 250px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-color);
+    border-style: groove;
+    border-radius: 2rem;
+    border-color: var(--Bright-Orange);
+    transition: top 0.5s ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.my-div::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background-image: url("touch-screen.svg");
+    background-image: url('/static/touch-screen.svg');
+    /* background-color: red; */
+    /* border-radius: 10px; */
+    /* filter: hue-rotate(180deg); */
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+    visibility: hidden;
+
+}
+
+@media (max-width: 700px) {
+    .overlay-active {
+        top: 0;
+        transition: top 0.5s ease-in-out;
+        overflow: visible;
+      }
+    .my-div::before {
+        display: block;
+        visibility: visible;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.work-p {
+    font-size: 0.9rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* Work experience - to do move this code somewhere else? */
+

@@ -1,0 +1,68 @@
+.pop-out-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(250px, 100px, 800px);
+    background-color: var(--theme-card-color);
+    border-top: 3px solid var(--Bright-Orange);
+    --details-padding-block: 0.25rem;
+    --details-padding-inline: 1rem;
+    --details-padding-inline-mobile: 0.25rem;
+    --details-corners: 0.5rem;
+    border-radius: var(--details-corners);
+    padding: var(--details-padding-block) var(--details-padding-inline-mobile);
+}
+
+img.svgLogo {
+    height: 45%;
+    object-fit: contain;
+}
+
+.normal {
+    width: auto;
+    height: 60px;
+}
+
+.wide {
+    height: 60px;
+    width: auto;
+}
+
+@media (min-width: 500px) {
+    .pop-out-card {
+        padding: var(--details-padding-block) var(--details-padding-inline-mobile);
+    }
+
+    img.svgLogo {
+        height: 50%;
+        object-fit: contain;
+    }
+
+    .normal {
+        width: auto;
+        height: 80px;
+    }
+
+    .wide {
+        height: 80px;
+        width: auto;
+    }
+
+    .pop-out-card:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 750px) {
+    .pop-out-card {
+        padding: var(--details-padding-block) var(--details-padding-inline);
+    }
+
+    img.svgLogo {
+        height: 60%;
+        padding: 5px;
+    }
+
+
+}

@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Viga);
+
+/* Global variables */
+:root {
+  --Tealish-Blue: hsl(222, 22%, 15%);
+  --Tuna: hsl(222, 17%, 23%);
+  --Casper: hsl(214, 23%, 74%);
+  --Dove-Grey: hsl(220, 4%, 43%);
+  --Aquamarine-Blue: hsl(196, 84%, 72%);
+  --Hippie-Blue: hsl(198, 43%, 52%);
+  --Pale-Olive-Green: hsl(93, 55%, 63%);
+  --Bright-Orange: hsl(22, 100%, 50%);
+  --Turmeric: hsl(60, 56%, 52%);
+  --Light-Orchid: hsl(316, 72%, 76%);
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+* {
+  font-family: "Viga";
+  letter-spacing: 0.1rem;
+}

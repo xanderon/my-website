@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X8 -->
+
+<svg
+   xml:space="preserve"
+   width="10.3617in"
+   height="5.88327in"
+   version="1.1"
+   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+   viewBox="0 0 669 380"
+   id="svg40"
+   sodipodi:docname="docker-logo.svg"
+   inkscape:export-filename="docker-logo.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview42"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="in"
+   showgrid="false"
+   inkscape:zoom="1.2164188"
+   inkscape:cx="497.3616"
+   inkscape:cy="282.79734"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_x0020_1" />
+ <defs
+   id="defs9">
+  <style
+   type="text/css"
+   id="style2">
+   <![CDATA[
+    .str2 {stroke:#843DE9;stroke-width:0.193727}
+    .str1 {stroke:#CE5DC9;stroke-width:0.193727}
+    .str0 {stroke:#843DE9;stroke-width:2.2871;stroke-linecap:round}
+    .fil1 {fill:none}
+    .fil4 {fill:#843DE9}
+    .fil2 {fill:#CE5DC9}
+    .fil3 {fill:black;fill-opacity:0.086275}
+    .fil0 {fill:url(#id0)}
+   ]]>
+  </style>
+  <linearGradient
+   id="id0"
+   gradientUnits="userSpaceOnUse"
+   x1="81.9868"
+   y1="189.958"
+   x2="669.113"
+   y2="189.958">
+   <stop
+   offset="0"
+   style="stop-opacity:1; stop-color:#843DE9"
+   id="stop4" />
+   <stop
+   offset="1"
+   style="stop-opacity:1; stop-color:#CE5DC9"
+   id="stop6" />
+  </linearGradient>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   inkscape:label="Layer 1">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <g
+   id="_1826613148944">
+   <path
+   id="path14"
+   class="fil0"
+   d="M387 120l60 0 0 61 30 0c14,0 29,-2 42,-7 6,-2 14,-5 20,-9 -8,-11 -13,-25 -14,-39 -2,-18 2,-43 15,-57l6 -8 8 6c19,16 34,37 37,61 23,-7 50,-5 70,7l8 4 -4 9c-17,33 -53,43 -87,41 -52,130 -165,191 -303,191 -70,0 -135,-27 -172,-89 -2,-4 -4,-8 -6,-12 -13,-28 -17,-58 -14,-89l1 -9 51 0 0 -61 60 0 0 -60 120 0 0 -60 72 0 0 120z" />
+   <path
+   id="path38"
+   class="fil1"
+   d="M656 143c-25,-14 -56,-10 -75,0 3,-29 -12,-51 -34,-68 -16,20 -19,70 7,92 -14,13 -45,24 -77,24l-384 0" />
+   <path
+   id="path42"
+   class="fil2"
+   d="M127 309c41,49 99,63 165,61 -36,-17 -55,-40 -66,-65 -33,1 -66,3 -99,4z" />
+   <path
+   id="path44"
+   class="fil3"
+   d="M584 141l0 1c-55,70 -134,132 -218,164 -75,29 -141,29 -186,6 -5,-3 -9,-6 -14,-9 -33,-23 -52,-61 -50,-112l-23 0 0 1c-3,32 3,63 16,89l4 8c3,4 6,9 9,13 3,5 5,7 7,10 34,39 86,58 146,58 133,0 246,-59 296,-191 35,3 69,-6 85,-36 -24,-13 -54,-10 -72,-2l0 0z" />
+   <path
+   id="path46"
+   class="fil1 str0"
+   d="M120 307c37,2 77,2 111,-8" />
+   <path
+   id="path48"
+   class="fil2 str1"
+   d="M268 281c0,8 -6,14 -14,14 -8,0 -15,-6 -15,-14 0,-8 7,-15 15,-15 8,0 14,7 14,15z" />
+   <path
+   id="path50"
+   class="fil4 str2"
+   d="M257 271c-1,1 -2,2 -2,4 0,2 2,4 5,4 1,0 2,-1 3,-2 1,1 1,2 1,4 0,5 -5,10 -10,10 -6,0 -11,-5 -11,-10 0,-6 5,-11 11,-11 1,0 2,1 3,1l0 0z" />
+   <path
+   id="path52"
+   class="fil4"
+   d="M0 237l667 0c-14,-4 -46,-9 -41,-28 -26,30 -90,21 -106,6 -18,26 -122,16 -129,-4 -23,26 -92,26 -115,0 -7,20 -111,30 -129,4 -16,15 -80,24 -106,-6 5,19 -26,24 -41,28z" />
+   <rect
+   class="fil2"
+   x="145"
+   y="130"
+   width="51.3466"
+   height="51.3466"
+   id="rect20" />
+   <rect
+   class="fil2"
+   x="205"
+   y="130"
+   width="51.3466"
+   height="51.3466"
+   id="rect22" />
+   <rect
+   class="fil2"
+   x="265"
+   y="130"
+   width="51.3466"
+   height="51.3466"
+   id="rect24" />
+   <rect
+   class="fil2"
+   x="325"
+   y="130"
+   width="51.3466"
+   height="51.3466"
+   id="rect26" />
+   <rect
+   class="fil2"
+   x="386"
+   y="130"
+   width="51.3466"
+   height="51.3466"
+   id="rect28" />
+   <rect
+   class="fil2"
+   x="205"
+   y="70"
+   width="51.3466"
+   height="51.3466"
+   id="rect30" />
+   <rect
+   class="fil2"
+   x="265"
+   y="70"
+   width="51.3466"
+   height="51.3466"
+   id="rect32" />
+   <rect
+   class="fil2"
+   x="325"
+   y="70"
+   width="51.3466"
+   height="51.3466"
+   id="rect34" />
+   <rect
+   class="fil2"
+   x="325"
+   y="10"
+   width="51.3466"
+   height="51.3466"
+   id="rect36" />
+  </g>
+ </g>
+</svg>

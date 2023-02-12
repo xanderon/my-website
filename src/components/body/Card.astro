@@ -1,0 +1,16 @@
+---
+import "./card.css";
+export interface Props {
+    link: string;
+    image: string;
+    classes: string;
+}
+
+const { link, image, classes } = Astro.props;
+---
+
+<a href={link} target="_blank">
+    <div class={classes}>
+        <img class="svgLogo" src={image} alt="Icon" />
+    </div>
+</a>

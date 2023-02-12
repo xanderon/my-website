@@ -1,0 +1,116 @@
+/* Global variables */
+/* Convert All Colors to HSL */
+:root {
+    /* Light mode */
+    --light-switch-shadow: #373d4e;
+    --light-switch-icon: "🌚";
+    /* --light-switch-text: "dark mode?"; */
+    --light-text: #222430;
+    /* --light-bg: #f7f7f7; -- original from dark theme*/
+    --light-bg: rgb(238, 238, 238);
+    /* --light-theme: #d34a97; */
+    --light-theme: #d34a97;
+    --light-card: rgb(218, 218, 218);
+    --light-shadow: var(--Tealish-Blue);
+    --light-portrait: url('/static/portrait-light-xxxxs.jpg');
+
+    /* Dark mode */
+    --dark-switch-shadow: #fce477;
+    --dark-switch-icon: "🌝";
+    /* --dark-switch-text: "light mode?"; */
+    --dark-text: #f7f7f7;
+    /* --dark-bg: #222430; */
+    /* --dark-bg: rgb(28,	33,	43); */
+    --dark-bg: var(--Tealish-Blue);
+    --dark-theme: #bd93f9;
+    /* --dark-card: rgb(40, 47, 61); */
+    --dark-card: var(--Tuna);
+    --dark-shadow: var(--Dove-Grey);
+    --dark-portrait: url('/static/portrait-dark-xxxxs.jpg');
+
+    /* Default mode */
+    --switch-shadow-color: var(--light-switch-shadow);
+    --switch-icon: var(--light-switch-icon);
+    /* --switch-text: var(--light-switch-text); */
+    --text-color: var(--light-text);
+    --bg-color: var(--light-bg);
+    --theme-color: var(--light-theme);
+    --theme-card-color: var(--light-card);
+    --theme-card-shadow: var(--light-shadow);
+    --theme-portrait: var(--light-portrait);
+
+    /* Other colors */
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(45deg,
+            rgb(var(--accent)),
+            #da62c4 30%,
+            white 60%);
+}
+
+/* Light / Dark Switch */
+.theme-switch:checked~#page {
+    --switch-shadow-color: var(--dark-switch-shadow);
+    --switch-icon: var(--dark-switch-icon);
+    /* --switch-text: var(--dark-switch-text); */
+    --text-color: var(--dark-text);
+    --bg-color: var(--dark-bg);
+    --theme-color: var(--dark-theme);
+    --theme-card-color: var(--dark-card);
+    --theme-card-shadow: var(--dark-shadow);
+    --theme-portrait: var(--dark-portrait);
+}
+
+/* Theme switcher */
+/* Hides the checkbox */
+.theme-switch {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.switch-label {
+    cursor: pointer;
+    display: flex;
+}
+
+.switch-label::before {
+    content: var(--switch-icon);
+    font-size: 40px;
+    transition: text-shadow .2s;
+}
+
+.switch-label::after {
+    align-self: center;
+    content: var(--switch-text);
+    color: var(--switch-shadow-color);
+    font-size: 28px;
+    line-height: 40px;
+    opacity: 0;
+    padding-left: 15px;
+    transition: opacity .2s;
+}
+
+/* Glow effect around theme switch */
+.theme-switch:focus~#page .switch-label::before,
+.switch-label:hover::before {
+    text-shadow: 0 0 15px var(--switch-shadow-color);
+}
+
+.theme-switch:focus~#page .switch-label::after,
+.switch-label:hover::after {
+    opacity: 1;
+}
+
+/* Elements that change color */
+#page {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font: normal 125%/1.4 Georgia, 'Times New Roman', Times, serif;
+    transition: color .2s, background-color .2s;
+}
+
+a {
+    color: var(--theme-color);
+}

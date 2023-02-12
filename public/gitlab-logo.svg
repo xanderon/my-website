@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X8 -->
+
+<svg
+   xml:space="preserve"
+   width="6.10944in"
+   height="5.88327in"
+   version="1.1"
+   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+   viewBox="0 0 324 312"
+   id="svg38"
+   sodipodi:docname="gitlab-logo.svg"
+   inkscape:export-filename="gitlab-logo.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview40"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:document-units="in"
+   showgrid="false"
+   inkscape:zoom="1.4819565"
+   inkscape:cx="293.53088"
+   inkscape:cy="282.73434"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_x0020_1" />
+ <defs
+   id="defs25">
+  <style
+   type="text/css"
+   id="style2">
+   <![CDATA[
+    .fil2 {fill:#CE5DC9}
+    .fil0 {fill:url(#id0)}
+    .fil1 {fill:url(#id1)}
+    .fil3 {fill:url(#id2)}
+   ]]>
+  </style>
+  <linearGradient
+   id="id0"
+   gradientUnits="userSpaceOnUse"
+   x1="158.075"
+   y1="312.229"
+   x2="166.2"
+   y2="0.0488996">
+   <stop
+   offset="0"
+   style="stop-opacity:1; stop-color:#843DE9"
+   id="stop4" />
+   <stop
+   offset="0.678431"
+   style="stop-opacity:1; stop-color:#A94DD9"
+   id="stop6" />
+   <stop
+   offset="1"
+   style="stop-opacity:1; stop-color:#CE5DC9"
+   id="stop8" />
+  </linearGradient>
+  <linearGradient
+   id="id1"
+   gradientUnits="userSpaceOnUse"
+   x1="296.863"
+   y1="251.198"
+   x2="189.624"
+   y2="140.289">
+   <stop
+   offset="0"
+   style="stop-opacity:1; stop-color:#843DE9"
+   id="stop11" />
+   <stop
+   offset="0.34902"
+   style="stop-opacity:1; stop-color:#A94DD9"
+   id="stop13" />
+   <stop
+   offset="1"
+   style="stop-opacity:1; stop-color:#CE5DC9"
+   id="stop15" />
+  </linearGradient>
+  <linearGradient
+   id="id2"
+   gradientUnits="userSpaceOnUse"
+   x1="50.2458"
+   y1="263.777"
+   x2="111.782"
+   y2="127.732">
+   <stop
+   offset="0"
+   style="stop-opacity:1; stop-color:#843DE9"
+   id="stop18" />
+   <stop
+   offset="0.380392"
+   style="stop-opacity:1; stop-color:#A94DD9"
+   id="stop20" />
+   <stop
+   offset="1"
+   style="stop-opacity:1; stop-color:#CE5DC9"
+   id="stop22" />
+  </linearGradient>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   inkscape:label="Layer 1">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <g
+   id="_1826613146384">
+   <path
+   class="fil0"
+   d="M319 124l-1 -2 -44 -115c-1,-2 -2,-4 -4,-5 -2,-1 -4,-2 -7,-2 -5,0 -9,3 -11,9l-30 91 -120 0 -30 -91c-1,-6 -6,-9 -11,-9 -2,0 -5,1 -6,2 -3,1 -4,3 -5,5l-44 115 -1 2c-3,9 -5,19 -5,29 0,26 12,50 33,65l0 0 0 1 67 50 34 25 20 16c2,1 5,2 8,2 3,0 6,-1 8,-2l21 -16 33 -25 67 -51 1 0c20,-15 32,-39 32,-65 0,-10 -2,-20 -5,-29l0 0z"
+   id="path28" />
+   <path
+   class="fil1"
+   d="M319 124l-1 -2c-21,5 -41,14 -59,27l-97 73 62 47 68 -51 0 0c20,-15 32,-39 32,-65 0,-10 -2,-20 -5,-29l0 0z"
+   id="path30" />
+   <path
+   class="fil2"
+   d="M100 269l34 25 20 16c2,1 5,2 8,2 3,0 6,-1 8,-2l21 -16 33 -25 -62 -47 -62 47z"
+   id="path32" />
+   <path
+   class="fil3"
+   d="M65 149c-17,-13 -38,-22 -59,-27l-1 2c-3,9 -5,19 -5,29 0,26 12,50 33,65l0 0 0 1 67 50 62 -47 -97 -73z"
+   id="path34" />
+  </g>
+ </g>
+</svg>

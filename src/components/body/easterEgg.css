@@ -1,0 +1,31 @@
+easter-egg {
+    box-sizing: border-box;
+    width: clamp(20rem, 35vw, 500px);
+    display: block;
+    transition: 0.5s;
+    float: none;
+    line-height: 24px;
+    position: static;
+    z-index: auto;
+    background-color: var(--theme-card-color);
+    --details-padding-block: 0.25rem;
+    --details-padding-inline: 1rem;
+    --details-corners: 0.5rem;
+    border-radius: var(--details-corners);
+    /* border: 1px solid aqua; */
+    padding: var(--details-padding-block) var(--details-padding-inline);
+    margin: auto;
+    font-size: smaller;
+    /* add space between easter egg and what is above it */
+    margin-top: clamp(1rem, 10vh, 25rem);
+    /* add space between easter egg and what is below it */
+    margin-bottom: clamp(1rem, 10vh, 25rem);
+    /* white spae pre wrap makes sure it knows that i want a new line '/n' and also to wrap the text when the viewport changes to avoid overflow */
+    white-space: pre-wrap;
+    border-top: 3px solid var(--Bright-Orange);
+
+}
+
+easter-egg:hover {
+    transform: scale(1.1);
+}
