@@ -1,32 +1,5 @@
-# Astro Starter Kit: Minimal
-
-```
-npm create astro@latest -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/minimal)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+# My Astro Personal Website
+## 👀 Hi, I'm Alex and this is my personal website. I used the Astro starter kit and build up from it.
 
 ## 🧞 Commands
 
@@ -106,3 +79,37 @@ All the links below helped me build my own Astro portfolio page. Thanks to all w
 <span style="background-color:hsl(316, 72%, 76%);border-style: outset; padding: 10px">Light Orchid #EE96D7</span>
 
 # Colors Light
+
+# My Commit Rules
+
+🚀 Feature: Add
+- Used for commits that add a new feature or functionality to the codebase.
+- Example: <mark>"🚀 Add: Login functionality"</mark>
+
+🐞 Bug Fix: Fix
+- Used for commits that resolve an issue or bug in the code.
+- Example: <mark>"🐞 Fix: Bug in user authentication"</mark>
+
+🔧 Refactor: Refactor
+- Used for commits that make changes to the code without adding or removing functionality.
+- Example: <mark>"🔧 Refactor: Code for better performance"</mark>
+
+📚 Docs: Update
+- Used for commits that add or update documentation or comments in the code.
+- Example: <mark>"📚 Docs: Update for new feature"</mark>
+
+🎨 Style: Format
+- Used for commits that make changes to the code style or formatting.
+- Example: <mark>"🎨 Style: Fix linting errors"</mark>
+
+✅ Test: Add
+- Used for commits that add or update tests for the code.
+- Example: <mark>"✅ Test: Add for new feature"</mark>
+
+🔗 Merge: Merge
+Used for commits that merge branches in the repository.
+- Example: <mark>"🔗 Merge: Develop branch into master"</mark>
+
+⏪ Revert: Revert
+- Used for commits that revert previous changes.
+- Example: <mark>"⏪ Revert: Commit that introduced bug"</mark>
