@@ -82,34 +82,34 @@ All the links below helped me build my own Astro portfolio page. Thanks to all w
 
 # My Commit Rules
 
-🚀 Feature: Add
-- Used for commits that add a new feature or functionality to the codebase.
-- Example: <mark>"🚀 Add: Login functionality"</mark>
+🚀 Feature: Add 
+- Used for commits that add a new feature or functionality to the codebase. 
+- Example: **"🚀 Add: Login functionality"**
 
-🐞 Bug Fix: Fix
-- Used for commits that resolve an issue or bug in the code.
-- Example: <mark>"🐞 Fix: Bug in user authentication"</mark>
+🐞 Bug Fix: Fix 
+- Used for commits that resolve an issue or bug in the code. 
+- Example: **"🐞 Fix: Bug in user authentication"**
 
-🔧 Refactor: Refactor
-- Used for commits that make changes to the code without adding or removing functionality.
-- Example: <mark>"🔧 Refactor: Code for better performance"</mark>
+🔧 Refactor: Refactor 
+- Used for commits that make changes to the code without adding or removing functionality. 
+- Example: **"🔧 Refactor: Code for better performance"**
 
-📚 Docs: Update
-- Used for commits that add or update documentation or comments in the code.
-- Example: <mark>"📚 Docs: Update for new feature"</mark>
+📚 Docs: Update 
+- Used for commits that add or update documentation or comments in the code. 
+- Example: **"📚 Docs: Update for new feature"**
 
-🎨 Style: Format
-- Used for commits that make changes to the code style or formatting.
-- Example: <mark>"🎨 Style: Fix linting errors"</mark>
+🎨 Style: Format 
+- Used for commits that make changes to the code style or formatting. 
+- Example: **"🎨 Style: Fix linting errors"**
 
-✅ Test: Add
-- Used for commits that add or update tests for the code.
-- Example: <mark>"✅ Test: Add for new feature"</mark>
+✅ Test: Add 
+- Used for commits that add or update tests for the code. 
+- Example: **"✅ Test: Add for new feature"**
 
-🔗 Merge: Merge
-Used for commits that merge branches in the repository.
-- Example: <mark>"🔗 Merge: Develop branch into master"</mark>
+🔗 Merge: Merge 
+- Used for commits that merge branches in the repository. 
+- Example: **"🔗 Merge: Develop branch into master"**
 
-⏪ Revert: Revert
-- Used for commits that revert previous changes.
-- Example: <mark>"⏪ Revert: Commit that introduced bug"</mark>
+⏪ Revert: Revert 
+- Used for commits that revert previous changes. 
+- Example: **"⏪ Revert: Commit that introduced bug"**
