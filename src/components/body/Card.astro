@@ -1,7 +1,7 @@
 ---
 import "./card.css";
 export interface Props {
-    link: string;
+    link?: string;
     image: string;
     classes: string;
 }
@@ -9,7 +9,7 @@ export interface Props {
 const { link, image, classes } = Astro.props;
 ---
 
-<a href={link} target="_blank">
+<a href={link} target="_blank" rel="noopener noreferrer">
     <div class={classes}>
         <img class="svgLogo" src={image} alt="Icon" />
     </div>

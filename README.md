@@ -113,3 +113,7 @@ All the links below helped me build my own Astro portfolio page. Thanks to all w
 ⏪ Revert: Revert 
 - Used for commits that revert previous changes. 
 - Example: **"⏪ Revert: Commit that introduced bug"**
+
+✨ Enhance: Enhance
+- Used for minor commits that enhance the functionality in some way.
+- Example: **"✨ Enhance: Card component"**
