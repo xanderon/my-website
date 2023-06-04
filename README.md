@@ -1,3 +1,37 @@
+# 👋 Hello, World! I'm Alex
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/alexnutu/"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
+  <a href="https://github.com/xanderon"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>&nbsp;
+  <a href="https://twitter.com/alexnutu"><img src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"></a>&nbsp;
+  <a href="https://www.instagram.com/al3xnutu/"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram"></a>&nbsp;
+  <a href="https://alexnutu.vercel.app/"><img src="https://img.shields.io/badge/About Me-3b5998?style=for-the-badge&logo=google-chrome&logoColor=white" alt="About Me"></a>
+</p>
+
+---
+
+Welcome to my Github profile. I'm glad you're here. 
+
+## 🚀 About Me
+
+Hey, I'm Alex 🙋‍♂️. Love programming 🖥️, gaming 🎮, and astrophysics 🌌. Happy father of two 👨‍👧‍👦. Interested in coding collaborations or tech chats? Don't hesitate to reach out!
+
+
+
+
+---
+
+## 🌐 Connect with me:
+
+- LinkedIn: [Let's connect](https://www.linkedin.com/in/alexnutu/)
+- Github: [Xanderon's code](https://github.com/xanderon)
+- Twitter: [@alexnutu](https://twitter.com/alexnutu)
+- Instagram: [@al3xnutu](https://www.instagram.com/al3xnutu/)
+- Personal Website: [alexnutu.vercel.app](https://alexnutu.vercel.app/)
+
+---
+
+
 # My Astro Personal Website
 ## 👀 Hi, I'm Alex and this is my personal website. I used the Astro starter kit and build up from it.
 
