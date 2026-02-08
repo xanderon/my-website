@@ -4,13 +4,23 @@ export interface Props {
     link?: string;
     image: string;
     classes: string;
+    alt?: string;
 }
 
-const { link, image, classes } = Astro.props;
+const { link, image, classes, alt } = Astro.props;
+const imageAlt = alt ?? image.replace(".svg", "").replaceAll("-", " ");
 ---
 
-<a href={link} target="_blank" rel="noopener noreferrer">
-    <div class={classes}>
-        <img class="svgLogo" src={image} alt="Icon" />
-    </div>
-</a>
+{
+    link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer" aria-label={imageAlt}>
+            <div class={classes}>
+                <img class="svgLogo" src={image} alt={imageAlt} />
+            </div>
+        </a>
+    ) : (
+        <div class={classes}>
+            <img class="svgLogo" src={image} alt={imageAlt} />
+        </div>
+    )
+}

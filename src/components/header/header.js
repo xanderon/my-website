@@ -1,14 +1,28 @@
-// This code is only used to remember theme selection between page loads
 const themeSwitch = document.querySelector('.theme-switch');
-themeSwitch.checked = localStorage.getItem('switchedTheme') === 'true';
+const portrait = document.getElementById('portrait');
+const lightPortrait = '/static/portrait-light-xxxxs.jpg';
+const darkPortrait = '/static/portrait-dark-xxxxs.jpg';
 
-themeSwitch.addEventListener('change', function (e) {
-    console.log(`clicked`);
-    if (e.currentTarget.checked === true) {
-        // Save current theme state to the localStorage
-        localStorage.setItem('switchedTheme', 'true');
-    } else {
-        // Remove theme state from localStorage if theme state is switched back to normal
-        localStorage.removeItem('switchedTheme');
+const applyThemeAssets = (isDarkTheme) => {
+    if (portrait) {
+        portrait.setAttribute('src', isDarkTheme ? darkPortrait : lightPortrait);
     }
-});
+};
+
+if (themeSwitch) {
+    const savedTheme = localStorage.getItem('switchedTheme') === 'true';
+    themeSwitch.checked = savedTheme;
+    applyThemeAssets(savedTheme);
+
+    themeSwitch.addEventListener('change', (e) => {
+        const isDarkTheme = e.currentTarget.checked;
+
+        if (isDarkTheme) {
+            localStorage.setItem('switchedTheme', 'true');
+        } else {
+            localStorage.removeItem('switchedTheme');
+        }
+
+        applyThemeAssets(isDarkTheme);
+    });
+}

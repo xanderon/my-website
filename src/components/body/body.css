@@ -32,8 +32,8 @@ h2 {
 /* Animated Transition */
 .hidden {
     opacity: 0;
-    filter: blur (5px);
-    transform: translate(-100%);
+    filter: blur(5px);
+    transform: translateX(-100%);
     transition: all 1s;
 }
 
@@ -43,7 +43,7 @@ h2 {
     transform: translateX(0);
 }
 
-@media(prefers-reduce-motion) {
+@media (prefers-reduced-motion: reduce) {
     .hidden {
         transition: none;
     }
@@ -52,8 +52,9 @@ h2 {
 /* Animated Transition */
 
 .portrait {
-
-    width: clamp(250px, 20%, 300px);
+    width: min(300px, 80vw);
+    height: auto;
+    object-fit: contain;
     border-top: 3px solid var(--Bright-Orange);
     border-bottom: 3px solid var(--Bright-Orange);
     /* background-image: url("portrait-light.jpg"); */
@@ -62,10 +63,6 @@ h2 {
 
 .portrait:hover {
     transform: scale(1.1);
-}
-
-img.portrait {
-    content: var(--theme-portrait);
 }
 
 /* Tech I Use Grid */
@@ -154,6 +151,16 @@ img.portrait {
     overflow: visible;
 }
 
+.my-div:focus-visible {
+    outline: 2px solid var(--Bright-Orange);
+    outline-offset: 4px;
+}
+
+.my-div:focus-visible .overlay {
+    top: 0;
+    overflow: visible;
+}
+
 .overlay {
     content: "text";
     position: absolute;
@@ -193,12 +200,12 @@ img.portrait {
 
 }
 
+.overlay-active {
+    top: 0;
+    overflow: visible;
+}
+
 @media (max-width: 700px) {
-    .overlay-active {
-        top: 0;
-        transition: top 0.5s ease-in-out;
-        overflow: visible;
-      }
     .my-div::before {
         display: block;
         visibility: visible;
@@ -217,4 +224,3 @@ img.portrait {
 
 
 /* Work experience - to do move this code somewhere else? */
-

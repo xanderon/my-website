@@ -12,12 +12,35 @@ import Body from "../components/body/Body.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Alex Nutu | Software Engineer</title>
+		<meta
+			name="description"
+			content="Personal portfolio of Alex Nutu, software engineer focused on user-friendly solutions, web technologies, and clean engineering practices."
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Alex Nutu | Software Engineer" />
+		<meta
+			property="og:description"
+			content="Personal portfolio of Alex Nutu, software engineer focused on user-friendly solutions."
+		/>
+		<meta property="og:image" content="/static/portrait-light-xxxxs.jpg" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Alex Nutu | Software Engineer" />
+		<meta
+			name="twitter:description"
+			content="Personal portfolio of Alex Nutu, software engineer focused on user-friendly solutions."
+		/>
+		<meta name="twitter:image" content="/static/portrait-light-xxxxs.jpg" />
 	</head>
 	<style>
 	</style>
 	<body>
-		<input type="checkbox" class="theme-switch" id="theme-switch" />
+		<input
+			type="checkbox"
+			class="theme-switch"
+			id="theme-switch"
+			aria-label="Toggle dark mode"
+		/>
 		<div id="page">
 			<div id="content">
 				<Header />

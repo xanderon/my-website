@@ -40,7 +40,14 @@ const mySVGContacts = [
         <h2>I'm a software engineer</h2>
     </section>
 
-    <img class="portrait hidden" />
+    <img
+        class="portrait hidden"
+        id="portrait"
+        src="/static/portrait-light-xxxxs.jpg"
+        alt="Portrait of Alex Nutu"
+        width="300"
+        height="300"
+    />
 
     <section class="hero hidden">
         <h3>I like to solve problems and I'm committed to creating user-friendly solutions</h3>
@@ -71,17 +78,17 @@ const mySVGContacts = [
     </section>
     
     <section class="hidden container">
-        <div class="my-div">
+        <div class="my-div" tabindex="0" role="button" aria-label="Open Lenovo experience details">
             Lenovo
             <div class="overlay">
                 <p class="work-p">Currently working @Lenovo</p>
                 <p class="work-p">New role: scrum master</p>
                 <p class="work-p">Here I've gained new skills and improved my existing ones through self-study and hands-on experience</p>
-                <p class="work-p">Working on Lenovo XClarity Orchestrator</p>
+                <p class="work-p">Working on Lenovo XClarity One On Prem &amp; Cloud</p>
                 <p class="work-p" id="time-worked"></p>
             </div>
         </div>
-        <div class="my-div">
+        <div class="my-div" tabindex="0" role="button" aria-label="Open SAP experience details">
             SAP
             <div class="overlay">
                 <p class="work-p">Worked @SAP untill 2020</p>
@@ -108,5 +115,3 @@ const mySVGContacts = [
         </div>
     </section>
 </div>
-
-

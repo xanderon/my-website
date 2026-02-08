@@ -1,6 +1,5 @@
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) =>{
-        console.log(entry);
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {
@@ -27,7 +26,10 @@ const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 const months = Math.floor((diff / (1000 * 60 * 60 * 24)) % 365 / 30);
 
 // Update the contents of an HTML element with the calculated amount of time
-document.getElementById("time-worked").innerHTML = `@Lenovo ${years} yrs and ${months} mos`;
+const timeWorkedElement = document.getElementById("time-worked");
+if (timeWorkedElement) {
+  timeWorkedElement.innerHTML = `@Lenovo ${years} yrs and ${months} mos`;
+}
 
 // Mobile Work Experience Overlay On Touch Event
 
@@ -36,8 +38,13 @@ const myDivs = document.querySelectorAll('.my-div');
 
 // Loop through all the elements with the class '.my-div'
 for (let i = 0; i < myDivs.length; i++) {
+  myDivs[i].addEventListener('click', function() {
+    const overlay = this.querySelector('.overlay');
+    overlay.classList.toggle('overlay-active');
+  });
+
   // Add a tap event listener to each element
-  myDivs[i].addEventListener('touchstart', function(event) {
+  myDivs[i].addEventListener('touchstart', function() {
     // Select the '.overlay' element for the element that was tapped
     const overlay = this.querySelector('.overlay');
 
@@ -46,11 +53,23 @@ for (let i = 0; i < myDivs.length; i++) {
   });
 
   // Add a touchend event listener to each element
-  myDivs[i].addEventListener('touchend', function(event) {
+  myDivs[i].addEventListener('touchend', function() {
     // Select the '.overlay' element for the element that was tapped
     const overlay = this.querySelector('.overlay');
 
     // Remove the 'overlay-active' class from the '.overlay' element when the element is no longer being tapped
     overlay.classList.remove('overlay-active');
+  });
+
+  myDivs[i].addEventListener('keydown', function(event) {
+    const overlay = this.querySelector('.overlay');
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      overlay.classList.toggle('overlay-active');
+    }
+
+    if (event.key === 'Escape') {
+      overlay.classList.remove('overlay-active');
+    }
   });
 }

@@ -12,7 +12,6 @@
     --light-theme: #d34a97;
     --light-card: rgb(218, 218, 218);
     --light-shadow: var(--Tealish-Blue);
-    --light-portrait: url('/static/portrait-light-xxxxs.jpg');
 
     /* Dark mode */
     --dark-switch-shadow: #fce477;
@@ -26,7 +25,6 @@
     /* --dark-card: rgb(40, 47, 61); */
     --dark-card: var(--Tuna);
     --dark-shadow: var(--Dove-Grey);
-    --dark-portrait: url('/static/portrait-dark-xxxxs.jpg');
 
     /* Default mode */
     --switch-shadow-color: var(--light-switch-shadow);
@@ -37,7 +35,6 @@
     --theme-color: var(--light-theme);
     --theme-card-color: var(--light-card);
     --theme-card-shadow: var(--light-shadow);
-    --theme-portrait: var(--light-portrait);
 
     /* Other colors */
     --accent: 124, 58, 237;
@@ -57,7 +54,6 @@
     --theme-color: var(--dark-theme);
     --theme-card-color: var(--dark-card);
     --theme-card-shadow: var(--dark-shadow);
-    --theme-portrait: var(--dark-portrait);
 }
 
 /* Theme switcher */
