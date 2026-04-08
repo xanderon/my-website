@@ -1,0 +1,131 @@
+---
+import "../styles/blog.css";
+import BackToTopButton from "../components/blog/BackToTopButton.astro";
+import BlogSidebar from "../components/blog/BlogSidebar.astro";
+import MobileBlogBar from "../components/blog/MobileBlogBar.astro";
+import ThemeToggle from "../components/blog/ThemeToggle.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  currentPath: string;
+  image?: string;
+  type?: "website" | "article";
+  pageLabel?: string;
+}
+
+const {
+  title,
+  description,
+  currentPath,
+  image = "/blog-assets/og-blog.svg",
+  type = "website",
+  pageLabel = "Post",
+} = Astro.props;
+
+const canonical = new URL(currentPath, Astro.site ?? Astro.url);
+const ogImage = new URL(image, Astro.site ?? Astro.url);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical.href} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage.href} />
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem("alex-blog-theme");
+        const resolvedTheme = storedTheme || "dark";
+        document.documentElement.dataset.theme = resolvedTheme;
+        document.documentElement.style.colorScheme = resolvedTheme;
+      })();
+    </script>
+  </head>
+  <body class="blog-body">
+    <MobileBlogBar pageLabel={pageLabel} />
+    <div class="mobile-drawer" data-mobile-drawer>
+      <div class="mobile-drawer__overlay" data-drawer-close></div>
+      <aside class="mobile-drawer__panel" aria-label="Mobile navigation">
+        <button type="button" class="mobile-drawer__close" data-drawer-close aria-label="Close navigation">×</button>
+        <BlogSidebar currentPath={currentPath} />
+      </aside>
+    </div>
+    <div class="blog-shell">
+      <aside class="blog-shell__sidebar">
+        <BlogSidebar currentPath={currentPath} />
+      </aside>
+      <header class="blog-header">
+        <div class="blog-header__inner">
+          <a class="blog-brand" href="/blog">
+            <span class="blog-brand__eyebrow">Alex Nutu</span>
+            <strong>Field Notes</strong>
+          </a>
+          <nav class="blog-nav" aria-label="Primary">
+            <a href="/" class:list={{ active: currentPath === "/" }}>Home</a>
+            <a href="/blog" class:list={{ active: currentPath.startsWith("/blog") }}>Blog</a>
+            <a href="/blog/new" class:list={{ active: currentPath === "/blog/new" }}>New post</a>
+            <ThemeToggle />
+          </nav>
+        </div>
+      </header>
+      <main class="blog-main">
+        <slot />
+      </main>
+      <footer class="blog-footer">
+        <div class="blog-footer__inner">
+          <p>
+            A calmer publishing space for practical builds, software notes, and small things worth keeping.
+          </p>
+          <a href="mailto:alex.nutu@outlook.com">Contact</a>
+        </div>
+      </footer>
+    </div>
+    <BackToTopButton />
+    <script is:inline>
+      (() => {
+        const body = document.body;
+        const drawer = document.querySelector("[data-mobile-drawer]");
+        const openButton = document.querySelector("[data-drawer-open]");
+        const closeButtons = Array.from(document.querySelectorAll("[data-drawer-close]"));
+        const backToTop = document.querySelector("[data-back-to-top]");
+
+        const setDrawer = (open) => {
+          drawer?.classList.toggle("is-open", open);
+          body.classList.toggle("drawer-open", open);
+        };
+
+        openButton?.addEventListener("click", () => setDrawer(true));
+        closeButtons.forEach((button) => button.addEventListener("click", () => setDrawer(false)));
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") setDrawer(false);
+        });
+
+        const onScroll = () => {
+          const shouldShow = window.scrollY > 520 && window.innerWidth < 768;
+          backToTop?.classList.toggle("is-visible", shouldShow);
+        };
+
+        backToTop?.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+      })();
+    </script>
+  </body>
+</html>

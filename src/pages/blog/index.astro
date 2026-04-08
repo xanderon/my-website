@@ -1,0 +1,56 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import PostCard from "../../components/blog/PostCard.astro";
+import { getAllPosts, getAllTags } from "../../lib/blog";
+
+const posts = await getAllPosts();
+const tags = await getAllTags();
+---
+
+<BlogLayout
+  title="Field Notes | Alex Nutu"
+  description="Personal notes on practical builds, 3D printing, software, and small maker experiments."
+  currentPath="/blog"
+  pageLabel="Blog"
+>
+  <section class="blog-hero">
+    <span class="blog-hero__eyebrow">Personal blog</span>
+    <h1>Practical notes for things worth building.</h1>
+    <p>
+      A separate publishing space for small builds, 3D printing experiments, software notes, and short posts that
+      should stay easy to scan and enjoyable to read.
+    </p>
+  </section>
+
+  <section class="content-section">
+    <div class="section-head">
+      <div>
+        <span class="section-eyebrow">Browse</span>
+        <h2 class="section-title">Latest posts</h2>
+      </div>
+      <p>{posts.length} published notes · <a href="/blog/new">open editor</a></p>
+    </div>
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+
+  {tags.length > 0 && (
+    <section class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="section-eyebrow">Topics</span>
+          <h2 class="section-title">Tags</h2>
+        </div>
+        <p>Simple archives for recurring themes.</p>
+      </div>
+      <div class="tag-list">
+        {tags.map((tag) => (
+          <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.slug}`}>
+            {tag.label} · {tag.count}
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</BlogLayout>

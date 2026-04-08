@@ -1,0 +1,17 @@
+---
+interface Props {
+  pageLabel?: string;
+}
+
+const { pageLabel = "Post" } = Astro.props;
+---
+
+<header class="mobile-blogbar">
+  <button type="button" class="mobile-blogbar__button" data-drawer-open aria-label="Open navigation">
+    <span aria-hidden="true">☰</span>
+  </button>
+  <strong>{pageLabel}</strong>
+  <button type="button" class="mobile-blogbar__button" aria-label="Search">
+    <span aria-hidden="true">⌕</span>
+  </button>
+</header>

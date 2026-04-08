@@ -1,0 +1,731 @@
+---
+import "@toast-ui/editor/dist/toastui-editor.css";
+---
+
+<section class="editor-shell" data-editor-root>
+  <aside class="editor-sidebar editor-sidebar--left">
+    <div class="editor-sidebar__stack">
+      <section class="editor-rail-card editor-rail-card--identity">
+        <span class="section-eyebrow">Drafting space</span>
+        <h2>Build a post without fighting the format.</h2>
+        <p>
+          Keep the writing area large, keep the controls nearby, and let the generated Markdown stay predictable.
+        </p>
+      </section>
+
+      <details class="editor-panel" open>
+        <summary>
+          <span>Metadata</span>
+          <small>Title, slug, dates, tags, cover</small>
+        </summary>
+        <div class="editor-card editor-card--panel">
+          <div class="editor-fields">
+            <label class="editor-field">
+              <span>Title</span>
+              <input type="text" name="title" value="Your post title" />
+            </label>
+            <label class="editor-field">
+              <span>Excerpt</span>
+              <textarea name="excerpt" rows="4">One short summary for cards, SEO, and the article header.</textarea>
+            </label>
+            <label class="editor-field">
+              <span>Date</span>
+              <input type="date" name="date" value="2026-04-05" />
+            </label>
+            <label class="editor-field">
+              <span>Slug</span>
+              <div class="editor-inline-field">
+                <input type="text" name="slug" value="your-post-title" />
+                <button type="button" data-reset-slug>Use title</button>
+              </div>
+            </label>
+            <label class="editor-field">
+              <span>Tags</span>
+              <input type="text" name="tags" value="Notes, Workflow" />
+            </label>
+            <label class="editor-field">
+              <span>Cover image</span>
+              <input type="text" name="coverImage" value="/blog-assets/your-post-title/cover.jpg" />
+            </label>
+            <label class="editor-field">
+              <span>Cover alt</span>
+              <input type="text" name="coverAlt" value="Short cover image description" />
+            </label>
+            <label class="editor-checkbox">
+              <input type="checkbox" name="draft" checked />
+              <span>Keep as draft</span>
+            </label>
+          </div>
+        </div>
+      </details>
+    </div>
+  </aside>
+
+  <div class="editor-primary" data-editor-scroll>
+    <div class="editor-card editor-card--hero">
+      <div class="editor-topbar">
+        <div>
+          <div class="editor-breadcrumbs">Blog / New post</div>
+          <h2 class="editor-title">Write visually or in Markdown, with images handled inline.</h2>
+        </div>
+        <p class="editor-topbar__copy">
+          Drag images into the editor, switch between `Visual` and `Markdown`, and keep the final output clean.
+        </p>
+      </div>
+
+      <div class="editor-actions editor-actions--primary">
+        <button type="button" data-editor-action="bullet-list">Bullet list</button>
+        <button type="button" data-editor-action="ordered-list">Numbered list</button>
+      </div>
+
+      <div class="editor-host" data-rich-editor></div>
+    </div>
+
+    <div class="editor-card">
+      <div class="editor-toolbar">
+        <span class="section-eyebrow">Live preview</span>
+        <p>This renders what you are building right now, including unsaved local images.</p>
+      </div>
+      <article class="post-prose editor-rendered-preview" data-rendered-preview></article>
+    </div>
+
+    <div class="editor-card">
+      <div class="editor-toolbar">
+        <span class="section-eyebrow">Generated output</span>
+        <p>This is the exact Markdown file you can save into `src/content/blog/`.</p>
+      </div>
+      <textarea class="editor-output" readonly data-output></textarea>
+    </div>
+  </div>
+
+  <aside class="editor-sidebar editor-sidebar--right">
+    <div class="editor-sidebar__stack">
+      <section class="editor-rail-card">
+        <span class="section-eyebrow">Outline</span>
+        <h3>Live contents</h3>
+        <nav class="editor-outline" aria-label="Editor outline">
+          <div class="editor-outline__list" data-outline-list>
+            <p class="editor-empty">Add headings and they will appear here.</p>
+          </div>
+        </nav>
+      </section>
+
+    <details class="editor-panel" open>
+      <summary>
+        <span>Images</span>
+        <small>Drag into editor or manage them here</small>
+      </summary>
+      <div class="editor-card editor-card--panel">
+        <div class="editor-image-tools">
+          <div class="editor-actions">
+            <label class="editor-upload">
+              <input type="file" accept="image/*" multiple data-image-input />
+              <span>Select images</span>
+            </label>
+            <button type="button" data-save-images>Save images to assets folder</button>
+          </div>
+          <p>
+            Best flow: drag images directly into the editor. They will appear immediately in the live preview, then you
+            can save them into the final assets folder when you're happy.
+          </p>
+          <div class="editor-image-list" data-image-list>
+            <p class="editor-empty">No images added yet. Drag one into the editor or use Select images.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="editor-panel">
+      <summary>
+        <span>Export</span>
+        <small>Save markdown and assets cleanly</small>
+      </summary>
+      <div class="editor-card editor-card--panel">
+        <div class="editor-export">
+          <p>
+            File name:
+            <strong data-export-filename>your-post-title.md</strong>
+          </p>
+          <p>
+            Images folder:
+            <strong data-export-folder>public/blog-assets/your-post-title/</strong>
+          </p>
+          <div class="editor-actions">
+            <button type="button" data-copy-output>Copy Markdown</button>
+            <button type="button" data-download-output>Download file</button>
+            <button type="button" data-save-markdown>Save markdown to content folder</button>
+          </div>
+          <p class="editor-note" data-save-status>
+            Chromium browsers can save directly into `src/content/blog/` and `public/blog-assets/&lt;slug&gt;/`.
+          </p>
+        </div>
+      </div>
+    </details>
+    </div>
+  </aside>
+
+  <textarea class="editor-source" data-initial-body hidden>
+Start with a direct intro paragraph. Short posts are fine.
+
+## What this is
+
+Explain the build, note, experiment, or lesson.
+
+## What changed
+
+- Mention the useful decisions
+- Keep the details practical
+- Link out only when it improves the post
+
+## Closing note
+
+Wrap up with the next step or a practical conclusion.
+  </textarea>
+</section>
+
+<script>
+  import Editor from "@toast-ui/editor";
+  import { marked } from "marked";
+
+  const root = document.querySelector("[data-editor-root]");
+
+  if (root) {
+    const storageKey = "alex-blog-editor-draft-v1";
+
+    const fields = {
+      title: root.querySelector('input[name="title"]'),
+      excerpt: root.querySelector('textarea[name="excerpt"]'),
+      date: root.querySelector('input[name="date"]'),
+      slug: root.querySelector('input[name="slug"]'),
+      tags: root.querySelector('input[name="tags"]'),
+      coverImage: root.querySelector('input[name="coverImage"]'),
+      coverAlt: root.querySelector('input[name="coverAlt"]'),
+      draft: root.querySelector('input[name="draft"]'),
+    };
+
+    const output = root.querySelector("[data-output]");
+    const renderedPreview = root.querySelector("[data-rendered-preview]");
+    const filename = root.querySelector("[data-export-filename]");
+    const folder = root.querySelector("[data-export-folder]");
+    const copyButton = root.querySelector("[data-copy-output]");
+    const downloadButton = root.querySelector("[data-download-output]");
+    const saveMarkdownButton = root.querySelector("[data-save-markdown]");
+    const saveImagesButton = root.querySelector("[data-save-images]");
+    const saveStatus = root.querySelector("[data-save-status]");
+    const imageInput = root.querySelector("[data-image-input]");
+    const imageList = root.querySelector("[data-image-list]");
+    const editorHost = root.querySelector("[data-rich-editor]");
+    const outlineList = root.querySelector("[data-outline-list]");
+    const resetSlugButton = root.querySelector("[data-reset-slug]");
+    const editorActionButtons = Array.from(root.querySelectorAll("[data-editor-action]"));
+    const initialBody = root.querySelector("[data-initial-body]")?.value.trim() ?? "";
+
+    let imageFiles = [];
+    let slugManuallyEdited = false;
+
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+    });
+
+    const slugify = (value) =>
+      value
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || "new-post";
+
+    const titleBasedSlug = () => slugify(fields.title.value);
+    const currentSlug = () => slugify(fields.slug.value || fields.title.value);
+    const buildAssetPath = (filename) => `/blog-assets/${currentSlug()}/${filename}`;
+
+    const setStatus = (message) => {
+      if (saveStatus) saveStatus.textContent = message;
+    };
+
+    const buildFrontmatter = () => {
+      const tags = fields.tags.value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+
+      const lines = [
+        "---",
+        `title: ${fields.title.value}`,
+        `excerpt: ${fields.excerpt.value}`,
+        `date: ${fields.date.value}`,
+      ];
+
+      if (tags.length > 0) {
+        lines.push("tags:");
+        for (const tag of tags) lines.push(`  - ${tag}`);
+      }
+
+      if (fields.coverImage.value.trim()) lines.push(`coverImage: ${fields.coverImage.value.trim()}`);
+      if (fields.coverAlt.value.trim()) lines.push(`coverAlt: ${fields.coverAlt.value.trim()}`);
+      if (fields.draft.checked) lines.push("draft: true");
+      lines.push("---");
+      return lines.join("\n");
+    };
+
+    const fileExists = (name) => imageFiles.some((item) => item.sanitizedName === name);
+
+    const sanitizeFilename = (filename) => {
+      const parts = filename.split(".");
+      const extension = parts.length > 1 ? `.${parts.pop().toLowerCase()}` : "";
+      const name = parts.join(".") || "image";
+      return `${slugify(name)}${extension}`;
+    };
+
+    const uniqueFilename = (filename) => {
+      if (!fileExists(filename)) return filename;
+
+      const lastDot = filename.lastIndexOf(".");
+      const base = lastDot === -1 ? filename : filename.slice(0, lastDot);
+      const extension = lastDot === -1 ? "" : filename.slice(lastDot);
+      let index = 2;
+      let next = `${base}-${index}${extension}`;
+
+      while (fileExists(next)) {
+        index += 1;
+        next = `${base}-${index}${extension}`;
+      }
+
+      return next;
+    };
+
+    const buildInlineMarkdown = (item) => `![${item.altText}](${item.previewUrl})`;
+
+    const insertImageIntoEditor = (item) => {
+      editor.exec("addImage", {
+        imageUrl: item.previewUrl,
+        altText: item.altText,
+      });
+    };
+
+    const toggleListForSelection = (type) => {
+      const wasMarkdownMode = editor.isMarkdownMode();
+      const markdown = editor.getMarkdown();
+      const lines = markdown.split("\n");
+      const selection = editor.getSelection();
+      const mdSelection = editor.isMarkdownMode()
+        ? selection
+        : editor.convertPosToMatchEditorMode(selection[0], selection[1], "markdown");
+
+      const startLine = Math.max(0, mdSelection[0][0] - 1);
+      const endLine = Math.max(startLine, mdSelection[1][0] - 1);
+      const startOffset = mdSelection[0][1];
+      const targetLines = lines.slice(startLine, endLine + 1);
+
+      const bulletRegex = /^(\s*)[*-]\s+/;
+      const orderedRegex = /^(\s*)\d+\.\s+/;
+      const matcher = type === "bullet" ? bulletRegex : orderedRegex;
+      const allSelectedAlreadyListed = targetLines
+        .filter((line) => line.trim().length > 0)
+        .every((line) => matcher.test(line));
+
+      let cursorDelta = 0;
+      const updated = targetLines.map((line, index) => {
+        if (!line.trim()) return line;
+
+        if (allSelectedAlreadyListed) {
+          const next = line.replace(matcher, "$1");
+          if (index === 0) cursorDelta = next.length - line.length;
+          return next;
+        }
+
+        const cleaned = line.replace(bulletRegex, "$1").replace(orderedRegex, "$1");
+        const next = type === "bullet"
+          ? cleaned.replace(/^(\s*)/, "$1- ")
+          : cleaned.replace(/^(\s*)/, `$1${index + 1}. `);
+        if (index === 0) cursorDelta = next.length - line.length;
+        return next;
+      });
+
+      lines.splice(startLine, updated.length, ...updated);
+      editor.setMarkdown(lines.join("\n"));
+      const nextOffset = Math.max(1, startOffset + cursorDelta);
+      const mdCursor = [startLine + 1, nextOffset];
+      if (wasMarkdownMode) {
+        editor.setSelection(mdCursor, mdCursor);
+      } else {
+        const wwCursor = editor.convertPosToMatchEditorMode(mdCursor, mdCursor, "wysiwyg");
+        editor.setSelection(wwCursor[0], wwCursor[1]);
+      }
+      editor.focus();
+      refresh();
+    };
+
+    const normalizeMarkdown = (markdown) =>
+      markdown
+        .replace(/(!\[[^\]]*\]\([^)]+\))(?=[^\n])/g, "$1\n\n")
+        .replace(/(<img[^>]+>)(?=[^\n<])/g, "$1\n\n");
+
+    const getRawMarkdown = () => normalizeMarkdown(editor.getMarkdown());
+
+    const getProcessedMarkdown = () => {
+      let markdown = getRawMarkdown();
+
+      for (const item of imageFiles) {
+        markdown = markdown.split(item.previewUrl).join(buildAssetPath(item.sanitizedName));
+      }
+
+      return markdown;
+    };
+
+    const saveDraft = () => {
+      const payload = {
+        title: fields.title.value,
+        excerpt: fields.excerpt.value,
+        date: fields.date.value,
+        slug: fields.slug.value,
+        tags: fields.tags.value,
+        coverImage: fields.coverImage.value,
+        coverAlt: fields.coverAlt.value,
+        draft: fields.draft.checked,
+        body: getRawMarkdown(),
+      };
+
+      localStorage.setItem(storageKey, JSON.stringify(payload));
+    };
+
+    const loadDraft = () => {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return null;
+
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return null;
+      }
+    };
+
+    const renderImages = () => {
+      if (!imageList) return;
+
+      if (imageFiles.length === 0) {
+        imageList.innerHTML =
+          '<p class="editor-empty">No images added yet. Drag one into the editor or use Select images.</p>';
+        return;
+      }
+
+      imageList.innerHTML = "";
+
+      for (const [index, item] of imageFiles.entries()) {
+        const card = document.createElement("article");
+        card.className = "editor-image-card";
+
+        const preview = document.createElement("img");
+        preview.src = item.previewUrl;
+        preview.alt = item.altText;
+
+        const content = document.createElement("div");
+
+        const title = document.createElement("strong");
+        title.textContent = item.sanitizedName;
+
+        const path = document.createElement("p");
+        path.textContent = buildAssetPath(item.sanitizedName);
+
+        const actions = document.createElement("div");
+        actions.className = "editor-actions";
+
+        const insertInline = document.createElement("button");
+        insertInline.type = "button";
+        insertInline.textContent = "Inline";
+        insertInline.addEventListener("click", () => {
+          insertImageIntoEditor(item);
+          refresh();
+        });
+
+        const moveUp = document.createElement("button");
+        moveUp.type = "button";
+        moveUp.textContent = "Up";
+        moveUp.disabled = index === 0;
+        moveUp.addEventListener("click", () => {
+          if (index === 0) return;
+          const itemRef = imageFiles[index];
+          imageFiles.splice(index, 1);
+          imageFiles.splice(index - 1, 0, itemRef);
+          refresh();
+        });
+
+        const moveDown = document.createElement("button");
+        moveDown.type = "button";
+        moveDown.textContent = "Down";
+        moveDown.disabled = index === imageFiles.length - 1;
+        moveDown.addEventListener("click", () => {
+          if (index === imageFiles.length - 1) return;
+          const itemRef = imageFiles[index];
+          imageFiles.splice(index, 1);
+          imageFiles.splice(index + 1, 0, itemRef);
+          refresh();
+        });
+
+        const makeCover = document.createElement("button");
+        makeCover.type = "button";
+        makeCover.textContent = "Use as cover";
+        makeCover.addEventListener("click", () => {
+          fields.coverImage.value = buildAssetPath(item.sanitizedName);
+          if (!fields.coverAlt.value.trim()) fields.coverAlt.value = item.altText;
+          refresh();
+        });
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => {
+          URL.revokeObjectURL(item.previewUrl);
+          imageFiles.splice(index, 1);
+          refresh();
+        });
+
+        actions.append(insertInline, moveUp, moveDown, makeCover, remove);
+        content.append(title, path, actions);
+        card.append(preview, content);
+        imageList.append(card);
+      }
+    };
+
+    const slugFromHeading = (heading) =>
+      heading
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+    const renderOutline = (markdown) => {
+      if (!outlineList) return;
+
+      const headings = markdown
+        .split("\n")
+        .map((line) => line.match(/^(#{2,4})\s+(.+)$/))
+        .filter(Boolean)
+        .map((match) => ({
+          depth: match[1].length,
+          text: match[2].trim(),
+          slug: slugFromHeading(match[2]),
+        }));
+
+      if (headings.length === 0) {
+        outlineList.innerHTML = '<p class="editor-empty">Add headings and they will appear here.</p>';
+        return;
+      }
+
+      outlineList.innerHTML = "";
+
+      for (const heading of headings) {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "editor-outline__item";
+        item.dataset.depth = String(heading.depth);
+        item.textContent = heading.text;
+        item.addEventListener("click", () => {
+          const text = editor.getMarkdown();
+          const index = text.indexOf(`${"#".repeat(heading.depth)} ${heading.text}`);
+          if (index >= 0) {
+            const before = text.slice(0, index);
+            const line = before.split("\n").length;
+            editor.changeMode("markdown", false);
+            editor.setSelection([line, 1], [line, 1]);
+            editor.focus();
+          }
+        });
+        outlineList.append(item);
+      }
+    };
+
+    const addLocalImage = (blob) => {
+      const filename = uniqueFilename(sanitizeFilename(blob.name || `image-${imageFiles.length + 1}.png`));
+      const previewUrl = URL.createObjectURL(blob);
+      const image = {
+        file: blob,
+        sanitizedName: filename,
+        altText: (blob.name || filename).replace(/\.[^.]+$/, "").replace(/[-_]+/g, " "),
+        previewUrl,
+      };
+
+      imageFiles = [...imageFiles, image];
+      setStatus(`Image added. When you are ready, save assets into public/blog-assets/${currentSlug()}/.`);
+      return image;
+    };
+
+    const editor = new Editor({
+      el: editorHost,
+      height: "860px",
+      initialEditType: "wysiwyg",
+      previewStyle: "vertical",
+      initialValue: initialBody,
+      usageStatistics: false,
+      hideModeSwitch: false,
+      toolbarItems: [
+        ["heading", "bold", "italic", "strike"],
+        ["hr", "quote"],
+        ["link"],
+        ["code", "codeblock"],
+      ],
+      hooks: {
+        addImageBlobHook: (blob, callback) => {
+          const image = addLocalImage(blob);
+          callback(image.previewUrl, image.altText);
+          refresh();
+          return false;
+        },
+      },
+    });
+
+    const refresh = () => {
+      if (!slugManuallyEdited) {
+        const generatedSlug = titleBasedSlug();
+        if (fields.slug.value !== generatedSlug) {
+          fields.slug.value = generatedSlug;
+        }
+      }
+
+      const slug = currentSlug();
+
+      if (!fields.coverImage.value || fields.coverImage.value.includes("/your-post-title/")) {
+        fields.coverImage.value = `/blog-assets/${slug}/cover.jpg`;
+      }
+
+      const rawMarkdown = getRawMarkdown().trim();
+      const processedMarkdown = getProcessedMarkdown().trim();
+
+      output.value = `${buildFrontmatter()}\n\n${processedMarkdown}\n`;
+      filename.textContent = `${slug}.md`;
+      folder.textContent = `public/blog-assets/${slug}/`;
+      renderedPreview.innerHTML = marked.parse(rawMarkdown);
+      renderOutline(rawMarkdown);
+      renderImages();
+      saveDraft();
+    };
+
+    const savedDraft = loadDraft();
+    if (savedDraft) {
+      fields.title.value = savedDraft.title ?? fields.title.value;
+      fields.excerpt.value = savedDraft.excerpt ?? fields.excerpt.value;
+      fields.date.value = savedDraft.date ?? fields.date.value;
+      fields.slug.value = savedDraft.slug ?? fields.slug.value;
+      fields.tags.value = savedDraft.tags ?? fields.tags.value;
+      fields.coverImage.value = savedDraft.coverImage ?? fields.coverImage.value;
+      fields.coverAlt.value = savedDraft.coverAlt ?? fields.coverAlt.value;
+      fields.draft.checked = savedDraft.draft ?? fields.draft.checked;
+      slugManuallyEdited = fields.slug.value !== titleBasedSlug();
+      editor.setMarkdown(savedDraft.body ?? initialBody);
+    }
+
+    editor.on("change", refresh);
+
+    for (const [key, field] of Object.entries(fields)) {
+      if (key === "slug" || key === "title") continue;
+      field?.addEventListener("input", refresh);
+      field?.addEventListener("change", refresh);
+    }
+
+    fields.slug?.addEventListener("input", () => {
+      slugManuallyEdited = true;
+      refresh();
+    });
+
+    fields.title?.addEventListener("input", () => {
+      if (!slugManuallyEdited) {
+        fields.slug.value = titleBasedSlug();
+      }
+      refresh();
+    });
+
+    resetSlugButton?.addEventListener("click", () => {
+      slugManuallyEdited = false;
+      fields.slug.value = titleBasedSlug();
+      refresh();
+    });
+
+    for (const button of editorActionButtons) {
+      button.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+      });
+      button.addEventListener("click", () => {
+        toggleListForSelection(button.dataset.editorAction === "ordered-list" ? "ordered" : "bullet");
+      });
+    }
+
+    imageInput?.addEventListener("change", () => {
+      const files = Array.from(imageInput.files || []).filter((file) => file.type.startsWith("image/"));
+
+      for (const file of files) {
+        const image = addLocalImage(file);
+        insertImageIntoEditor(image);
+      }
+
+      imageInput.value = "";
+      refresh();
+    });
+
+    copyButton?.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(output.value);
+      copyButton.textContent = "Copied";
+      window.setTimeout(() => {
+        copyButton.textContent = "Copy Markdown";
+      }, 1200);
+    });
+
+    downloadButton?.addEventListener("click", () => {
+      const blob = new Blob([output.value], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${currentSlug()}.md`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    saveMarkdownButton?.addEventListener("click", async () => {
+      if (!("showDirectoryPicker" in window)) {
+        setStatus("Direct folder saving is not supported in this browser. Use Copy Markdown or Download file.");
+        return;
+      }
+
+      try {
+        const dirHandle = await window.showDirectoryPicker();
+        const fileHandle = await dirHandle.getFileHandle(`${currentSlug()}.md`, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(output.value);
+        await writable.close();
+        setStatus(`Saved ${currentSlug()}.md. Best target folder: src/content/blog/.`);
+      } catch {
+        setStatus("Markdown save cancelled or failed.");
+      }
+    });
+
+    saveImagesButton?.addEventListener("click", async () => {
+      if (imageFiles.length === 0) {
+        setStatus("Add at least one image first.");
+        return;
+      }
+
+      if (!("showDirectoryPicker" in window)) {
+        setStatus("Direct image saving is not supported in this browser yet.");
+        return;
+      }
+
+      try {
+        const dirHandle = await window.showDirectoryPicker();
+
+        for (const item of imageFiles) {
+          const fileHandle = await dirHandle.getFileHandle(item.sanitizedName, { create: true });
+          const writable = await fileHandle.createWritable();
+          await writable.write(item.file);
+          await writable.close();
+        }
+
+        setStatus(`Saved ${imageFiles.length} image(s). Best target folder: public/blog-assets/${currentSlug()}/`);
+      } catch {
+        setStatus("Image save cancelled or failed.");
+      }
+    });
+
+    refresh();
+  }
+</script>

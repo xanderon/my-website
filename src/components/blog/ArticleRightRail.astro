@@ -1,0 +1,64 @@
+---
+interface TocItem {
+  depth: number;
+  text: string;
+  slug: string;
+}
+
+interface LinkItem {
+  href: string;
+  title: string;
+  meta: string;
+}
+
+interface Props {
+  toc: TocItem[];
+  recentPosts: LinkItem[];
+  tags: string[];
+}
+
+const { toc, recentPosts, tags } = Astro.props;
+---
+
+<div class="article-right-rail__inner">
+  <div class="article-right-rail__search">
+    <span aria-hidden="true">⌕</span>
+    <input type="search" placeholder="Search..." aria-label="Search posts" />
+  </div>
+
+  <section class="article-right-card">
+    <h3>Recently Updated</h3>
+    <div class="article-right-card__list">
+      {recentPosts.map((post) => (
+        <a href={post.href} class="article-right-card__link">
+          <strong>{post.title}</strong>
+          <span>{post.meta}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="article-right-card">
+    <h3>Trending Tags</h3>
+    <div class="tag-list">
+      {tags.map((tag) => (
+        <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+          {tag}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {toc.length > 0 && (
+    <section class="article-right-card article-right-card--toc">
+      <h3>Contents</h3>
+      <nav class="article-outline" aria-label="Table of contents" data-article-toc>
+        {toc.map((item) => (
+          <a href={`#${item.slug}`} class={`article-outline__item depth-${item.depth}`} data-toc-link={item.slug}>
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </section>
+  )}
+</div>

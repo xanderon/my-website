@@ -1,0 +1,42 @@
+---
+import type { BlogPost } from "../../lib/blog";
+import { formatDate, slugifyTag } from "../../lib/blog";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post-card">
+  <a class="post-card__link" href={post.permalink} aria-label={`Read ${post.data.title}`}>
+    {post.data.coverImage ? (
+      <img
+        class="post-card__image"
+        src={post.data.coverImage}
+        alt={post.data.coverAlt ?? post.data.title}
+        loading="lazy"
+      />
+    ) : (
+      <div class="post-card__image post-card__image--placeholder">
+        <span>Notes / builds / experiments</span>
+      </div>
+    )}
+    <div class="post-card__content">
+      <div class="post-card__meta">
+        <span>{formatDate(post.data.date)}</span>
+        <span>{post.readingTime}</span>
+      </div>
+      <h2>{post.data.title}</h2>
+      <p>{post.data.excerpt}</p>
+      <div class="post-card__tags">
+        {post.data.tags.map((tag) => (
+          <a href={`/blog/tag/${slugifyTag(tag)}`} class="tag-pill tag-pill--interactive">
+            {tag}
+          </a>
+        ))}
+      </div>
+    </div>
+  </a>
+</article>

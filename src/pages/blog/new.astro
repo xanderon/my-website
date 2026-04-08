@@ -1,0 +1,22 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import PostEditor from "../../components/blog/PostEditor.astro";
+---
+
+<BlogLayout
+  title="New Post | Field Notes"
+  description="Local helper for drafting and exporting a new blog post."
+  currentPath="/blog/new"
+  pageLabel="New Post"
+>
+  <section class="blog-hero">
+    <span class="blog-hero__eyebrow">Authoring</span>
+    <h1>Draft a post without touching the file format by hand.</h1>
+    <p>
+      This page is a local helper for writing posts faster. Fill the metadata, write in Markdown, preview the article,
+      then copy or download the generated file into <code>src/content/blog/</code>.
+    </p>
+  </section>
+
+  <PostEditor />
+</BlogLayout>

@@ -11,10 +11,16 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:editor-smoke": "node scripts/check-blog-editor.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^3.4.1",
-    "astro": "^2.5.7"
+    "@toast-ui/editor": "^3.2.2",
+    "astro": "^2.5.7",
+    "marked": "^17.0.6"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1"
   }
 }

@@ -1,0 +1,245 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import ArticleRightRail from "../../components/blog/ArticleRightRail.astro";
+import {
+  formatDate,
+  getAdjacentPosts,
+  getAllPosts,
+  getHeadingsFromMarkdown,
+  getRelatedPosts,
+  slugifyTag,
+} from "../../lib/blog";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, posts },
+  }));
+}
+
+const { post, posts } = Astro.props;
+const { Content } = await post.render();
+const adjacent = getAdjacentPosts(posts, post.slug);
+const relatedPosts = getRelatedPosts(posts, post);
+const headings = getHeadingsFromMarkdown(post.body);
+const recentPosts = posts
+  .filter((item) => item.slug !== post.slug)
+  .slice(0, 5)
+  .map((item) => ({
+    href: item.permalink,
+    title: item.data.title,
+    meta: `${formatDate(item.data.date)} · ${item.readingTime}`,
+  }));
+---
+
+<BlogLayout
+  title={`${post.data.title} | Field Notes`}
+  description={post.data.excerpt}
+  currentPath={post.permalink}
+  image={post.data.coverImage}
+  type="article"
+  pageLabel="Post"
+>
+  <div class="article-shell">
+    <article class="post-layout post-layout--editorial">
+      <header class="post-header post-header--editorial">
+        <div class="post-header__breadcrumbs">
+          <a href="/">Home</a>
+          <span>›</span>
+          <span>{post.data.title}</span>
+        </div>
+        <h1>{post.data.title}</h1>
+        <div class="post-meta post-meta--editorial">
+          <div class="post-meta__details">
+            <span>Posted {formatDate(post.data.date)}</span>
+            {post.data.updatedDate && <span>Updated {formatDate(post.data.updatedDate)}</span>}
+          </div>
+          <span class="post-meta__reading-time">{post.readingTime}</span>
+        </div>
+        <p class="post-meta__author">By Alex Nutu</p>
+        <p class="article-summary">{post.data.excerpt}</p>
+        {post.data.tags.length > 0 && (
+          <div class="post-footer__tags" style="margin-top: 1rem;">
+            {post.data.tags.map((tag) => (
+              <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${slugifyTag(tag)}`}>
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {post.data.coverImage && (
+        <figure class="post-cover">
+          <img src={post.data.coverImage} alt={post.data.coverAlt ?? post.data.title} />
+        </figure>
+      )}
+
+      <div class="post-prose">
+        <Content />
+      </div>
+
+      <footer class="post-footer">
+        <div class="author-card">
+          <span class="section-eyebrow">About the author</span>
+          <p>
+            Alex writes short practical notes about software, maker projects, and small builds that deserve a clearer
+            record than a temporary social post.
+          </p>
+        </div>
+
+        {(adjacent.previous || adjacent.next) && (
+          <div class="post-nav">
+            {adjacent.next ? (
+              <a href={adjacent.next.permalink}>
+                <span>Newer post</span>
+                <strong>{adjacent.next.data.title}</strong>
+              </a>
+            ) : (
+              <div></div>
+            )}
+            {adjacent.previous ? (
+              <a href={adjacent.previous.permalink}>
+                <span>Older post</span>
+                <strong>{adjacent.previous.data.title}</strong>
+              </a>
+            ) : (
+              <div></div>
+            )}
+          </div>
+        )}
+      </footer>
+    </article>
+
+    <aside class="article-rail article-rail--right">
+      <ArticleRightRail
+        toc={headings}
+        recentPosts={recentPosts}
+        tags={["github", "open-source", "lets-talk", "cpp", "conferences", "misc", "ai", "management", "python"]}
+      />
+    </aside>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const tocLinks = Array.from(document.querySelectorAll("[data-toc-link]"));
+      const headings = Array.from(document.querySelectorAll(".post-prose h2, .post-prose h3"));
+      const pairs = headings.map((heading, index) => {
+        const slug = tocLinks[index]?.getAttribute("data-toc-link") ?? heading.id;
+        if (slug) heading.id = slug;
+
+        const text = heading.childNodes[0]?.textContent?.trim() || heading.textContent?.replace(/#$/, "").trim() || "";
+        if (!heading.querySelector(".heading-anchor") && heading.id) {
+          const anchor = document.createElement("a");
+          anchor.href = `#${heading.id}`;
+          anchor.className = "heading-anchor";
+          anchor.setAttribute("aria-label", `Link to ${text}`);
+          anchor.textContent = "#";
+          heading.append(anchor);
+        }
+
+        return {
+          id: heading.id,
+          heading,
+          link: tocLinks[index] ?? null,
+        };
+      }).filter((pair) => pair.id);
+
+      const setActive = (activeId) => {
+        for (const pair of pairs) {
+          const isActive = pair.id === activeId;
+          pair.link?.classList.toggle("is-active", isActive);
+          if (pair.link) {
+            if (isActive) pair.link.setAttribute("aria-current", "true");
+            else pair.link.removeAttribute("aria-current");
+          }
+        }
+      };
+
+      const scrollOffset = () => (window.innerWidth < 860 ? 84 : 18);
+      const activeOffset = () => (window.innerWidth < 860 ? 112 : 72);
+      let pendingTargetId = null;
+
+      const syncActiveSection = () => {
+        if (!pairs.length) return;
+
+        if (pendingTargetId) {
+          const targetPair = pairs.find((pair) => pair.id === pendingTargetId);
+          if (targetPair) {
+            const delta = Math.abs(targetPair.heading.getBoundingClientRect().top - scrollOffset());
+            if (delta > 18) {
+              setActive(pendingTargetId);
+              return;
+            }
+            pendingTargetId = null;
+          }
+          else {
+            pendingTargetId = null;
+          }
+        }
+
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 32) {
+          setActive(pairs[pairs.length - 1].id);
+          return;
+        }
+
+        const position = window.scrollY + activeOffset();
+        let activeId = pairs[0].id;
+
+        for (const pair of pairs) {
+          if (pair.heading.offsetTop <= position) activeId = pair.id;
+          else break;
+        }
+
+        setActive(activeId);
+      };
+
+      tocLinks.forEach((link, index) => {
+        const pair = pairs[index];
+        if (!pair) return;
+
+        link.setAttribute("href", `#${pair.id}`);
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const top = pair.heading.getBoundingClientRect().top + window.scrollY - scrollOffset();
+          pendingTargetId = pair.id;
+          window.history.replaceState(null, "", `#${pair.id}`);
+          window.scrollTo({ top, behavior: "smooth" });
+          setActive(pair.id);
+        });
+      });
+
+      const syncFromHash = () => {
+        const hash = window.location.hash.slice(1);
+        if (!hash) {
+          syncActiveSection();
+          return;
+        }
+
+        const pair = pairs.find((entry) => entry.id === hash);
+        if (pair) {
+          pendingTargetId = pair.id;
+          setActive(pair.id);
+        }
+      };
+
+      let ticking = false;
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          syncActiveSection();
+          ticking = false;
+        });
+      };
+
+      syncFromHash();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("hashchange", syncFromHash);
+    })();
+  </script>
+</BlogLayout>

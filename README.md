@@ -48,6 +48,18 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
+## Blog section
+
+This repo now also contains a separate blog under `/blog` while `/` remains the existing homepage.
+
+- Blog index: `/blog`
+- Post pages: `/blog/[slug]`
+- Tag archives: `/blog/tag/[tag]`
+- Content location: `src/content/blog/`
+- Blog authoring guide: [`docs/blog-authoring.md`](./docs/blog-authoring.md)
+
+Each blog post is a single Markdown file with frontmatter. Images live in `public/blog-assets/<slug>/` and are referenced with absolute paths.
+
 ## 👀 Want to learn more on how I created my website?
 
 Feel free to check [the Astro.JS documentation](https://docs.astro.build) or jump into their [Discord server](https://astro.build/chat).

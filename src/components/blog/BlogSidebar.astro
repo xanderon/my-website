@@ -1,0 +1,59 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+  { href: "/", label: "Home", icon: "⌂" },
+  { href: "/blog", label: "About", icon: "i" },
+  { href: "/blog", label: "Categories", icon: "≡" },
+  { href: "/blog", label: "Tags", icon: "#" },
+  { href: "/blog", label: "Archives", icon: "◫" },
+  { href: "/blog", label: "Talks", icon: "◌" },
+];
+
+const socialItems = [
+  { href: "https://github.com/xanderon", label: "GitHub", icon: "GH" },
+  { href: "https://twitter.com/alexnutu", label: "Twitter", icon: "X" },
+  { href: "https://www.linkedin.com/in/alexnutu/", label: "LinkedIn", icon: "in" },
+  { href: "mailto:alex.nutu@outlook.com", label: "Email", icon: "@" },
+  { href: "/blog", label: "RSS", icon: "rss" },
+];
+---
+
+<div class="blog-sidebar__inner">
+  <div class="blog-sidebar__profile">
+    <img
+      class="blog-sidebar__avatar"
+      src="/static/portrait-light-xxxxs.jpg"
+      alt="Portrait of Alex Nutu"
+    />
+    <div>
+      <h2>Alex Nutu</h2>
+      <p class="blog-sidebar__role">Software Engineer</p>
+      <p class="blog-sidebar__bio">
+        Writing about practical systems, 3D printing, useful software, and the details that are worth keeping after a
+        project ships.
+      </p>
+    </div>
+  </div>
+
+  <nav class="blog-sidebar__nav" aria-label="Blog">
+    {navItems.map((item) => (
+      <a href={item.href} class:list={{ active: currentPath === item.href || currentPath.startsWith(item.href + "/") }}>
+        <span class="blog-sidebar__nav-icon" aria-hidden="true">{item.icon}</span>
+        <span>{item.label}</span>
+      </a>
+    ))}
+  </nav>
+
+  <div class="blog-sidebar__socials" aria-label="Social links">
+    {socialItems.map((item) => (
+      <a href={item.href} aria-label={item.label} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+        <span aria-hidden="true">{item.icon}</span>
+      </a>
+    ))}
+  </div>
+</div>

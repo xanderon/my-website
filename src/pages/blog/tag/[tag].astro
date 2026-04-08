@@ -1,0 +1,37 @@
+---
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import PostCard from "../../../components/blog/PostCard.astro";
+import { getAllTags, getPostsByTag } from "../../../lib/blog";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const tags = await getAllTags();
+
+  return tags.map((tag) => ({
+    params: { tag: tag.slug },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const posts = await getPostsByTag(tag.slug);
+---
+
+<BlogLayout
+  title={`${tag.label} | Field Notes`}
+  description={`Posts tagged ${tag.label} on Alex Nutu's blog.`}
+  currentPath={`/blog/tag/${tag.slug}`}
+>
+  <section class="tag-page">
+    <span class="section-eyebrow">Tag archive</span>
+    <h1>{tag.label}</h1>
+    <p>{tag.count} post{tag.count === 1 ? "" : "s"} grouped under this topic.</p>
+  </section>
+
+  <section class="content-section">
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BlogLayout>
