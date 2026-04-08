@@ -187,7 +187,6 @@ h2 {
     top: 20px;
     width: 40px;
     height: 40px;
-    background-image: url("touch-screen.svg");
     background-image: url('/static/touch-screen.svg');
     /* background-color: red; */
     /* border-radius: 10px; */
