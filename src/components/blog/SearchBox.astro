@@ -1,0 +1,15 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  query?: string;
+  compact?: boolean;
+}
+
+const { query = "", compact = false } = Astro.props;
+---
+
+<form class:list={["article-right-rail__search", { "article-right-rail__search--compact": compact }]} action="/blog/search" method="get">
+  <Icon name="search" />
+  <input type="search" name="q" value={query} placeholder="Search..." aria-label="Search posts" />
+</form>

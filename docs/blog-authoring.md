@@ -16,7 +16,7 @@ There is also a local helper page at `/blog/new` for faster authoring with:
 3. Add frontmatter for the post metadata.
 4. Write the body in Markdown.
 5. Put any images in `public/blog-assets/<slug>/`.
-6. Reference images with absolute paths such as `/blog-assets/<slug>/cover.jpg`.
+6. Either reference images with absolute paths such as `/blog-assets/<slug>/cover.jpg`, or set `mediaSubpath` and use relative names like `cover.jpg`.
 7. Run `npm run dev` and preview the post locally at `/blog/<slug>`.
 
 ## Faster UI workflow
@@ -25,7 +25,7 @@ There is also a local helper page at `/blog/new` for faster authoring with:
 2. Open `/blog/new`.
 3. Fill in the metadata form.
 4. Write in `Visual` mode or `Markdown` mode.
-5. Use the toolbar for bold, headings, lists, links, quotes, tables, and code.
+5. Use the toolbar for bold, headings, lists, links, quotes, and code.
 6. Use `Copy Markdown` or `Download file`.
 7. Save that output into `src/content/blog/<slug>.md`.
 8. Put images in `public/blog-assets/<slug>/`.
@@ -51,13 +51,28 @@ This keeps image paths predictable and avoids manually typing image references.
 ---
 title: Your title
 excerpt: One short summary used in cards and metadata
+description: Optional override for article subtitle and SEO
 date: 2026-04-05
 updatedDate: 2026-04-06 # optional
+categories:
+  - Writing
+  - Tutorial
 tags:
   - 3D Printing
   - Practical Builds
-coverImage: /blog-assets/your-slug/cover.jpg # optional
-coverAlt: Short alt text for the cover image # optional
+author: alex # optional, defaults to alex
+# or:
+authors:
+  - alex
+image:
+  path: cover.jpg
+  alt: Short alt text for the cover image
+mediaSubpath: /blog-assets/your-slug # optional but recommended
+pin: false # optional
+toc: true # optional
+comments: true # optional
+math: false # optional
+mermaid: false # optional
 draft: false # optional
 featured: false # optional
 ---
@@ -67,38 +82,58 @@ featured: false # optional
 
 Set `draft: true` and the post will stay out of the published listing and routes.
 
-## Images
+## Images and Media
 
 - Create a folder per post in `public/blog-assets/<slug>/`.
-- Use `coverImage` for the main card and social preview image.
+- Prefer `mediaSubpath: /blog-assets/<slug>` in frontmatter.
+- Use `image.path` for the main card and social preview image.
 - Use normal Markdown images in the body:
 
 ```md
-![Bench test of the part](/blog-assets/your-slug/test-shot.jpg)
+![Bench test of the part](test-shot.jpg)
 ```
 
-- For captioned images, use HTML:
+- For captioned images, write an italic line immediately after the image:
+
+```md
+![Detail view](detail.jpg)
+_Short caption here._
+```
+
+- If you want explicit layout classes such as left/right/shadow, use HTML:
 
 ```html
-<figure class="blog-figure">
-  <img src="/blog-assets/your-slug/detail.jpg" alt="Detail view" />
-  <figcaption>Short caption here.</figcaption>
+<figure class="blog-figure is-right has-shadow">
+  <img src="detail.jpg" alt="Detail view" width="720" height="480" />
+  <figcaption>Optional caption.</figcaption>
 </figure>
 ```
 
-- For a simple two-image gallery:
+For theme-specific variants:
 
 ```html
-<figure class="blog-gallery">
-  <div class="blog-gallery__grid">
-    <img src="/blog-assets/your-slug/one.jpg" alt="First image" />
-    <img src="/blog-assets/your-slug/two.jpg" alt="Second image" />
-  </div>
-  <figcaption>Optional gallery caption.</figcaption>
-</figure>
+<img class="theme-light-only" src="diagram-light.svg" alt="Diagram for light mode" />
+<img class="theme-dark-only" src="diagram-dark.svg" alt="Diagram for dark mode" />
 ```
 
-## Video embeds
+## Callouts
+
+Use GitHub-style markers inside blockquotes:
+
+```md
+> [!INFO]
+> This is an informational callout.
+```
+
+Supported markers:
+- `NOTE`
+- `INFO`
+- `TIP`
+- `WARNING`
+- `CAUTION`
+- `DANGER`
+
+## Video and audio embeds
 
 Markdown supports raw HTML, so you can embed a video or external demo with a plain iframe:
 
@@ -114,12 +149,58 @@ Markdown supports raw HTML, so you can embed a video or external demo with a pla
 </div>
 ```
 
+For now, prefer raw HTML embeds in posts. It is explicit, reliable, and already styled by the blog.
+
 ## Code blocks
 
 Standard fenced Markdown code blocks work out of the box:
 
 ```ts
 console.log("hello");
+```
+
+## Mermaid
+
+Enable Mermaid for a post:
+
+```md
+---
+mermaid: true
+---
+```
+
+Then use:
+
+~~~md
+```mermaid
+flowchart TD
+  A[Idea] --> B[Draft]
+  B --> C[Publish]
+```
+~~~
+
+## Math
+
+Enable KaTeX rendering:
+
+```md
+---
+math: true
+---
+```
+
+Inline math:
+
+```md
+The usual form is $E = mc^2$ in a sentence.
+```
+
+Block math:
+
+```md
+$$
+\int_0^1 x^2 dx = \frac{1}{3}
+$$
 ```
 
 ## Local preview
@@ -130,6 +211,14 @@ npm run dev
 ```
 
 Then open `http://localhost:4321/blog`.
+
+## Comments
+
+Comments are wired for optional Giscus support. Configure them in:
+
+- `src/data/blog-config.ts`
+
+If `comments: false` is set in frontmatter, the comments block is hidden for that post.
 
 ## Post template
 

@@ -1,4 +1,6 @@
 ---
+import SearchBox from "./SearchBox.astro";
+
 interface TocItem {
   depth: number;
   text: string;
@@ -15,16 +17,14 @@ interface Props {
   toc: TocItem[];
   recentPosts: LinkItem[];
   tags: string[];
+  relatedPosts?: LinkItem[];
 }
 
-const { toc, recentPosts, tags } = Astro.props;
+const { toc, recentPosts, tags, relatedPosts = [] } = Astro.props;
 ---
 
 <div class="article-right-rail__inner">
-  <div class="article-right-rail__search">
-    <span aria-hidden="true">⌕</span>
-    <input type="search" placeholder="Search..." aria-label="Search posts" />
-  </div>
+  <SearchBox />
 
   <section class="article-right-card">
     <h3>Recently Updated</h3>
@@ -59,6 +59,20 @@ const { toc, recentPosts, tags } = Astro.props;
           </a>
         ))}
       </nav>
+    </section>
+  )}
+
+  {relatedPosts.length > 0 && (
+    <section class="article-right-card">
+      <h3>Further Reading</h3>
+      <div class="article-right-card__list">
+        {relatedPosts.map((post) => (
+          <a href={post.href} class="article-right-card__link">
+            <strong>{post.title}</strong>
+            <span>{post.meta}</span>
+          </a>
+        ))}
+      </div>
     </section>
   )}
 </div>

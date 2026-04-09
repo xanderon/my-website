@@ -18,7 +18,12 @@ try {
   const taskButtonCount = await page.locator(".toastui-editor-toolbar button.task-list").count();
   assert.equal(taskButtonCount, 0, "task list toggle should not be present");
 
-  await page.locator('input[name="title"]').fill("Smoke test post");
+  const titleField = page.locator('input[name="title"]');
+  if (!(await titleField.isVisible())) {
+    await page.locator(".editor-panel summary").first().click();
+  }
+
+  await titleField.fill("Smoke test post");
   await page.locator('input[name="slug"]').fill("smoke-test-post");
   await page.locator('input[name="tags"]').fill("Testing, Editor");
   await page.locator(".toastui-editor-toolbar button.bold").click();

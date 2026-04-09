@@ -1,0 +1,39 @@
+---
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import PostCard from "../../../components/blog/PostCard.astro";
+import { getAllCategories, getAllPosts, getPostsByCategory } from "../../../lib/blog";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  const categories = getAllCategories(posts);
+
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const posts = await getPostsByCategory(category.slug);
+---
+
+<BlogLayout
+  title={`${category.label} | Field Notes`}
+  description={`Posts in category ${category.label}.`}
+  currentPath={`/blog/category/${category.slug}`}
+  pageLabel="Category"
+>
+  <section class="tag-page">
+    <span class="section-eyebrow">Category archive</span>
+    <h1>{category.label}</h1>
+    <p>{category.count} post{category.count === 1 ? "" : "s"} grouped in this category.</p>
+  </section>
+
+  <section class="content-section">
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BlogLayout>

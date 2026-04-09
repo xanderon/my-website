@@ -1,13 +1,17 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import ArticleRightRail from "../../components/blog/ArticleRightRail.astro";
+import GiscusComments from "../../components/blog/GiscusComments.astro";
+import Icon from "../../components/blog/Icon.astro";
 import {
   formatDate,
   getAdjacentPosts,
   getAllPosts,
   getHeadingsFromMarkdown,
+  getPostAuthors,
+  getPostCover,
+  getPostDescription,
   getRelatedPosts,
-  slugifyTag,
 } from "../../lib/blog";
 
 export const prerender = true;
@@ -23,9 +27,14 @@ export async function getStaticPaths() {
 
 const { post, posts } = Astro.props;
 const { Content } = await post.render();
+const [readingMinutes] = post.readingTime.split(" ");
+const absoluteUrl = new URL(post.permalink, Astro.site ?? Astro.url).href;
 const adjacent = getAdjacentPosts(posts, post.slug);
 const relatedPosts = getRelatedPosts(posts, post);
-const headings = getHeadingsFromMarkdown(post.body);
+const headings = post.data.toc === false ? [] : getHeadingsFromMarkdown(post.body);
+const authors = getPostAuthors(post);
+const cover = getPostCover(post);
+const description = getPostDescription(post);
 const recentPosts = posts
   .filter((item) => item.slug !== post.slug)
   .slice(0, 5)
@@ -34,13 +43,23 @@ const recentPosts = posts
     title: item.data.title,
     meta: `${formatDate(item.data.date)} · ${item.readingTime}`,
   }));
+const relatedRailPosts = relatedPosts.map((item) => ({
+  href: item.permalink,
+  title: item.data.title,
+  meta: `${formatDate(item.data.date)} · ${item.readingTime}`,
+}));
+const shareLinks = {
+  x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(absoluteUrl)}&text=${encodeURIComponent(post.data.title)}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(absoluteUrl)}`,
+  telegram: `https://t.me/share/url?url=${encodeURIComponent(absoluteUrl)}&text=${encodeURIComponent(post.data.title)}`,
+};
 ---
 
 <BlogLayout
   title={`${post.data.title} | Field Notes`}
-  description={post.data.excerpt}
+  description={description}
   currentPath={post.permalink}
-  image={post.data.coverImage}
+  image={cover.path}
   type="article"
   pageLabel="Post"
 >
@@ -50,32 +69,43 @@ const recentPosts = posts
         <div class="post-header__breadcrumbs">
           <a href="/">Home</a>
           <span>›</span>
+          {post.data.categories[0] && (
+            <>
+              <span>{post.data.categories.join(" / ")}</span>
+              <span>›</span>
+            </>
+          )}
           <span>{post.data.title}</span>
         </div>
         <h1>{post.data.title}</h1>
         <div class="post-meta post-meta--editorial">
           <div class="post-meta__details">
-            <span>Posted {formatDate(post.data.date)}</span>
-            {post.data.updatedDate && <span>Updated {formatDate(post.data.updatedDate)}</span>}
+            <span class="post-meta__item">
+              <span class="post-meta__label">Posted</span>
+              <span class="post-meta__value">{formatDate(post.data.date)}</span>
+            </span>
+            {post.data.updatedDate && (
+              <span class="post-meta__item">
+                <span class="post-meta__label">Updated</span>
+                <span class="post-meta__value">{formatDate(post.data.updatedDate)}</span>
+              </span>
+            )}
           </div>
-          <span class="post-meta__reading-time">{post.readingTime}</span>
+          <span class="post-meta__reading-time">
+            <span class="post-meta__value">{readingMinutes} min</span>
+            <span class="post-meta__label">read</span>
+          </span>
         </div>
-        <p class="post-meta__author">By Alex Nutu</p>
-        <p class="article-summary">{post.data.excerpt}</p>
-        {post.data.tags.length > 0 && (
-          <div class="post-footer__tags" style="margin-top: 1rem;">
-            {post.data.tags.map((tag) => (
-              <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${slugifyTag(tag)}`}>
-                {tag}
-              </a>
-            ))}
-          </div>
-        )}
+        <p class="post-meta__author">
+          <span class="post-meta__label">By</span>
+          <span class="post-meta__value">{authors.map((author) => author.name).join(", ")}</span>
+        </p>
+        <p class="article-summary">{description}</p>
       </header>
 
-      {post.data.coverImage && (
+      {cover.path && (
         <figure class="post-cover">
-          <img src={post.data.coverImage} alt={post.data.coverAlt ?? post.data.title} />
+          <img src={cover.path} alt={cover.alt ?? post.data.title} />
         </figure>
       )}
 
@@ -84,34 +114,86 @@ const recentPosts = posts
       </div>
 
       <footer class="post-footer">
+        <div class="post-share">
+          <div class="post-share__meta">
+            <span class="section-eyebrow">Share & rights</span>
+            <p>This post is published under CC BY 4.0 and can be shared with attribution.</p>
+          </div>
+          <div class="post-share__actions">
+            <a href={shareLinks.x} target="_blank" rel="noreferrer">
+              <Icon name="x-brand" />
+              <span>X</span>
+            </a>
+            <a href={shareLinks.facebook} target="_blank" rel="noreferrer">
+              <Icon name="facebook" />
+              <span>Facebook</span>
+            </a>
+            <a href={shareLinks.telegram} target="_blank" rel="noreferrer">
+              <Icon name="telegram" />
+              <span>Telegram</span>
+            </a>
+            <button type="button" data-copy-post-link>
+              <Icon name="copy" />
+              <span>Copy link</span>
+            </button>
+          </div>
+        </div>
+
         <div class="author-card">
           <span class="section-eyebrow">About the author</span>
-          <p>
-            Alex writes short practical notes about software, maker projects, and small builds that deserve a clearer
-            record than a temporary social post.
-          </p>
+          {authors.map((author) => (
+            <p>
+              <strong>{author.name}</strong>
+              {author.role && ` · ${author.role}`}
+              {author.bio && ` — ${author.bio}`}
+            </p>
+          ))}
         </div>
 
         {(adjacent.previous || adjacent.next) && (
-          <div class="post-nav">
+          <section class="post-sequence">
+            <span class="section-eyebrow">Continue reading</span>
+            <div class:list={["post-sequence__grid", { "is-single": !(adjacent.previous && adjacent.next) }]}>
             {adjacent.next ? (
-              <a href={adjacent.next.permalink}>
-                <span>Newer post</span>
+              <a href={adjacent.next.permalink} class="post-sequence__link post-sequence__link--newer">
+                <span class="post-sequence__direction">
+                  <Icon name="chevron-left" />
+                  <span>Newer post</span>
+                </span>
                 <strong>{adjacent.next.data.title}</strong>
+                <small>{formatDate(adjacent.next.data.date)} · {adjacent.next.readingTime}</small>
               </a>
-            ) : (
-              <div></div>
-            )}
+            ) : null}
             {adjacent.previous ? (
-              <a href={adjacent.previous.permalink}>
-                <span>Older post</span>
+              <a href={adjacent.previous.permalink} class="post-sequence__link post-sequence__link--older">
+                <span class="post-sequence__direction">
+                  <span>Older post</span>
+                  <Icon name="chevron-right" />
+                </span>
                 <strong>{adjacent.previous.data.title}</strong>
+                <small>{formatDate(adjacent.previous.data.date)} · {adjacent.previous.readingTime}</small>
               </a>
-            ) : (
-              <div></div>
-            )}
-          </div>
+            ) : null}
+            </div>
+          </section>
         )}
+
+        {relatedPosts.length > 0 && (
+          <section class="related-posts">
+            <span class="section-eyebrow">Further Reading</span>
+            <div class="related-grid">
+              {relatedPosts.map((item) => (
+                <a href={item.permalink} class="related-post">
+                  <span>{formatDate(item.data.date)}</span>
+                  <strong>{item.data.title}</strong>
+                  <span>{item.description}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {post.data.comments !== false && <GiscusComments title={post.data.title} />}
       </footer>
     </article>
 
@@ -119,6 +201,7 @@ const recentPosts = posts
       <ArticleRightRail
         toc={headings}
         recentPosts={recentPosts}
+        relatedPosts={relatedRailPosts}
         tags={["github", "open-source", "lets-talk", "cpp", "conferences", "misc", "ai", "management", "python"]}
       />
     </aside>
@@ -240,6 +323,86 @@ const recentPosts = posts
       syncFromHash();
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("hashchange", syncFromHash);
+
+      const copyButton = document.querySelector("[data-copy-post-link]");
+      copyButton?.addEventListener("click", async () => {
+        const fallbackCopy = () => {
+          const input = document.createElement("textarea");
+          input.value = window.location.href;
+          input.setAttribute("readonly", "");
+          input.style.position = "absolute";
+          input.style.left = "-9999px";
+          document.body.append(input);
+          input.select();
+          const ok = document.execCommand("copy");
+          input.remove();
+          return ok;
+        };
+
+        try {
+          if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(window.location.href);
+          else if (!fallbackCopy()) throw new Error("copy-failed");
+          copyButton.textContent = "Copied";
+          window.setTimeout(() => {
+            copyButton.textContent = "Copy link";
+          }, 1400);
+        } catch {
+          if (fallbackCopy()) {
+            copyButton.textContent = "Copied";
+            window.setTimeout(() => {
+              copyButton.textContent = "Copy link";
+            }, 1400);
+            return;
+          }
+
+          copyButton.textContent = "Failed";
+          window.setTimeout(() => {
+            copyButton.textContent = "Copy link";
+          }, 1400);
+        }
+      });
     })();
   </script>
+
+  {post.data.mermaid && (
+    <script type="module" is:inline>
+      const looksLikeMermaid = (value) => {
+        const source = value.trim();
+        return [
+          "flowchart",
+          "graph ",
+          "sequenceDiagram",
+          "classDiagram",
+          "stateDiagram",
+          "erDiagram",
+          "journey",
+          "gantt",
+          "pie ",
+          "mindmap",
+          "timeline",
+        ].some((keyword) => source.startsWith(keyword));
+      };
+
+      const { default: mermaid } = await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs");
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: document.documentElement.dataset.theme === "light" ? "base" : "dark",
+        securityLevel: "loose",
+      });
+
+      const blocks = Array.from(document.querySelectorAll(".post-prose pre")).filter((block) =>
+        looksLikeMermaid(block.textContent ?? ""),
+      );
+
+      for (const block of blocks) {
+        const container = document.createElement("div");
+        container.className = "mermaid";
+        container.textContent = block.textContent ?? "";
+        block.replaceWith(container);
+      }
+
+      mermaid.run({ querySelector: ".post-prose .mermaid" });
+    </script>
+  )}
 </BlogLayout>

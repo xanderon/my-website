@@ -1,0 +1,42 @@
+---
+import { blogConfig } from "../../data/blog-config";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const comments = blogConfig.comments;
+const isConfigured = comments.enabled && comments.repoId && comments.categoryId;
+---
+
+<section class="comments-card">
+  <span class="section-eyebrow">Discussion</span>
+  <h3>Comments</h3>
+
+  {isConfigured ? (
+    <div class="giscus-thread">
+      <script
+        src="https://giscus.app/client.js"
+        data-repo={comments.repo}
+        data-repo-id={comments.repoId}
+        data-category={comments.category}
+        data-category-id={comments.categoryId}
+        data-mapping={comments.mapping}
+        data-strict={comments.strict}
+        data-reactions-enabled={comments.reactionsEnabled}
+        data-emit-metadata={comments.emitMetadata}
+        data-input-position={comments.inputPosition}
+        data-theme="dark_dimmed"
+        data-lang={comments.lang}
+        crossorigin="anonymous"
+        async
+      ></script>
+    </div>
+  ) : (
+    <p>
+      Comments are not configured yet for <strong>{title}</strong>. When you add Giscus repository and category ids in
+      `src/data/blog-config.ts`, the thread will appear here automatically.
+    </p>
+  )}
+</section>

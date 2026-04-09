@@ -1,0 +1,134 @@
+---
+interface SearchPost {
+  title: string;
+  excerpt: string;
+  description: string;
+  href: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  categories: string[];
+  body: string;
+}
+
+interface Props {
+  posts: SearchPost[];
+  initialQuery?: string;
+}
+
+const { posts, initialQuery = "" } = Astro.props;
+---
+
+<section class="search-view" data-search-root data-initial-query={initialQuery}>
+  <div class="search-view__hero">
+    <span class="section-eyebrow">Search</span>
+    <h1>Find notes by topic, title, or phrase.</h1>
+    <p>Search across titles, excerpts, tags, categories, and article text.</p>
+  </div>
+
+  <div class="search-view__controls">
+    <label class="search-view__input">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" placeholder="Search posts, tags, categories..." data-search-input value={initialQuery} />
+    </label>
+    <p class="search-view__summary" data-search-summary></p>
+  </div>
+
+  <div class="search-results" data-search-results></div>
+
+  <script type="application/json" data-search-data set:html={JSON.stringify(posts)}></script>
+</section>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-search-root]");
+    if (!root) return;
+
+    const input = root.querySelector("[data-search-input]");
+    const summary = root.querySelector("[data-search-summary]");
+    const results = root.querySelector("[data-search-results]");
+    const json = root.querySelector("[data-search-data]");
+    const posts = json ? JSON.parse(json.textContent || "[]") : [];
+    const initialQuery = root.getAttribute("data-initial-query") || "";
+
+    const scorePost = (post, query) => {
+      const text = query.toLowerCase();
+      let score = 0;
+
+      const title = post.title.toLowerCase();
+      const excerpt = (post.description || post.excerpt || "").toLowerCase();
+      const tags = post.tags.join(" ").toLowerCase();
+      const categories = post.categories.join(" ").toLowerCase();
+      const body = post.body.toLowerCase();
+
+      if (title.includes(text)) score += 8;
+      if (excerpt.includes(text)) score += 5;
+      if (tags.includes(text)) score += 4;
+      if (categories.includes(text)) score += 3;
+      if (body.includes(text)) score += 1;
+
+      return score;
+    };
+
+    const escapeHtml = (value) =>
+      value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+    const render = (query) => {
+      const trimmed = query.trim();
+      const normalized = trimmed.toLowerCase();
+      const matches = !normalized
+        ? posts
+        : posts
+            .map((post) => ({ post, score: scorePost(post, normalized) }))
+            .filter((item) => item.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .map((item) => item.post);
+
+      const count = matches.length;
+      summary.textContent = normalized
+        ? `${count} result${count === 1 ? "" : "s"} for "${trimmed}"`
+        : `${posts.length} post${posts.length === 1 ? "" : "s"} indexed`;
+
+      if (matches.length === 0) {
+        results.innerHTML = '<p class="empty-state">No posts matched yet. Try a broader term.</p>';
+        return;
+      }
+
+      results.innerHTML = matches
+        .map(
+          (post) => `
+            <article class="search-result">
+              <a class="search-result__link" href="${post.href}">
+                <div class="post-card__meta">
+                  <span>${escapeHtml(post.date)}</span>
+                  <span>${escapeHtml(post.readingTime)}</span>
+                </div>
+                <h2>${escapeHtml(post.title)}</h2>
+                <p>${escapeHtml(post.description || post.excerpt)}</p>
+                <div class="tag-list">
+                  ${post.categories.map((category) => `<span class="tag-pill">${escapeHtml(category)}</span>`).join("")}
+                  ${post.tags.map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}
+                </div>
+              </a>
+            </article>
+          `,
+        )
+        .join("");
+    };
+
+    input?.addEventListener("input", () => {
+      const nextQuery = input.value;
+      const url = new URL(window.location.href);
+      if (nextQuery.trim()) url.searchParams.set("q", nextQuery);
+      else url.searchParams.delete("q");
+      window.history.replaceState(null, "", url.toString());
+      render(nextQuery);
+    });
+
+    render(initialQuery);
+  })();
+</script>

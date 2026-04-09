@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 interface Props {
   currentPath: string;
 }
@@ -6,20 +8,21 @@ interface Props {
 const { currentPath } = Astro.props;
 
 const navItems = [
-  { href: "/", label: "Home", icon: "⌂" },
-  { href: "/blog", label: "About", icon: "i" },
-  { href: "/blog", label: "Categories", icon: "≡" },
-  { href: "/blog", label: "Tags", icon: "#" },
-  { href: "/blog", label: "Archives", icon: "◫" },
-  { href: "/blog", label: "Talks", icon: "◌" },
+  { href: "/", label: "Home", icon: "home" },
+  { href: "/blog", label: "Blog", icon: "notebook-text" },
+  { href: "/blog/search", label: "Search", icon: "search" },
+  { href: "/blog/archive", label: "Archives", icon: "archive" },
+  { href: "/blog/category/writing", label: "Categories", icon: "folder-tree" },
+  { href: "/blog/tag/software", label: "Tags", icon: "tags" },
+  { href: "/blog/new", label: "Write", icon: "square-pen" },
 ];
 
 const socialItems = [
-  { href: "https://github.com/xanderon", label: "GitHub", icon: "GH" },
-  { href: "https://twitter.com/alexnutu", label: "Twitter", icon: "X" },
-  { href: "https://www.linkedin.com/in/alexnutu/", label: "LinkedIn", icon: "in" },
-  { href: "mailto:alex.nutu@outlook.com", label: "Email", icon: "@" },
-  { href: "/blog", label: "RSS", icon: "rss" },
+  { href: "https://github.com/xanderon", label: "GitHub", icon: "github" },
+  { href: "https://twitter.com/alexnutu", label: "Twitter", icon: "x-brand" },
+  { href: "https://www.linkedin.com/in/alexnutu/", label: "LinkedIn", icon: "link" },
+  { href: "mailto:alex.nutu@outlook.com", label: "Email", icon: "mail" },
+  { href: "/blog/rss.xml", label: "RSS", icon: "rss" },
 ];
 ---
 
@@ -43,7 +46,7 @@ const socialItems = [
   <nav class="blog-sidebar__nav" aria-label="Blog">
     {navItems.map((item) => (
       <a href={item.href} class:list={{ active: currentPath === item.href || currentPath.startsWith(item.href + "/") }}>
-        <span class="blog-sidebar__nav-icon" aria-hidden="true">{item.icon}</span>
+        <Icon name={item.icon} class="blog-sidebar__nav-icon" />
         <span>{item.label}</span>
       </a>
     ))}
@@ -52,7 +55,7 @@ const socialItems = [
   <div class="blog-sidebar__socials" aria-label="Social links">
     {socialItems.map((item) => (
       <a href={item.href} aria-label={item.label} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
-        <span aria-hidden="true">{item.icon}</span>
+        <Icon name={item.icon} />
       </a>
     ))}
   </div>

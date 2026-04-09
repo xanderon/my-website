@@ -1,0 +1,80 @@
+---
+import {
+  Archive,
+  ArrowUp,
+  ChevronLeft,
+  ChevronRight,
+  Copy,
+  FolderTree,
+  House,
+  Link2,
+  List,
+  ListOrdered,
+  Mail,
+  Menu,
+  Moon,
+  NotebookText,
+  Rss,
+  Search,
+  Share2,
+  SquarePen,
+  Sun,
+  Tags,
+  X,
+} from "lucide-static";
+import { siFacebook, siGithub, siTelegram, siX } from "simple-icons";
+
+interface Props {
+  name: string;
+  class?: string;
+  label?: string;
+}
+
+const { name, class: className = "", label } = Astro.props;
+
+const lucideIcons = {
+  archive: Archive,
+  "arrow-up": ArrowUp,
+  "chevron-left": ChevronLeft,
+  "chevron-right": ChevronRight,
+  copy: Copy,
+  "folder-tree": FolderTree,
+  home: House,
+  link: Link2,
+  list: List,
+  "list-ordered": ListOrdered,
+  mail: Mail,
+  menu: Menu,
+  moon: Moon,
+  "notebook-text": NotebookText,
+  rss: Rss,
+  search: Search,
+  share: Share2,
+  "square-pen": SquarePen,
+  sun: Sun,
+  tags: Tags,
+  x: X,
+} as const;
+
+const brandIcons = {
+  facebook: siFacebook.path,
+  github: siGithub.path,
+  telegram: siTelegram.path,
+  "x-brand": siX.path,
+} as const;
+
+const lucideMarkup = lucideIcons[name as keyof typeof lucideIcons];
+const brandPath = brandIcons[name as keyof typeof brandIcons];
+
+const markup = brandPath
+  ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${brandPath}" /></svg>`
+  : lucideMarkup ?? lucideIcons.x;
+---
+
+<span
+  class:list={["icon", brandPath && "icon--brand", className]}
+  aria-hidden={label ? undefined : "true"}
+  role={label ? "img" : undefined}
+  aria-label={label}
+  set:html={markup}
+></span>

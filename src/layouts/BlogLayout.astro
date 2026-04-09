@@ -1,7 +1,9 @@
 ---
 import "../styles/blog.css";
+import "katex/dist/katex.min.css";
 import BackToTopButton from "../components/blog/BackToTopButton.astro";
 import BlogSidebar from "../components/blog/BlogSidebar.astro";
+import Icon from "../components/blog/Icon.astro";
 import MobileBlogBar from "../components/blog/MobileBlogBar.astro";
 import ThemeToggle from "../components/blog/ThemeToggle.astro";
 
@@ -25,6 +27,7 @@ const {
 
 const canonical = new URL(currentPath, Astro.site ?? Astro.url);
 const ogImage = new URL(image, Astro.site ?? Astro.url);
+const currentYear = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -60,7 +63,9 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
     <div class="mobile-drawer" data-mobile-drawer>
       <div class="mobile-drawer__overlay" data-drawer-close></div>
       <aside class="mobile-drawer__panel" aria-label="Mobile navigation">
-        <button type="button" class="mobile-drawer__close" data-drawer-close aria-label="Close navigation">×</button>
+        <button type="button" class="mobile-drawer__close" data-drawer-close aria-label="Close navigation">
+          <Icon name="x" />
+        </button>
         <BlogSidebar currentPath={currentPath} />
       </aside>
     </div>
@@ -87,10 +92,11 @@ const ogImage = new URL(image, Astro.site ?? Astro.url);
       </main>
       <footer class="blog-footer">
         <div class="blog-footer__inner">
-          <p>
-            A calmer publishing space for practical builds, software notes, and small things worth keeping.
-          </p>
-          <a href="mailto:alex.nutu@outlook.com">Contact</a>
+          <p>© {currentYear} Alex Nutu. Field Notes for practical builds, software systems, and useful things worth keeping.</p>
+          <div class="blog-footer__links">
+            <a href="/blog/archive">Archive</a>
+            <a href="mailto:alex.nutu@outlook.com">Contact</a>
+          </div>
         </div>
       </footer>
     </div>

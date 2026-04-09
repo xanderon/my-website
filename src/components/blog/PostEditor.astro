@@ -1,83 +1,124 @@
 ---
 import "../../styles/vendor/toastui-editor.css";
+import Icon from "./Icon.astro";
 ---
 
 <section class="editor-shell" data-editor-root>
-  <aside class="editor-sidebar editor-sidebar--left">
-    <div class="editor-sidebar__stack">
-      <section class="editor-rail-card editor-rail-card--identity">
-        <span class="section-eyebrow">Drafting space</span>
-        <h2>Build a post without fighting the format.</h2>
-        <p>
-          Keep the writing area large, keep the controls nearby, and let the generated Markdown stay predictable.
-        </p>
-      </section>
-
-      <details class="editor-panel" open>
-        <summary>
-          <span>Metadata</span>
-          <small>Title, slug, dates, tags, cover</small>
-        </summary>
-        <div class="editor-card editor-card--panel">
-          <div class="editor-fields">
-            <label class="editor-field">
-              <span>Title</span>
-              <input type="text" name="title" value="Your post title" />
-            </label>
-            <label class="editor-field">
-              <span>Excerpt</span>
-              <textarea name="excerpt" rows="4">One short summary for cards, SEO, and the article header.</textarea>
-            </label>
-            <label class="editor-field">
-              <span>Date</span>
-              <input type="date" name="date" value="2026-04-05" />
-            </label>
-            <label class="editor-field">
-              <span>Slug</span>
-              <div class="editor-inline-field">
-                <input type="text" name="slug" value="your-post-title" />
-                <button type="button" data-reset-slug>Use title</button>
-              </div>
-            </label>
-            <label class="editor-field">
-              <span>Tags</span>
-              <input type="text" name="tags" value="Notes, Workflow" />
-            </label>
-            <label class="editor-field">
-              <span>Cover image</span>
-              <input type="text" name="coverImage" value="/blog-assets/your-post-title/cover.jpg" />
-            </label>
-            <label class="editor-field">
-              <span>Cover alt</span>
-              <input type="text" name="coverAlt" value="Short cover image description" />
-            </label>
-            <label class="editor-checkbox">
-              <input type="checkbox" name="draft" checked />
-              <span>Keep as draft</span>
-            </label>
-          </div>
-        </div>
-      </details>
-    </div>
-  </aside>
-
   <div class="editor-primary" data-editor-scroll>
     <div class="editor-card editor-card--hero">
       <div class="editor-topbar">
         <div>
           <div class="editor-breadcrumbs">Blog / New post</div>
-          <h2 class="editor-title">Write visually or in Markdown, with images handled inline.</h2>
+          <h2 class="editor-title">A large writing space first. Everything else stays nearby.</h2>
         </div>
         <p class="editor-topbar__copy">
-          Drag images into the editor, switch between `Visual` and `Markdown`, and keep the final output clean.
+          Drag images into the editor, switch between visual and markdown, and keep the final file clean enough to save directly.
         </p>
       </div>
+    </div>
 
-      <div class="editor-actions editor-actions--primary">
-        <button type="button" data-editor-action="bullet-list">Bullet list</button>
-        <button type="button" data-editor-action="ordered-list">Numbered list</button>
+    <details class="editor-panel editor-panel--main">
+      <summary>
+        <span>Post details</span>
+        <small>Title, slug, dates, authors, media, publishing toggles</small>
+      </summary>
+      <div class="editor-card editor-card--panel">
+        <div class="editor-fields editor-fields--meta">
+          <label class="editor-field editor-field--span-2">
+            <span>Title</span>
+            <input type="text" name="title" value="Your post title" />
+          </label>
+          <label class="editor-field editor-field--span-2">
+            <span>Excerpt</span>
+            <textarea name="excerpt" rows="4">One short summary for cards, SEO, and the article header.</textarea>
+          </label>
+          <label class="editor-field">
+            <span>Date</span>
+            <input type="date" name="date" value="2026-04-05" />
+          </label>
+          <label class="editor-field">
+            <span>Updated</span>
+            <input type="date" name="updatedDate" value="2026-04-09" />
+          </label>
+          <label class="editor-field editor-field--span-2">
+            <span>Slug</span>
+            <div class="editor-inline-field">
+              <input type="text" name="slug" value="your-post-title" />
+              <button type="button" data-reset-slug>Use title</button>
+            </div>
+          </label>
+          <label class="editor-field">
+            <span>Tags</span>
+            <input type="text" name="tags" value="Notes, Workflow" />
+          </label>
+          <label class="editor-field">
+            <span>Categories</span>
+            <input type="text" name="categories" value="Writing, Tutorial" />
+          </label>
+          <label class="editor-field">
+            <span>Author ID(s)</span>
+            <input type="text" name="authors" value="alex" />
+          </label>
+          <label class="editor-field">
+            <span>Media subpath</span>
+            <input type="text" name="mediaSubpath" value="/blog-assets/your-post-title" />
+          </label>
+          <label class="editor-field editor-field--span-2">
+            <span>Cover image</span>
+            <input type="text" name="coverImage" value="/blog-assets/your-post-title/cover.jpg" />
+          </label>
+          <label class="editor-field editor-field--span-2">
+            <span>Cover alt</span>
+            <input type="text" name="coverAlt" value="Short cover image description" />
+          </label>
+        </div>
+
+        <div class="editor-checkboxes">
+          <label class="editor-checkbox">
+            <input type="checkbox" name="draft" checked />
+            <span>Keep as draft</span>
+          </label>
+          <label class="editor-checkbox">
+            <input type="checkbox" name="pin" />
+            <span>Pin on blog home</span>
+          </label>
+          <label class="editor-checkbox">
+            <input type="checkbox" name="toc" checked />
+            <span>Show table of contents</span>
+          </label>
+          <label class="editor-checkbox">
+            <input type="checkbox" name="comments" checked />
+            <span>Enable comments placeholder</span>
+          </label>
+          <label class="editor-checkbox">
+            <input type="checkbox" name="math" />
+            <span>Enable math rendering</span>
+          </label>
+          <label class="editor-checkbox">
+            <input type="checkbox" name="mermaid" />
+            <span>Enable Mermaid diagrams</span>
+          </label>
+        </div>
       </div>
+    </details>
 
+    <div class="editor-card editor-card--editor">
+      <div class="editor-toolbar editor-toolbar--editor">
+        <div>
+          <span class="section-eyebrow">Editor</span>
+          <p>Use the built-in toolbar for bold, links, quotes, headings, images, and code.</p>
+        </div>
+        <div class="editor-actions editor-actions--primary">
+          <button type="button" data-editor-action="bullet-list">
+            <Icon name="list" />
+            <span>Bullet list</span>
+          </button>
+          <button type="button" data-editor-action="ordered-list">
+            <Icon name="list-ordered" />
+            <span>Numbered list</span>
+          </button>
+        </div>
+      </div>
       <div class="editor-host" data-rich-editor></div>
     </div>
 
@@ -89,13 +130,15 @@ import "../../styles/vendor/toastui-editor.css";
       <article class="post-prose editor-rendered-preview" data-rendered-preview></article>
     </div>
 
-    <div class="editor-card">
-      <div class="editor-toolbar">
-        <span class="section-eyebrow">Generated output</span>
-        <p>This is the exact Markdown file you can save into `src/content/blog/`.</p>
+    <details class="editor-panel">
+      <summary>
+        <span>Generated output</span>
+        <small>The exact Markdown file you can save into `src/content/blog/`</small>
+      </summary>
+      <div class="editor-card editor-card--panel">
+        <textarea class="editor-output" readonly data-output></textarea>
       </div>
-      <textarea class="editor-output" readonly data-output></textarea>
-    </div>
+    </details>
   </div>
 
   <aside class="editor-sidebar editor-sidebar--right">
@@ -158,6 +201,10 @@ import "../../styles/vendor/toastui-editor.css";
           <p class="editor-note" data-save-status>
             Chromium browsers can save directly into `src/content/blog/` and `public/blog-assets/&lt;slug&gt;/`.
           </p>
+          <p class="editor-note">
+            Supports categories, authors, `mediaSubpath`, `pin`, `toc`, `comments`, `math`, and `mermaid` in the
+            generated frontmatter.
+          </p>
         </div>
       </div>
     </details>
@@ -196,11 +243,20 @@ Wrap up with the next step or a practical conclusion.
       title: root.querySelector('input[name="title"]'),
       excerpt: root.querySelector('textarea[name="excerpt"]'),
       date: root.querySelector('input[name="date"]'),
+      updatedDate: root.querySelector('input[name="updatedDate"]'),
       slug: root.querySelector('input[name="slug"]'),
       tags: root.querySelector('input[name="tags"]'),
+      categories: root.querySelector('input[name="categories"]'),
+      authors: root.querySelector('input[name="authors"]'),
       coverImage: root.querySelector('input[name="coverImage"]'),
       coverAlt: root.querySelector('input[name="coverAlt"]'),
+      mediaSubpath: root.querySelector('input[name="mediaSubpath"]'),
       draft: root.querySelector('input[name="draft"]'),
+      pin: root.querySelector('input[name="pin"]'),
+      toc: root.querySelector('input[name="toc"]'),
+      comments: root.querySelector('input[name="comments"]'),
+      math: root.querySelector('input[name="math"]'),
+      mermaid: root.querySelector('input[name="mermaid"]'),
     };
 
     const output = root.querySelector("[data-output]");
@@ -248,6 +304,14 @@ Wrap up with the next step or a practical conclusion.
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean);
+      const categories = fields.categories.value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+      const authors = fields.authors.value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
 
       const lines = [
         "---",
@@ -256,14 +320,33 @@ Wrap up with the next step or a practical conclusion.
         `date: ${fields.date.value}`,
       ];
 
+      if (fields.updatedDate.value) lines.push(`updatedDate: ${fields.updatedDate.value}`);
+
+      if (categories.length > 0) {
+        lines.push("categories:");
+        for (const category of categories) lines.push(`  - ${category}`);
+      }
+
       if (tags.length > 0) {
         lines.push("tags:");
         for (const tag of tags) lines.push(`  - ${tag}`);
       }
 
+      if (authors.length === 1) lines.push(`author: ${authors[0]}`);
+      if (authors.length > 1) {
+        lines.push("authors:");
+        for (const author of authors) lines.push(`  - ${author}`);
+      }
+
       if (fields.coverImage.value.trim()) lines.push(`coverImage: ${fields.coverImage.value.trim()}`);
       if (fields.coverAlt.value.trim()) lines.push(`coverAlt: ${fields.coverAlt.value.trim()}`);
+      if (fields.mediaSubpath.value.trim()) lines.push(`mediaSubpath: ${fields.mediaSubpath.value.trim()}`);
+      if (fields.pin.checked) lines.push("pin: true");
       if (fields.draft.checked) lines.push("draft: true");
+      if (!fields.toc.checked) lines.push("toc: false");
+      if (!fields.comments.checked) lines.push("comments: false");
+      if (fields.math.checked) lines.push("math: true");
+      if (fields.mermaid.checked) lines.push("mermaid: true");
       lines.push("---");
       return lines.join("\n");
     };
@@ -378,11 +461,20 @@ Wrap up with the next step or a practical conclusion.
         title: fields.title.value,
         excerpt: fields.excerpt.value,
         date: fields.date.value,
+        updatedDate: fields.updatedDate.value,
         slug: fields.slug.value,
         tags: fields.tags.value,
+        categories: fields.categories.value,
+        authors: fields.authors.value,
         coverImage: fields.coverImage.value,
         coverAlt: fields.coverAlt.value,
+        mediaSubpath: fields.mediaSubpath.value,
         draft: fields.draft.checked,
+        pin: fields.pin.checked,
+        toc: fields.toc.checked,
+        comments: fields.comments.checked,
+        math: fields.math.checked,
+        mermaid: fields.mermaid.checked,
         body: getRawMarkdown(),
       };
 
@@ -588,6 +680,10 @@ Wrap up with the next step or a practical conclusion.
         fields.coverImage.value = `/blog-assets/${slug}/cover.jpg`;
       }
 
+      if (!fields.mediaSubpath.value || fields.mediaSubpath.value.includes("/your-post-title")) {
+        fields.mediaSubpath.value = `/blog-assets/${slug}`;
+      }
+
       const rawMarkdown = getRawMarkdown().trim();
       const processedMarkdown = getProcessedMarkdown().trim();
 
@@ -605,11 +701,20 @@ Wrap up with the next step or a practical conclusion.
       fields.title.value = savedDraft.title ?? fields.title.value;
       fields.excerpt.value = savedDraft.excerpt ?? fields.excerpt.value;
       fields.date.value = savedDraft.date ?? fields.date.value;
+      fields.updatedDate.value = savedDraft.updatedDate ?? fields.updatedDate.value;
       fields.slug.value = savedDraft.slug ?? fields.slug.value;
       fields.tags.value = savedDraft.tags ?? fields.tags.value;
+      fields.categories.value = savedDraft.categories ?? fields.categories.value;
+      fields.authors.value = savedDraft.authors ?? fields.authors.value;
       fields.coverImage.value = savedDraft.coverImage ?? fields.coverImage.value;
       fields.coverAlt.value = savedDraft.coverAlt ?? fields.coverAlt.value;
+      fields.mediaSubpath.value = savedDraft.mediaSubpath ?? fields.mediaSubpath.value;
       fields.draft.checked = savedDraft.draft ?? fields.draft.checked;
+      fields.pin.checked = savedDraft.pin ?? fields.pin.checked;
+      fields.toc.checked = savedDraft.toc ?? fields.toc.checked;
+      fields.comments.checked = savedDraft.comments ?? fields.comments.checked;
+      fields.math.checked = savedDraft.math ?? fields.math.checked;
+      fields.mermaid.checked = savedDraft.mermaid ?? fields.mermaid.checked;
       slugManuallyEdited = fields.slug.value !== titleBasedSlug();
       editor.setMarkdown(savedDraft.body ?? initialBody);
     }

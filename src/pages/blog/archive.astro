@@ -1,0 +1,40 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { formatDate, getAllPosts, getArchiveGroups } from "../../lib/blog";
+
+const posts = await getAllPosts();
+const groups = getArchiveGroups(posts);
+---
+
+<BlogLayout
+  title="Archive | Field Notes"
+  description="Browse Alex Nutu's blog archive grouped by month."
+  currentPath="/blog/archive"
+  pageLabel="Archive"
+>
+  <section class="tag-page">
+    <span class="section-eyebrow">Archive</span>
+    <h1>Browse by month.</h1>
+    <p>A quieter way to scan older posts by publication date.</p>
+  </section>
+
+  <section class="archive-list">
+    {groups.map((group) => (
+      <section class="archive-group">
+        <div class="archive-group__header">
+          <h2>{group.month}</h2>
+          <p>{group.posts.length} post{group.posts.length === 1 ? "" : "s"}</p>
+        </div>
+        <div class="archive-group__posts">
+          {group.posts.map((post) => (
+            <a href={post.permalink} class="archive-post">
+              <span>{formatDate(post.data.date)}</span>
+              <strong>{post.data.title}</strong>
+              <em>{post.readingTime}</em>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+</BlogLayout>

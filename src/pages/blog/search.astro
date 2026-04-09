@@ -1,0 +1,28 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import SearchExperience from "../../components/blog/SearchExperience.astro";
+import { formatDate, getAllPosts } from "../../lib/blog";
+
+const posts = await getAllPosts();
+const initialQuery = Astro.url.searchParams.get("q") ?? "";
+const searchPosts = posts.map((post) => ({
+  title: post.data.title,
+  excerpt: post.data.excerpt ?? "",
+  description: post.description,
+  href: post.permalink,
+  date: formatDate(post.data.date),
+  readingTime: post.readingTime,
+  tags: post.data.tags,
+  categories: post.data.categories ?? [],
+  body: post.body,
+}));
+---
+
+<BlogLayout
+  title="Search | Field Notes"
+  description="Search Alex Nutu's blog posts by topic, title, tags, categories, or article text."
+  currentPath="/blog/search"
+  pageLabel="Search"
+>
+  <SearchExperience posts={searchPosts} initialQuery={initialQuery} />
+</BlogLayout>

@@ -1,10 +1,13 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import PostCard from "../../components/blog/PostCard.astro";
-import { getAllPosts, getAllTags } from "../../lib/blog";
+import { getAllCategories, getAllPosts, getAllTags, getPinnedPosts } from "../../lib/blog";
 
 const posts = await getAllPosts();
 const tags = await getAllTags();
+const categories = getAllCategories(posts);
+const pinnedPosts = getPinnedPosts(posts);
+const regularPosts = posts.filter((post) => !pinnedPosts.some((item) => item.slug === post.slug));
 ---
 
 <BlogLayout
@@ -20,20 +23,59 @@ const tags = await getAllTags();
       A separate publishing space for small builds, 3D printing experiments, software notes, and short posts that
       should stay easy to scan and enjoyable to read.
     </p>
+    <div class="blog-overview">
+      <div class="blog-overview__stat">
+        <strong>{posts.length}</strong>
+        <span>Published posts</span>
+      </div>
+      <div class="blog-overview__stat">
+        <strong>{categories.length}</strong>
+        <span>Categories</span>
+      </div>
+      <div class="blog-overview__stat">
+        <strong>{tags.length}</strong>
+        <span>Tags</span>
+      </div>
+    </div>
+    <div class="blog-hero__actions">
+      <a class="tag-pill tag-pill--interactive" href="/blog/search">Search notes</a>
+      <a class="tag-pill tag-pill--interactive" href="/blog/archive">Browse archive</a>
+      <a class="tag-pill tag-pill--interactive" href="/blog/new">Open editor</a>
+    </div>
   </section>
 
   <section class="content-section">
     <div class="section-head">
       <div>
         <span class="section-eyebrow">Browse</span>
-        <h2 class="section-title">Latest posts</h2>
+        <h2 class="section-title">Pinned & latest posts</h2>
       </div>
       <p>{posts.length} published notes · <a href="/blog/new">open editor</a></p>
     </div>
     <div class="post-grid">
-      {posts.map((post) => <PostCard post={post} />)}
+      {pinnedPosts.map((post) => <PostCard post={post} />)}
+      {regularPosts.map((post) => <PostCard post={post} />)}
     </div>
   </section>
+
+  {categories.length > 0 && (
+    <section class="content-section">
+      <div class="section-head">
+        <div>
+          <span class="section-eyebrow">Structure</span>
+          <h2 class="section-title">Categories</h2>
+        </div>
+        <p>Primary and secondary buckets for broader themes.</p>
+      </div>
+      <div class="tag-list">
+        {categories.map((category) => (
+          <span class="tag-pill">
+            {category.label} · {category.count}
+          </span>
+        ))}
+      </div>
+    </section>
+  )}
 
   {tags.length > 0 && (
     <section class="content-section">

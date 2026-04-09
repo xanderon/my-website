@@ -29,6 +29,25 @@ h2 {
     background-position: 0%;
 }
 
+.hero-blog-link {
+    margin: 1rem 0 0;
+}
+
+.hero-blog-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    border: 1px solid var(--Bright-Orange);
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    color: inherit;
+}
+
+.hero-blog-link a:hover {
+    background: color-mix(in srgb, var(--Bright-Orange) 14%, transparent);
+}
+
 /* Animated Transition */
 .hidden {
     opacity: 0;
