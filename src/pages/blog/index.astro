@@ -7,7 +7,8 @@ const posts = await getAllPosts();
 const tags = await getAllTags();
 const categories = getAllCategories(posts);
 const pinnedPosts = getPinnedPosts(posts);
-const regularPosts = posts.filter((post) => !pinnedPosts.some((item) => item.slug === post.slug));
+const featuredPost = pinnedPosts[0] ?? posts[0];
+const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
 ---
 
 <BlogLayout
@@ -16,83 +17,96 @@ const regularPosts = posts.filter((post) => !pinnedPosts.some((item) => item.slu
   currentPath="/blog"
   pageLabel="Blog"
 >
-  <section class="blog-hero">
-    <span class="blog-hero__eyebrow">Personal blog</span>
-    <h1>Practical notes for things worth building.</h1>
-    <p>
-      A separate publishing space for small builds, 3D printing experiments, software notes, and short posts that
-      should stay easy to scan and enjoyable to read.
-    </p>
-    <div class="blog-overview">
-      <div class="blog-overview__stat">
-        <strong>{posts.length}</strong>
-        <span>Published posts</span>
+  <section class="blog-landing">
+    <header class="blog-landing__hero">
+      <div class="blog-landing__intro">
+        <span class="blog-hero__eyebrow">Field Notes</span>
+        <h1>Writing about work, life, systems, and useful things worth keeping.</h1>
+        <p>
+          Short essays, practical notes, and one demo article that shows the richer formatting the blog supports.
+        </p>
       </div>
-      <div class="blog-overview__stat">
-        <strong>{categories.length}</strong>
-        <span>Categories</span>
+      <div class="blog-landing__summary">
+        <div class="blog-landing__stat">
+          <strong>{posts.length}</strong>
+          <span>Published</span>
+        </div>
+        <div class="blog-landing__stat">
+          <strong>{categories.length}</strong>
+          <span>Categories</span>
+        </div>
+        <div class="blog-landing__stat">
+          <strong>{tags.length}</strong>
+          <span>Topics</span>
+        </div>
+        <div class="blog-landing__actions">
+          <a href="/blog/search">Search</a>
+          <a href="/blog/archive">Archive</a>
+          <a href="/blog/new">New post</a>
+        </div>
       </div>
-      <div class="blog-overview__stat">
-        <strong>{tags.length}</strong>
-        <span>Tags</span>
-      </div>
-    </div>
-    <div class="blog-hero__actions">
-      <a class="tag-pill tag-pill--interactive" href="/blog/search">Search notes</a>
-      <a class="tag-pill tag-pill--interactive" href="/blog/archive">Browse archive</a>
-      <a class="tag-pill tag-pill--interactive" href="/blog/new">Open editor</a>
-    </div>
-  </section>
+    </header>
 
-  <section class="content-section">
-    <div class="section-head">
-      <div>
-        <span class="section-eyebrow">Browse</span>
-        <h2 class="section-title">Pinned & latest posts</h2>
-      </div>
-      <p>{posts.length} published notes · <a href="/blog/new">open editor</a></p>
-    </div>
-    <div class="post-grid">
-      {pinnedPosts.map((post) => <PostCard post={post} />)}
-      {regularPosts.map((post) => <PostCard post={post} />)}
-    </div>
-  </section>
+    {featuredPost && (
+      <section class="content-section">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">Featured</span>
+            <h2 class="section-title">Start here</h2>
+          </div>
+          <p>{featuredPost.readingTime} · {featuredPost.data.categories.join(" / ")}</p>
+        </div>
+        <div class="post-grid post-grid--featured">
+          <PostCard post={featuredPost} />
+        </div>
+      </section>
+    )}
 
-  {categories.length > 0 && (
-    <section class="content-section">
+    {remainingPosts.length > 0 && (
+      <section class="content-section">
+        <div class="section-head">
+          <div>
+            <span class="section-eyebrow">Latest</span>
+            <h2 class="section-title">Recent posts</h2>
+          </div>
+          <p>{remainingPosts.length} more to read</p>
+        </div>
+        <div class="post-grid post-grid--stack">
+          {remainingPosts.map((post) => <PostCard post={post} />)}
+        </div>
+      </section>
+    )}
+
+    <section class="content-section blog-landing__footer">
       <div class="section-head">
         <div>
-          <span class="section-eyebrow">Structure</span>
-          <h2 class="section-title">Categories</h2>
+          <span class="section-eyebrow">Browse</span>
+          <h2 class="section-title">By category or topic</h2>
         </div>
-        <p>Primary and secondary buckets for broader themes.</p>
+        <p>Enough structure to navigate, not enough to get in the way.</p>
       </div>
-      <div class="tag-list">
-        {categories.map((category) => (
-          <span class="tag-pill">
-            {category.label} · {category.count}
-          </span>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {tags.length > 0 && (
-    <section class="content-section">
-      <div class="section-head">
+      <div class="blog-landing__browse">
         <div>
-          <span class="section-eyebrow">Topics</span>
-          <h2 class="section-title">Tags</h2>
+          <h3>Categories</h3>
+          <div class="tag-list">
+            {categories.map((category) => (
+              <a class="tag-pill tag-pill--interactive" href={`/blog/category/${category.slug}`}>
+                {category.label} · {category.count}
+              </a>
+            ))}
+          </div>
         </div>
-        <p>Simple archives for recurring themes.</p>
-      </div>
-      <div class="tag-list">
-        {tags.map((tag) => (
-          <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.slug}`}>
-            {tag.label} · {tag.count}
-          </a>
-        ))}
+        <div>
+          <h3>Topics</h3>
+          <div class="tag-list">
+            {tags.map((tag) => (
+              <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.slug}`}>
+                {tag.label} · {tag.count}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
-  )}
+  </section>
 </BlogLayout>

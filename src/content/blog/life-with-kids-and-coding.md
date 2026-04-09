@@ -1,7 +1,7 @@
 ---
 title: Life with kids and coding
-excerpt: A realistic example post that shows how a thoughtful personal article can mix narrative, code, callouts, diagrams, images, and practical notes.
-description: An example article for this blog that demonstrates layout, callouts, images, code, Mermaid, math, and embeds in one place.
+excerpt: A deliberate demo post for this blog, showing the different content blocks, media, and formatting patterns the system supports today.
+description: A reference article for testing blog capabilities including images, callouts, code, Mermaid, embeds, captions, and richer layout blocks.
 date: 2026-04-09
 updatedDate: 2026-04-09
 categories:
@@ -21,23 +21,51 @@ mermaid: true
 comments: false
 ---
 
-Writing after the kids are asleep is a very different kind of work from the kind I used to imagine when I thought about productivity. The useful unit is no longer a perfect afternoon. It is one quiet hour with a clear edge, low friction, and zero drama about what did not fit.
+This post exists mostly as a working reference for the blog itself.
 
-That constraint can make work feel smaller, but it can also make it cleaner. You stop pretending that every session is going to change your life and start building systems that survive interruption.
+Instead of pretending to be a normal article, it is meant to show what the current setup can handle cleanly: text, images, captions, callouts, code, Mermaid diagrams, embeds, galleries, links, and a few richer content patterns that should still feel readable.
+
+If I need to remember later what the system supports, this is the post I can come back to.
+
+## What this article is for
+
+It is useful to have one post that is obviously a demo.
+
+That means I can test:
+
+- long-form paragraphs
+- standard images
+- figure captions
+- info, warning, and tip callouts
+- code blocks
+- Mermaid diagrams
+- YouTube embeds
+- galleries
+- link styling
+
+The point is not to make this beautiful literature. The point is to make the blog easier to evolve without guessing.
 
 ![A desk setup that has to support context switching without chaos](workspace.svg)
 _A calm setup matters more when time is fragmented and attention is expensive._
 
-## The rhythm is different now
+## Paragraphs and normal reading flow
 
-Before kids, it was easier to brute-force progress with time. After kids, progress depends more on recovery speed. If I only have forty-five minutes, I cannot spend fifteen of them remembering what I meant three days ago.
+This is a normal paragraph block. It should read comfortably, wrap well, and keep a calm rhythm on both desktop and mobile.
+
+This is also where links should feel natural, like [opening the archive](/blog/archive), [going back to the blog index](/blog), or linking to an external reference such as [YouTube](https://www.youtube.com/watch?v=W9JU3vUeE1c) without visually breaking the page.
+
+## Callouts and prompts
 
 > [!INFO]
-> The problem is not just less time. The bigger problem is higher restart cost.
+> Use `INFO` when something is clarifying and should stand out without sounding alarming.
 
-That changes the ideal shape of side projects, writing, and even learning. Smaller loops win more often than larger ambitions.
+> [!WARNING]
+> Use `WARNING` when something is easy to misuse or likely to create confusion.
 
-## A useful default
+> [!TIP]
+> Use `TIP` when there is a practical shortcut, better workflow, or small recommendation worth calling out.
+
+## Lists and simple structure
 
 I try to keep three things true:
 
@@ -45,12 +73,11 @@ I try to keep three things true:
 - the project state is obvious when I reopen it
 - the notes explain what I should do next, not what I already know
 
-> [!WARNING]
-> If the next step requires “getting back into the whole system first,” it is probably too large for the life you actually have.
+That is enough for most posts. The useful test is whether the article still feels clear when it mixes prose and structure.
 
-## The tiny system that helps
+## Code blocks
 
-The best version of a system is boring. It should reduce decision cost, not create a second hobby around managing your workflow.
+Code should stay readable and visually distinct without becoming the loudest thing on the page.
 
 ```ts
 type EveningSession = {
@@ -65,52 +92,56 @@ export function pickTask(session: EveningSession) {
 }
 ```
 
-That snippet is simple on purpose. A usable routine usually looks less clever than the thing it protects.
+Inline code should also stay calm, like `n / s`, `mediaSubpath`, or `draft: true`.
 
-## Where the friction actually is
+## Mermaid diagrams
 
-The hard part is usually not writing code. It is switching context while still carrying the emotional residue of the day.
-
-> [!TIP]
-> If you want more consistent evenings, reduce transition friction before you optimize output.
-
-For me, that means opening the same windows, the same notes, and the same local preview path every time. Familiarity is a performance feature.
-
-## A quick visual model
+Mermaid is useful when a small diagram explains the structure faster than a paragraph.
 
 ```mermaid
 flowchart LR
-  A[Workday ends] --> B[Family time]
-  B --> C[Small reset]
-  C --> D[Focused coding block]
-  D --> E[One clear note for tomorrow]
+  A[Draft idea] --> B[Write]
+  B --> C[Add media]
+  C --> D[Preview]
+  D --> E[Ship post]
 ```
 
-The point is not to preserve long uninterrupted flow. The point is to preserve re-entry.
+## Embedded YouTube
 
-## Expectations need simple math too
+The editor preview should handle rich embeds more gracefully, especially when the content is already pasted in.
 
-Sometimes the best estimate is not emotional at all. If a project needs `n` focused sessions and the average week only gives you `s`, then the real timeline is closer to `weeks = n / s`.
+Here is a direct embed block:
 
-That is obvious on paper, but surprisingly easy to ignore in real life.
-
-## Media and embeds still matter
-
-The blog can also handle richer media when it helps the post instead of decorating it.
-
-<div class="embed-card">
+<figure class="embed-card">
   <div class="embed-frame">
     <iframe
       src="https://www.youtube.com/embed/H-B46URT4mg"
-      title="YouTube embed example"
+      title="YouTube embed demo"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
     ></iframe>
   </div>
-</div>
+  <figcaption>Embedded YouTube should look intentional, not bolted on.</figcaption>
+</figure>
 
-The useful rule is simple: add media only when it compresses explanation.
+And here is the plain link version the editor should also recognize better in preview:
+
+https://www.youtube.com/watch?v=W9JU3vUeE1c
+
+## Galleries and grouped visuals
+
+Sometimes one image is enough. Sometimes a grouped layout reads better.
+
+<figure class="blog-gallery">
+  <div class="blog-gallery__grid">
+    <img src="/blog-assets/life-with-kids-and-coding/cover.svg" alt="Demo cover art" />
+    <img src="/blog-assets/life-with-kids-and-coding/workspace.svg" alt="Demo workspace art" />
+  </div>
+  <figcaption>Two visuals side by side, using the same article assets folder.</figcaption>
+</figure>
 
 ## Closing note
 
-Life with kids does not make thoughtful work impossible. It just punishes vagueness faster. If the system is calm, the scope is honest, and the re-entry cost is low, even a short block of time can still produce something real.
+This is not meant to be the deepest post on the site. It is the capabilities article.
+
+If I need to test formatting, spacing, media, or preview behavior later, this should be the first place to look.

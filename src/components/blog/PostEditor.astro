@@ -284,6 +284,23 @@ Wrap up with the next step or a practical conclusion.
       gfm: true,
     });
 
+    const youtubeEmbed = (id) =>
+      `<figure class="embed-card">
+<div class="embed-frame">
+<iframe
+src="https://www.youtube.com/embed/${id}"
+title="YouTube embed preview"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen
+></iframe>
+</div>
+</figure>`;
+
+    const transformPreviewMarkdown = (markdown) => markdown.replace(
+      /(^|\n)(https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{6,}))(?:\n|$)/g,
+      (_match, before, _url, id) => `${before}\n${youtubeEmbed(id)}\n`,
+    );
+
     const slugify = (value) =>
       value
         .toLowerCase()
@@ -666,6 +683,8 @@ Wrap up with the next step or a practical conclusion.
       },
     });
 
+    window.__alexBlogEditor = editor;
+
     const refresh = () => {
       if (!slugManuallyEdited) {
         const generatedSlug = titleBasedSlug();
@@ -690,7 +709,7 @@ Wrap up with the next step or a practical conclusion.
       output.value = `${buildFrontmatter()}\n\n${processedMarkdown}\n`;
       filename.textContent = `${slug}.md`;
       folder.textContent = `public/blog-assets/${slug}/`;
-      renderedPreview.innerHTML = marked.parse(rawMarkdown);
+      renderedPreview.innerHTML = marked.parse(transformPreviewMarkdown(rawMarkdown));
       renderOutline(rawMarkdown);
       renderImages();
       saveDraft();

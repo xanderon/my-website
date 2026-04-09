@@ -10,7 +10,7 @@ const { post } = Astro.props;
 ---
 
 <article class="post-card">
-  <a class="post-card__link" href={post.permalink} aria-label={`Read ${post.data.title}`}>
+  <a class:list={["post-card__link", { "post-card__link--text": !post.cover.path }]} href={post.permalink} aria-label={`Read ${post.data.title}`}>
     {post.cover.path ? (
       <img
         class="post-card__image"
@@ -18,11 +18,7 @@ const { post } = Astro.props;
         alt={post.cover.alt ?? post.data.title}
         loading="lazy"
       />
-    ) : (
-      <div class="post-card__image post-card__image--placeholder">
-        <span>Notes / builds / experiments</span>
-      </div>
-    )}
+    ) : null}
     <div class="post-card__content">
       <div class="post-card__meta">
         <span>{formatDate(post.data.date)}</span>
@@ -31,13 +27,15 @@ const { post } = Astro.props;
       </div>
       <h2>{post.data.title}</h2>
       <p>{post.description}</p>
-      <div class="post-card__tags">
-        {post.data.tags.map((tag) => (
-          <a href={`/blog/tag/${slugifyTag(tag)}`} class="tag-pill tag-pill--interactive">
-            {tag}
-          </a>
-        ))}
-      </div>
+      {post.data.tags.length > 0 && (
+        <div class="post-card__tags">
+          {post.data.tags.slice(0, 3).map((tag) => (
+            <a href={`/blog/tag/${slugifyTag(tag)}`} class="tag-pill tag-pill--interactive">
+              {tag}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   </a>
 </article>
