@@ -25,8 +25,8 @@ I already had a metal rod that my dad gave me. Measured it, around 6 mm diameter
 
 I opened Tinkercad and started working on the holders. Went through a few versions, printed a couple of prototypes just to get the fit right.
 
-![Small preview of the curtain rod holder design in Tinkercad](tinkercad-holder-design.svg)
-_Placeholder: small preview of the holder design in Tinkercad._
+![Small preview of the curtain rod holder design in Tinkercad](tinkercad-holder-design.jpeg)
+_Small preview of the holder design in Tinkercad._
 
 In the end I kept it simple. Two pieces.
 
@@ -34,15 +34,15 @@ Left side closed, acts like a stopper. Right side open, so I can slide the rod i
 
 Printed them in white PETG from Sunlu. After printing there was some stringing, so I just took a small blowtorch and passed over them quickly. Gone.
 
-![Printed white PETG holders with slight stringing](printed-holders-stringing.svg)
-_Placeholder: printed holders with slight stringing._
+![Printed white PETG holders with slight stringing](printed-holders-stringing.jpeg)
+_Printed holders with slight stringing._
 
 For mounting, I didn't want to drill anything. I usually try to avoid that if I can. So I went with a strong double-sided tape, rated somewhere around 12 kg.
 
 It's probably overkill, but I'd rather have it solid. If someone pulls on the cloth at some point, I don't want surprises.
 
-![Close-up of strong double-sided mounting tape](double-sided-tape.svg)
-_Placeholder: close-up of the strong double-sided mounting tape._
+![Close-up of strong double-sided mounting tape](double-sided-tape.jpeg)
+_Close-up of the strong double-sided mounting tape._
 
 Cleaned the surface, degreased it, aligned everything with a small level, marked the position lightly... all good.
 
@@ -56,18 +56,18 @@ I marked the middle, went outside, apartment life, used the workbench for the fi
 
 Not a big difference, but enough to notice. So I just adjusted them and made them equal. Good enough.
 
-![Cutting the metal rod on the workbench](cutting-metal-rod.svg)
-_Placeholder: cutting the metal rod on the workbench._
+![Cutting the metal rod on the workbench](cutting-metal-rod.jpeg)
+_Cutting the metal rod on the workbench._
 
 Back inside, stuck the holders in place, pressed them well and left them there for a bit.
 
-![3D printed holders mounted on the PVC window frame](mounted-holders-pvc.svg)
-_Placeholder: holders mounted on the PVC window frame._
+![3D printed holders mounted on the PVC window frame](mounted-holders-pvc.jpeg)
+_Holders mounted on the PVC window frame._
 
 The rod fits nicely, everything feels solid. I put the cloth on it just to see how it looks and it's already much better.
 
-![Final setup with rod mounted and cloth hanging](final-curtain-rod-cloth.svg)
-_Placeholder: final setup with rod mounted and cloth hanging._
+![Final setup with rod mounted and cloth hanging](final-curtain-rod-cloth.jpeg)
+_Final setup with rod mounted and cloth hanging._
 
 I'll also put the model on MakerWorld, so if anyone needs something similar, it's there.
 
