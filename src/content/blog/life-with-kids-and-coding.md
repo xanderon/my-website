@@ -13,7 +13,6 @@ tags:
   - Workflow
   - Notes
 author: alex
-mediaSubpath: /blog-assets/life-with-kids-and-coding
 mermaid: true
 comments: false
 ---
@@ -31,7 +30,8 @@ It is useful to have one post that is obviously a demo.
 That means I can test:
 
 - long-form paragraphs
-- standard images
+- static images
+- animated GIFs
 - figure captions
 - info, warning, and tip callouts
 - code blocks
@@ -42,9 +42,6 @@ That means I can test:
 
 The point is not to make this beautiful literature. The point is to make the blog easier to evolve without guessing.
 
-![A desk setup that has to support context switching without chaos](workspace.svg)
-_A calm setup matters more when time is fragmented and attention is expensive._
-
 ## Paragraphs and normal reading flow
 
 This is a normal paragraph block. It should read comfortably, wrap well, and keep a calm rhythm on both desktop and mobile.
@@ -53,6 +50,9 @@ This is also where links should feel natural, like [opening the archive](/blog/a
 
 ![Retro gradient test image](/static/retro-1986-gradient-colors.png)
 _This uses a shared image from `/public/static`, useful when an asset is not specific to one post folder._
+
+![Animated ghost GIF](/static/gif-ghost.gif)
+_Animated GIFs work like normal Markdown images. Keep them reasonably small so the post stays fast._
 
 ## Callouts and prompts
 
@@ -128,16 +128,16 @@ And here is the plain link version the editor should also recognize better in pr
 
 https://www.youtube.com/watch?v=6GSqfURNOa4
 
-## Galleries and grouped visuals
+## Grouped visuals
 
 Sometimes one image is enough. Sometimes a grouped layout reads better.
 
 <figure class="blog-gallery">
   <div class="blog-gallery__grid">
-    <img src="/blog-assets/life-with-kids-and-coding/cover.svg" alt="Demo cover art" />
-    <img src="/blog-assets/life-with-kids-and-coding/workspace.svg" alt="Demo workspace art" />
+    <img src="/static/retro-1986-gradient-colors.png" alt="Retro gradient color test" />
+    <img src="/static/gif-ghost.gif" alt="Animated ghost GIF" />
   </div>
-  <figcaption>Two visuals side by side, using the same article assets folder.</figcaption>
+  <figcaption>A static image and an animated GIF grouped together.</figcaption>
 </figure>
 
 ## Closing note
