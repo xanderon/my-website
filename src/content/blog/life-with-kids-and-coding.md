@@ -13,9 +13,6 @@ tags:
   - Workflow
   - Notes
 author: alex
-image:
-  path: cover.svg
-  alt: Abstract cover showing a desk, notes, and a calmer evening workflow
 mediaSubpath: /blog-assets/life-with-kids-and-coding
 mermaid: true
 comments: false

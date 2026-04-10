@@ -1,6 +1,6 @@
 ---
 import type { BlogPost } from "../../lib/blog";
-import { formatDate, slugifyTag } from "../../lib/blog";
+import { formatDate } from "../../lib/blog";
 
 interface Props {
   post: BlogPost;
@@ -27,15 +27,6 @@ const { post } = Astro.props;
       </div>
       <h2>{post.data.title}</h2>
       <p>{post.description}</p>
-      {post.data.tags.length > 0 && (
-        <div class="post-card__tags">
-          {post.data.tags.slice(0, 3).map((tag) => (
-            <a href={`/blog/tag/${slugifyTag(tag)}`} class="tag-pill tag-pill--interactive">
-              {tag}
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   </a>
 </article>

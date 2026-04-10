@@ -1,11 +1,9 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import PostCard from "../../components/blog/PostCard.astro";
-import { getAllCategories, getAllPosts, getAllTags, getPinnedPosts } from "../../lib/blog";
+import { getAllPosts, getPinnedPosts } from "../../lib/blog";
 
 const posts = await getAllPosts();
-const tags = await getAllTags();
-const categories = getAllCategories(posts);
 const pinnedPosts = getPinnedPosts(posts);
 const featuredPost = pinnedPosts[0] ?? posts[0];
 const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
@@ -25,23 +23,11 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
         <p>
           Short essays, practical notes, and one demo article that shows the richer formatting the blog supports.
         </p>
-      </div>
-      <div class="blog-landing__summary">
-        <div class="blog-landing__stat">
-          <strong>{posts.length}</strong>
-          <span>Published</span>
-        </div>
-        <div class="blog-landing__stat">
-          <strong>{categories.length}</strong>
-          <span>Categories</span>
-        </div>
-        <div class="blog-landing__stat">
-          <strong>{tags.length}</strong>
-          <span>Topics</span>
-        </div>
         <div class="blog-landing__actions">
           <a href="/blog/search">Search</a>
+          <span>·</span>
           <a href="/blog/archive">Archive</a>
+          <span>·</span>
           <a href="/blog/new">New post</a>
         </div>
       </div>
@@ -76,37 +62,5 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
         </div>
       </section>
     )}
-
-    <section class="content-section blog-landing__footer">
-      <div class="section-head">
-        <div>
-          <span class="section-eyebrow">Browse</span>
-          <h2 class="section-title">By category or topic</h2>
-        </div>
-        <p>Enough structure to navigate, not enough to get in the way.</p>
-      </div>
-      <div class="blog-landing__browse">
-        <div>
-          <h3>Categories</h3>
-          <div class="tag-list">
-            {categories.map((category) => (
-              <a class="tag-pill tag-pill--interactive" href={`/blog/category/${category.slug}`}>
-                {category.label} · {category.count}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div>
-          <h3>Topics</h3>
-          <div class="tag-list">
-            {tags.map((tag) => (
-              <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.slug}`}>
-                {tag.label} · {tag.count}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
   </section>
 </BlogLayout>
