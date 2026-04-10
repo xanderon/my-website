@@ -1144,6 +1144,16 @@ img {
   margin: 2rem 0;
 }
 
+.blog-figure.is-narrow {
+  max-width: min(100%, 42rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-figure.is-wide {
+  max-width: min(100%, 64rem);
+}
+
 .blog-figure.is-left,
 .blog-figure.is-right {
   max-width: 22rem;
@@ -2148,7 +2158,9 @@ html[data-theme-mode="dark"] .theme-light-only {
   }
 
   .blog-figure.is-left,
-  .blog-figure.is-right {
+  .blog-figure.is-right,
+  .blog-figure.is-narrow,
+  .blog-figure.is-wide {
     float: none;
     max-width: none;
     margin: 2rem 0;

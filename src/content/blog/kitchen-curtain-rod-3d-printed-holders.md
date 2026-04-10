@@ -34,15 +34,19 @@ Left side closed, acts like a stopper. Right side open, so I can slide the rod i
 
 Printed them in white PETG from Sunlu. After printing there was some stringing, so I just took a small blowtorch and passed over them quickly. Gone.
 
-![Printed white PETG holders with slight stringing](printed-holders-stringing.jpeg)
-_Printed holders with slight stringing._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/printed-holders-stringing.jpeg" alt="Printed white PETG holders with slight stringing" />
+  <figcaption>Printed holders with slight stringing.</figcaption>
+</figure>
 
 For mounting, I didn't want to drill anything. I usually try to avoid that if I can. So I went with a strong double-sided tape, rated somewhere around 12 kg.
 
 It's probably overkill, but I'd rather have it solid. If someone pulls on the cloth at some point, I don't want surprises.
 
-![Close-up of strong double-sided mounting tape](double-sided-tape.jpeg)
-_Close-up of the strong double-sided mounting tape._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/double-sided-tape.jpeg" alt="Close-up of strong double-sided mounting tape" />
+  <figcaption>Close-up of the strong double-sided mounting tape.</figcaption>
+</figure>
 
 Cleaned the surface, degreased it, aligned everything with a small level, marked the position lightly... all good.
 
@@ -56,8 +60,10 @@ I marked the middle, went outside, apartment life, used the workbench for the fi
 
 Not a big difference, but enough to notice. So I just adjusted them and made them equal. Good enough.
 
-![Cutting the metal rod on the workbench](cutting-metal-rod.jpeg)
-_Cutting the metal rod on the workbench._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/cutting-metal-rod.jpeg" alt="Cutting the metal rod on the workbench" />
+  <figcaption>Cutting the metal rod on the workbench.</figcaption>
+</figure>
 
 Back inside, stuck the holders in place, pressed them well and left them there for a bit.
 

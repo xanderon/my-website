@@ -115,6 +115,8 @@ function remarkBlog() {
         if (image.title?.match(/\bleft\b/i)) classNames.push("is-left");
         if (image.title?.match(/\bright\b/i)) classNames.push("is-right");
         if (image.title?.match(/\bnormal\b/i)) classNames.push("is-normal");
+        if (image.title?.match(/\bnarrow\b/i)) classNames.push("is-narrow");
+        if (image.title?.match(/\bwide\b/i)) classNames.push("is-wide");
         if (image.title?.match(/\bdark\b/i)) classNames.push("theme-dark-only");
         if (image.title?.match(/\blight\b/i)) classNames.push("theme-light-only");
 
