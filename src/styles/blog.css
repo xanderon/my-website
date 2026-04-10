@@ -293,7 +293,6 @@ img {
 
 .blog-sidebar__theme .theme-switcher {
   width: 100%;
-  justify-content: space-between;
 }
 
 .blog-sidebar__socials a {
@@ -400,8 +399,7 @@ img {
   justify-content: flex-end;
 }
 
-.blog-nav a,
-.theme-switcher {
+.blog-nav a {
   border-radius: 999px;
   border: 1px solid transparent;
   padding: 0.72rem 1rem;
@@ -414,36 +412,59 @@ img {
 }
 
 .theme-switcher {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding-right: 0.72rem;
-  border-color: var(--blog-border);
-  background: var(--blog-subtle);
+  justify-content: space-between;
+  gap: 0.8rem;
+  color: var(--blog-text-soft);
+  font: inherit;
+  cursor: default;
 }
 
-.theme-switcher__icon {
-  display: inline-flex;
+.theme-switcher__copy {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
 }
 
 .theme-switcher__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.theme-switcher__hint {
+  color: var(--blog-heading);
+  font-size: 0.9rem;
+}
+
+.theme-switcher__control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 7.8rem;
+  border-bottom: 1px solid var(--blog-subtle-border);
+  transition: border-color 160ms ease, color 160ms ease;
 }
 
 .theme-switcher__select {
   appearance: none;
+  width: 100%;
   border: 0;
   background: transparent;
   color: var(--blog-heading);
   font: inherit;
+  font-size: 0.9rem;
   cursor: pointer;
   outline: none;
-  padding-right: 0.5rem;
+  padding: 0.3rem 1.2rem 0.3rem 0;
+}
+
+.theme-switcher__chevron {
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+  color: var(--blog-text-soft);
 }
 
 .theme-switcher__select option {
@@ -451,9 +472,13 @@ img {
   color: var(--blog-text);
 }
 
+.theme-switcher:hover .theme-switcher__control,
+.theme-switcher:focus-within .theme-switcher__control {
+  border-color: var(--blog-accent);
+}
+
 .blog-nav a:hover,
-.blog-nav a.active,
-.theme-switcher:hover {
+.blog-nav a.active {
   color: var(--blog-heading);
   background: var(--blog-accent-soft);
   border-color: var(--blog-border);

@@ -10,15 +10,18 @@ const themes = [
 ];
 ---
 
-<div class="theme-switcher" data-theme-switcher>
-  <span class="theme-switcher__icon" aria-hidden="true">
-    <Icon name="sun" />
+<label class="theme-switcher" data-theme-switcher>
+  <span class="theme-switcher__copy">
+    <span class="theme-switcher__label">Theme</span>
+    <span class="theme-switcher__hint" data-theme-hint>System default</span>
   </span>
-  <span class="theme-switcher__label">Theme</span>
-  <select class="theme-switcher__select" data-theme-select aria-label="Choose blog theme">
-    {themes.map((theme) => <option value={theme.value}>{theme.label}</option>)}
-  </select>
-</div>
+  <span class="theme-switcher__control">
+    <select class="theme-switcher__select" data-theme-select aria-label="Choose blog theme">
+      {themes.map((theme) => <option value={theme.value}>{theme.label}</option>)}
+    </select>
+    <span class="theme-switcher__chevron" aria-hidden="true">⌄</span>
+  </span>
+</label>
 
 <script is:inline>
   (() => {
@@ -30,7 +33,16 @@ const themes = [
     const validChoices = new Set(["system", "dark", "light", "sepia", "moss"]);
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
+    const labels = {
+      system: "System default",
+      dark: "Manual dark",
+      light: "Manual light",
+      sepia: "Manual sepia",
+      moss: "Manual moss",
+    };
+
     const getSelects = () => Array.from(document.querySelectorAll("[data-theme-select]"));
+    const getHints = () => Array.from(document.querySelectorAll("[data-theme-hint]"));
 
     const resolveTheme = (choice) => {
       if (choice === "system") return darkQuery.matches ? "dark" : "light";
@@ -51,6 +63,10 @@ const themes = [
 
       for (const select of getSelects()) {
         select.value = safeChoice;
+      }
+
+      for (const hint of getHints()) {
+        hint.textContent = labels[safeChoice];
       }
     };
 
