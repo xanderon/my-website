@@ -449,10 +449,12 @@ img {
 }
 
 .theme-menu__current {
-  color: var(--blog-heading);
+  color: var(--blog-text-soft);
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
+  font-weight: 400;
+  opacity: 0.86;
 }
 
 .theme-menu__current::before {
@@ -463,6 +465,13 @@ img {
 
 .theme-menu__chevron {
   transform: translateY(-0.08rem);
+}
+
+.theme-menu__button:hover .theme-menu__current,
+.theme-menu__button:focus-visible .theme-menu__current,
+.theme-menu.is-open .theme-menu__current {
+  color: var(--blog-heading);
+  opacity: 1;
 }
 
 .theme-menu__panel {
