@@ -6,7 +6,6 @@ Current placeholder filenames:
 
 - `tinkercad-holder-design.svg`
 - `printed-holders-stringing.svg`
-- `blowtorch-cleanup.svg`
 - `double-sided-tape.svg`
 - `cutting-metal-rod.svg`
 - `mounted-holders-pvc.svg`
