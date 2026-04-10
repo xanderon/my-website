@@ -70,7 +70,6 @@ image:
 mediaSubpath: /blog-assets/your-slug # optional but recommended
 pin: false # optional
 toc: true # optional
-comments: true # optional
 math: false # optional
 mermaid: false # optional
 draft: false # optional
@@ -211,14 +210,6 @@ npm run dev
 ```
 
 Then open `http://localhost:4321/blog`.
-
-## Comments
-
-Comments are wired for optional Giscus support. Configure them in:
-
-- `src/data/blog-config.ts`
-
-If `comments: false` is set in frontmatter, the comments block is hidden for that post.
 
 ## Post template
 

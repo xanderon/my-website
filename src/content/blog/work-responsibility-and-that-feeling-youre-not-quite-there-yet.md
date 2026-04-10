@@ -13,7 +13,6 @@ tags:
   - Responsibility
 author: alex
 toc: true
-comments: true
 ---
 
 ## Being "good enough" but not convinced

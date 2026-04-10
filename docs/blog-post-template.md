@@ -16,7 +16,6 @@ image:
 mediaSubpath: /blog-assets/your-slug
 pin: false
 toc: true
-comments: true
 math: false
 mermaid: false
 draft: true

@@ -14,7 +14,6 @@ tags:
   - Notes
 author: alex
 mermaid: true
-comments: false
 ---
 
 This post exists mostly as a working reference for the blog itself.

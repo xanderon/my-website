@@ -1225,21 +1225,15 @@ html[data-theme-mode="dark"] .theme-light-only {
   gap: 1.1rem;
 }
 
-.comments-card,
 .search-result,
 .archive-group {
   border-top: 1px solid var(--blog-border);
   padding-top: 1.25rem;
 }
 
-.comments-card h3,
 .archive-group h2 {
   margin: 0 0 0.85rem;
   color: var(--blog-heading);
-}
-
-.giscus-thread {
-  margin-top: 1rem;
 }
 
 .embed-card {

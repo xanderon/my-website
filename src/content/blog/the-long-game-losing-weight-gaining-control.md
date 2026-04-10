@@ -13,7 +13,6 @@ tags:
   - Notes
 author: alex
 toc: true
-comments: true
 ---
 
 ## It didn't start with discipline

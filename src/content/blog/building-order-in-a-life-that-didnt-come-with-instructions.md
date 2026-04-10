@@ -14,7 +14,6 @@ tags:
 author: alex
 pin: true
 toc: true
-comments: true
 ---
 
 ## The quiet realization

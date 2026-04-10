@@ -26,7 +26,6 @@ const blog = defineCollection({
     author: z.string().optional(),
     authors: z.array(z.string()).optional(),
     toc: z.boolean().optional(),
-    comments: z.boolean().optional(),
     math: z.boolean().optional(),
     mermaid: z.boolean().optional(),
     pin: z.boolean().optional(),

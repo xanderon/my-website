@@ -1,7 +1,6 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import ArticleRightRail from "../../components/blog/ArticleRightRail.astro";
-import GiscusComments from "../../components/blog/GiscusComments.astro";
 import Icon from "../../components/blog/Icon.astro";
 import {
   formatDate,
@@ -189,7 +188,6 @@ const shareLinks = {
           </section>
         )}
 
-        {post.data.comments !== false && <GiscusComments title={post.data.title} />}
       </footer>
     </article>
 

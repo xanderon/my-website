@@ -81,10 +81,6 @@ import Icon from "./Icon.astro";
             <span>Show table of contents</span>
           </label>
           <label class="editor-checkbox">
-            <input type="checkbox" name="comments" checked />
-            <span>Enable comments placeholder</span>
-          </label>
-          <label class="editor-checkbox">
             <input type="checkbox" name="math" />
             <span>Enable math rendering</span>
           </label>
@@ -196,7 +192,7 @@ import Icon from "./Icon.astro";
             Chromium browsers can save directly into `src/content/blog/` and `public/blog-assets/&lt;slug&gt;/`.
           </p>
           <p class="editor-note">
-            Supports categories, authors, `mediaSubpath`, `pin`, `toc`, `comments`, `math`, and `mermaid` in the
+            Supports authors, `mediaSubpath`, `pin`, `toc`, `math`, and `mermaid` in the
             generated frontmatter.
           </p>
         </div>
@@ -248,7 +244,6 @@ Wrap up with the next step or a practical conclusion.
       draft: root.querySelector('input[name="draft"]'),
       pin: root.querySelector('input[name="pin"]'),
       toc: root.querySelector('input[name="toc"]'),
-      comments: root.querySelector('input[name="comments"]'),
       math: root.querySelector('input[name="math"]'),
       mermaid: root.querySelector('input[name="mermaid"]'),
     };
@@ -355,7 +350,6 @@ allowfullscreen
       if (fields.pin.checked) lines.push("pin: true");
       if (fields.draft.checked) lines.push("draft: true");
       if (!fields.toc.checked) lines.push("toc: false");
-      if (!fields.comments.checked) lines.push("comments: false");
       if (fields.math.checked) lines.push("math: true");
       if (fields.mermaid.checked) lines.push("mermaid: true");
       lines.push("---");
@@ -483,7 +477,6 @@ allowfullscreen
         draft: fields.draft.checked,
         pin: fields.pin.checked,
         toc: fields.toc.checked,
-        comments: fields.comments.checked,
         math: fields.math.checked,
         mermaid: fields.mermaid.checked,
         body: getRawMarkdown(),
@@ -725,7 +718,6 @@ allowfullscreen
       fields.draft.checked = savedDraft.draft ?? fields.draft.checked;
       fields.pin.checked = savedDraft.pin ?? fields.pin.checked;
       fields.toc.checked = savedDraft.toc ?? fields.toc.checked;
-      fields.comments.checked = savedDraft.comments ?? fields.comments.checked;
       fields.math.checked = savedDraft.math ?? fields.math.checked;
       fields.mermaid.checked = savedDraft.mermaid ?? fields.mermaid.checked;
       slugManuallyEdited = fields.slug.value !== titleBasedSlug();
