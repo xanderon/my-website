@@ -5,7 +5,6 @@ import BackToTopButton from "../components/blog/BackToTopButton.astro";
 import BlogSidebar from "../components/blog/BlogSidebar.astro";
 import Icon from "../components/blog/Icon.astro";
 import MobileBlogBar from "../components/blog/MobileBlogBar.astro";
-import ThemeToggle from "../components/blog/ThemeToggle.astro";
 
 interface Props {
   title: string;
@@ -51,10 +50,16 @@ const currentYear = new Date().getFullYear();
     <meta name="twitter:image" content={ogImage.href} />
     <script is:inline>
       (() => {
+        const validChoices = new Set(["system", "dark", "light", "sepia", "moss"]);
+        const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
         const storedTheme = localStorage.getItem("alex-blog-theme");
-        const resolvedTheme = storedTheme || "dark";
+        const choice = validChoices.has(storedTheme) ? storedTheme : "system";
+        const resolvedTheme = choice === "system" ? (darkQuery.matches ? "dark" : "light") : choice;
+        const mode = resolvedTheme === "dark" || resolvedTheme === "moss" ? "dark" : "light";
+        document.documentElement.dataset.themeChoice = choice;
         document.documentElement.dataset.theme = resolvedTheme;
-        document.documentElement.style.colorScheme = resolvedTheme;
+        document.documentElement.dataset.themeMode = mode;
+        document.documentElement.style.colorScheme = mode;
       })();
     </script>
   </head>
@@ -82,7 +87,6 @@ const currentYear = new Date().getFullYear();
           <nav class="blog-nav" aria-label="Primary">
             <a href="/" class:list={{ active: currentPath === "/" }}>Home</a>
             <a href="/blog" class:list={{ active: currentPath.startsWith("/blog") }}>Blog</a>
-            <ThemeToggle />
           </nav>
         </div>
       </header>

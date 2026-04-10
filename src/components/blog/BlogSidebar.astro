@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 interface Props {
   currentPath: string;
@@ -48,6 +49,10 @@ const socialItems = [
       </a>
     ))}
   </nav>
+
+  <div class="blog-sidebar__theme">
+    <ThemeToggle />
+  </div>
 
   <div class="blog-sidebar__socials" aria-label="Social links">
     {socialItems.map((item) => (
