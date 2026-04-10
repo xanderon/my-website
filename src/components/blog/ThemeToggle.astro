@@ -2,23 +2,29 @@
 import Icon from "./Icon.astro";
 
 const themes = [
-  { value: "system", label: "System" },
-  { value: "dark", label: "Dark" },
-  { value: "light", label: "Light" },
-  { value: "sepia", label: "Sepia" },
-  { value: "moss", label: "Moss" },
+  { value: "system", label: "System", note: "Uses device" },
+  { value: "dark", label: "Dark", note: "Low light" },
+  { value: "light", label: "Light", note: "Clean" },
+  { value: "sepia", label: "Sepia", note: "Warm read" },
+  { value: "moss", label: "Moss", note: "Soft dark" },
 ];
 ---
 
-<label class="theme-switcher" data-theme-switcher>
-  <span class="theme-switcher__label">Theme</span>
-  <span class="theme-switcher__control">
-    <select class="theme-switcher__select" data-theme-select aria-label="Choose blog theme">
-      {themes.map((theme) => <option value={theme.value}>{theme.label}</option>)}
-    </select>
-    <span class="theme-switcher__chevron" aria-hidden="true">⌄</span>
-  </span>
-</label>
+<div class="theme-menu" data-theme-menu>
+  <button class="theme-menu__button" type="button" data-theme-menu-trigger aria-haspopup="menu" aria-expanded="false">
+    <Icon name="palette" />
+    <span class="theme-menu__current" data-theme-current>System</span>
+    <span class="theme-menu__chevron" aria-hidden="true">⌄</span>
+  </button>
+  <div class="theme-menu__panel" role="menu" data-theme-menu-panel>
+    {themes.map((theme) => (
+      <button class="theme-menu__option" type="button" role="menuitemradio" data-theme-option={theme.value} aria-checked="false">
+        <span>{theme.label}</span>
+        <small>{theme.note}</small>
+      </button>
+    ))}
+  </div>
+</div>
 
 <script is:inline>
   (() => {
@@ -30,7 +36,24 @@ const themes = [
     const validChoices = new Set(["system", "dark", "light", "sepia", "moss"]);
     const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const getSelects = () => Array.from(document.querySelectorAll("[data-theme-select]"));
+    const labels = {
+      system: "System",
+      dark: "Dark",
+      light: "Light",
+      sepia: "Sepia",
+      moss: "Moss",
+    };
+
+    const getMenus = () => Array.from(document.querySelectorAll("[data-theme-menu]"));
+    const getOptions = () => Array.from(document.querySelectorAll("[data-theme-option]"));
+
+    const closeMenus = (except = null) => {
+      for (const menu of getMenus()) {
+        if (menu === except) continue;
+        menu.classList.remove("is-open");
+        menu.querySelector("[data-theme-menu-trigger]")?.setAttribute("aria-expanded", "false");
+      }
+    };
 
     const resolveTheme = (choice) => {
       if (choice === "system") return darkQuery.matches ? "dark" : "light";
@@ -49,8 +72,15 @@ const themes = [
       root.dataset.themeMode = mode;
       root.style.colorScheme = mode;
 
-      for (const select of getSelects()) {
-        select.value = safeChoice;
+      for (const menu of getMenus()) {
+        const current = menu.querySelector("[data-theme-current]");
+        if (current) current.textContent = labels[safeChoice];
+      }
+
+      for (const option of getOptions()) {
+        const isSelected = option.dataset.themeOption === safeChoice;
+        option.classList.toggle("is-selected", isSelected);
+        option.setAttribute("aria-checked", String(isSelected));
       }
 
     };
@@ -62,12 +92,33 @@ const themes = [
 
     applyTheme(preferredChoice());
 
-    document.addEventListener("change", (event) => {
-      const select = event.target?.closest?.("[data-theme-select]");
-      if (!select) return;
+    document.addEventListener("click", (event) => {
+      const trigger = event.target?.closest?.("[data-theme-menu-trigger]");
+      if (trigger) {
+        const menu = trigger.closest("[data-theme-menu]");
+        const nextOpen = !menu.classList.contains("is-open");
+        closeMenus(menu);
+        menu.classList.toggle("is-open", nextOpen);
+        trigger.setAttribute("aria-expanded", String(nextOpen));
+        return;
+      }
 
-      localStorage.setItem(storageKey, select.value);
-      applyTheme(select.value);
+      const option = event.target?.closest?.("[data-theme-option]");
+      if (option) {
+        const nextChoice = option.dataset.themeOption;
+        localStorage.setItem(storageKey, nextChoice);
+        applyTheme(nextChoice);
+        closeMenus();
+        return;
+      }
+
+      if (!event.target?.closest?.("[data-theme-menu]")) {
+        closeMenus();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenus();
     });
 
     darkQuery.addEventListener("change", () => {
