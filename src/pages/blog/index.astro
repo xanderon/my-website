@@ -19,7 +19,7 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
     <header class="blog-landing__hero">
       <div class="blog-landing__intro">
         <span class="blog-hero__eyebrow">Field Notes</span>
-        <h1>Writing about work, life, systems, and useful things worth keeping.</h1>
+        <h1>Notes about work, life, systems, and useful things worth keeping.</h1>
         <p>
           Short essays, practical notes, and one demo article that shows the richer formatting the blog supports.
         </p>
@@ -27,8 +27,6 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
           <a href="/blog/search">Search</a>
           <span>·</span>
           <a href="/blog/archive">Archive</a>
-          <span>·</span>
-          <a href="/blog/new">New post</a>
         </div>
       </div>
     </header>
@@ -40,7 +38,7 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
             <span class="section-eyebrow">Featured</span>
             <h2 class="section-title">Start here</h2>
           </div>
-          <p>{featuredPost.readingTime} · {featuredPost.data.categories.join(" / ")}</p>
+          <p>{featuredPost.readingTime}</p>
         </div>
         <div class="post-grid post-grid--featured">
           <PostCard post={featuredPost} />

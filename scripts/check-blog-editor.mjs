@@ -25,7 +25,6 @@ try {
 
   await titleField.fill("Smoke test post");
   await page.locator('input[name="slug"]').fill("smoke-test-post");
-  await page.locator('input[name="tags"]').fill("Testing, Editor");
   await page.locator(".toastui-editor-toolbar button.bold").click();
   await page.keyboard.type("Bold text");
   await page.keyboard.press("Enter");

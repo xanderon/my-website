@@ -57,4 +57,4 @@ But something does change permanently: you stop drifting. You start steering, ev
 
 And that alone makes a massive difference.
 
-One small related reminder I liked recently: [this short video](https://www.youtube.com/watch?v=W9JU3vUeE1c).
+One small related reminder I liked recently: [this short video](https://www.youtube.com/watch?v=6GSqfURNOa4).

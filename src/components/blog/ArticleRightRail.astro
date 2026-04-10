@@ -16,11 +16,10 @@ interface LinkItem {
 interface Props {
   toc: TocItem[];
   recentPosts: LinkItem[];
-  tags: string[];
   relatedPosts?: LinkItem[];
 }
 
-const { toc, recentPosts, tags, relatedPosts = [] } = Astro.props;
+const { toc, recentPosts, relatedPosts = [] } = Astro.props;
 ---
 
 <div class="article-right-rail__inner">
@@ -33,17 +32,6 @@ const { toc, recentPosts, tags, relatedPosts = [] } = Astro.props;
         <a href={post.href} class="article-right-card__link">
           <strong>{post.title}</strong>
           <span>{post.meta}</span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="article-right-card">
-    <h3>Trending Tags</h3>
-    <div class="tag-list">
-      {tags.map((tag) => (
-        <a class="tag-pill tag-pill--interactive" href={`/blog/tag/${tag.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-          {tag}
         </a>
       ))}
     </div>

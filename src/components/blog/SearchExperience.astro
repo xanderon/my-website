@@ -6,8 +6,6 @@ interface SearchPost {
   href: string;
   date: string;
   readingTime: string;
-  tags: string[];
-  categories: string[];
   body: string;
 }
 
@@ -23,13 +21,13 @@ const { posts, initialQuery = "" } = Astro.props;
   <div class="search-view__hero">
     <span class="section-eyebrow">Search</span>
     <h1>Find notes by topic, title, or phrase.</h1>
-    <p>Search across titles, excerpts, tags, categories, and article text.</p>
+    <p>Search across titles, excerpts, and article text.</p>
   </div>
 
   <div class="search-view__controls">
     <label class="search-view__input">
       <span aria-hidden="true">⌕</span>
-      <input type="search" placeholder="Search posts, tags, categories..." data-search-input value={initialQuery} />
+      <input type="search" placeholder="Search posts..." data-search-input value={initialQuery} />
     </label>
     <p class="search-view__summary" data-search-summary></p>
   </div>
@@ -57,14 +55,10 @@ const { posts, initialQuery = "" } = Astro.props;
 
       const title = post.title.toLowerCase();
       const excerpt = (post.description || post.excerpt || "").toLowerCase();
-      const tags = post.tags.join(" ").toLowerCase();
-      const categories = post.categories.join(" ").toLowerCase();
       const body = post.body.toLowerCase();
 
       if (title.includes(text)) score += 8;
       if (excerpt.includes(text)) score += 5;
-      if (tags.includes(text)) score += 4;
-      if (categories.includes(text)) score += 3;
       if (body.includes(text)) score += 1;
 
       return score;
@@ -109,10 +103,6 @@ const { posts, initialQuery = "" } = Astro.props;
                 </div>
                 <h2>${escapeHtml(post.title)}</h2>
                 <p>${escapeHtml(post.description || post.excerpt)}</p>
-                <div class="tag-list">
-                  ${post.categories.map((category) => `<span class="tag-pill">${escapeHtml(category)}</span>`).join("")}
-                  ${post.tags.map((tag) => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}
-                </div>
               </a>
             </article>
           `,

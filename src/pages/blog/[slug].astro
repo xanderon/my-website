@@ -69,12 +69,8 @@ const shareLinks = {
         <div class="post-header__breadcrumbs">
           <a href="/">Home</a>
           <span>›</span>
-          {post.data.categories[0] && (
-            <>
-              <span>{post.data.categories.join(" / ")}</span>
-              <span>›</span>
-            </>
-          )}
+          <a href="/blog">Blog</a>
+          <span>›</span>
           <span>{post.data.title}</span>
         </div>
         <h1>{post.data.title}</h1>
@@ -202,7 +198,6 @@ const shareLinks = {
         toc={headings}
         recentPosts={recentPosts}
         relatedPosts={relatedRailPosts}
-        tags={["github", "open-source", "lets-talk", "cpp", "conferences", "misc", "ai", "management", "python"]}
       />
     </aside>
   </div>

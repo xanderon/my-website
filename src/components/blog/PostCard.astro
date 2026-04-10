@@ -23,7 +23,6 @@ const { post } = Astro.props;
       <div class="post-card__meta">
         <span>{formatDate(post.data.date)}</span>
         <span>{post.readingTime}</span>
-        {post.data.categories[0] && <span>{post.data.categories.join(" / ")}</span>}
       </div>
       <h2>{post.data.title}</h2>
       <p>{post.description}</p>

@@ -49,7 +49,10 @@ _A calm setup matters more when time is fragmented and attention is expensive._
 
 This is a normal paragraph block. It should read comfortably, wrap well, and keep a calm rhythm on both desktop and mobile.
 
-This is also where links should feel natural, like [opening the archive](/blog/archive), [going back to the blog index](/blog), or linking to an external reference such as [YouTube](https://www.youtube.com/watch?v=W9JU3vUeE1c) without visually breaking the page.
+This is also where links should feel natural, like [opening the archive](/blog/archive), [going back to the blog index](/blog), or linking to an external reference such as [YouTube](https://www.youtube.com/watch?v=6GSqfURNOa4) without visually breaking the page.
+
+![Retro gradient test image](/static/retro-1986-gradient-colors.png)
+_This uses a shared image from `/public/static`, useful when an asset is not specific to one post folder._
 
 ## Callouts and prompts
 
@@ -112,7 +115,7 @@ Here is a direct embed block:
 <figure class="embed-card">
   <div class="embed-frame">
     <iframe
-      src="https://www.youtube.com/embed/H-B46URT4mg"
+      src="https://www.youtube.com/embed/6GSqfURNOa4"
       title="YouTube embed demo"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowfullscreen
@@ -123,7 +126,7 @@ Here is a direct embed block:
 
 And here is the plain link version the editor should also recognize better in preview:
 
-https://www.youtube.com/watch?v=W9JU3vUeE1c
+https://www.youtube.com/watch?v=6GSqfURNOa4
 
 ## Galleries and grouped visuals
 

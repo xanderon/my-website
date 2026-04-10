@@ -12,15 +12,13 @@ const searchPosts = posts.map((post) => ({
   href: post.permalink,
   date: formatDate(post.data.date),
   readingTime: post.readingTime,
-  tags: post.data.tags,
-  categories: post.data.categories ?? [],
   body: post.body,
 }));
 ---
 
 <BlogLayout
   title="Search | Field Notes"
-  description="Search Alex Nutu's blog posts by topic, title, tags, categories, or article text."
+  description="Search Alex Nutu's blog posts by title, summary, or article text."
   currentPath="/blog/search"
   pageLabel="Search"
 >

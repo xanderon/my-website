@@ -23,6 +23,8 @@ import Icon from "./Icon.astro";
         <small>Title, slug, dates, authors, media, publishing toggles</small>
       </summary>
       <div class="editor-card editor-card--panel">
+        <input type="hidden" name="tags" value="" />
+        <input type="hidden" name="categories" value="" />
         <div class="editor-fields editor-fields--meta">
           <label class="editor-field editor-field--span-2">
             <span>Title</span>
@@ -46,14 +48,6 @@ import Icon from "./Icon.astro";
               <input type="text" name="slug" value="your-post-title" />
               <button type="button" data-reset-slug>Use title</button>
             </div>
-          </label>
-          <label class="editor-field">
-            <span>Tags</span>
-            <input type="text" name="tags" value="Notes, Workflow" />
-          </label>
-          <label class="editor-field">
-            <span>Categories</span>
-            <input type="text" name="categories" value="Writing, Tutorial" />
           </label>
           <label class="editor-field">
             <span>Author ID(s)</span>
