@@ -84,13 +84,13 @@ The rods fit nicely, everything feels solid. I put the cloth on both of them and
   <figcaption>Final setup.</figcaption>
 </figure>
 
-I also uploaded the model on [MakerWorld](https://makerworld.com/models/placeholder), even if I know it is a pretty niche use case.
+I also uploaded the model on [MakerWorld](https://makerworld.com/en/models/2646030-kitchen-window-curtain-rod-holder#profileId-2924539), even if I know it is a pretty niche use case.
 
 Of course because I had both rods shorter than I wanted them, the supports are a bit closer than I wanted. It works, but the cloth feels a bit cramped. Again c`est la vie :)
 
 If I find a longer rod at some point, I might redo it and hopefully next time I'll measure twice before cutting.
 
-Later edit: I added simple end caps so the rod does not slide out when we move the cloth around.
+Later update: after using it a bit, I added a simple end cap so the rod does not slide out when we move the cloth around.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/end-caps-installed.jpeg" alt="The finished rod with simple end caps installed" />
