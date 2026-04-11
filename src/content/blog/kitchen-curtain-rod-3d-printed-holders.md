@@ -1,91 +1,94 @@
 ---
-title: "A small 3D printed curtain rod fix for the kitchen"
-excerpt: A practical kitchen window fix using a metal rod, two simple PETG holders, and strong double-sided tape instead of drilling into the PVC frame.
-description: A small home improvement note about designing and printing simple PETG holders for a kitchen curtain rod.
+title: "A 3D printed curtain rod for the kitchen window"
+excerpt: A kitchen window fix using a metal rod, PETG holders, and strong double-sided tape.
+description: A small home improvement about designing and printing simple PETG holders for a kitchen window curtain rod.
 date: 2026-04-10
-updatedDate: 2026-04-10
+updatedDate: 2026-04-11
 categories:
   - Maker
   - Home
 tags:
-  - 3D Printing
-  - PETG
-  - Home
-  - Practical Builds
+  - 3d printing
+  - petg
+  - home
+  - practical builds
+  - window
 author: alex
 mediaSubpath: /blog-assets/kitchen-curtain-rod
 toc: true
 ---
 
-At some point I realized we kind of needed a proper curtain rod in the kitchen.
+At some point I realized we kind of needed a proper curtain in the kitchen.
 
-For a while we were just using a piece of cloth stuck to the window with paper tape. It did the job, but I kept telling myself I'll fix it properly. Since I've been trying to make small improvements around the house lately, this felt like a good one to do.
+For a while we were just using a piece of cloth stuck to the window with paper tape. It did the job, but I kept telling myself I'll fix it someday. I had some time and so I started.
 
-I already had a metal rod that my dad gave me. Measured it, around 6 mm diameter, one meter long. Good enough. So the plan was simple: make some supports and mount everything directly on the PVC window frame.
+I already had a metal rod that my dad gave me when I was telling him about my idea (he has a lot of stuff in his garage). The rod has 6 mm diameter and is one meter long. So the plan was simple, make some supports and mount everything directly on the PVC window frame.
 
 I opened Tinkercad and started working on the holders. Went through a few versions, printed a couple of prototypes just to get the fit right.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/tinkercad-holder-design.jpeg" alt="Small preview of the curtain rod holder design in Tinkercad" />
-  <figcaption>Small preview of the holder design in Tinkercad.</figcaption>
+  <figcaption>The holder design in Tinkercad.</figcaption>
 </figure>
 
-In the end I kept it simple. Two pieces.
+In the end I kept it simple. One flat side and one cylinder.
 
-Left side closed, acts like a stopper. Right side open, so I can slide the rod in and out without thinking too much about it.
+Left side closed, acts like a stopper. Right side open, so I can slide the rod in and out.
 
-Printed them in white PETG from Sunlu. After printing there was some stringing, so I just took a small blowtorch and passed over them quickly. Gone.
+Printed them in white PETG from Sunlu. After printing there was some stringing, so I just took a small blowtorch and passed over them quickly.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/printed-holders-stringing.jpeg" alt="Printed white PETG holders with slight stringing" />
-  <figcaption>Printed holders with slight stringing.</figcaption>
+  <figcaption>Holders + my handheld blowtorch.</figcaption>
 </figure>
 
-For mounting, I didn't want to drill anything. I usually try to avoid that if I can. So I went with a strong double-sided tape, rated somewhere around 12 kg.
+For mounting, I didn't want to drill anything. I usually try to avoid that if I can. So I went with a strong double-sided tape, rated 12 kg.
 
 It's probably overkill, but I'd rather have it solid. If someone pulls on the cloth at some point, I don't want surprises.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/double-sided-tape.jpeg" alt="Close-up of strong double-sided mounting tape" />
-  <figcaption>Close-up of the strong double-sided mounting tape.</figcaption>
+  <figcaption>The double sided mounting tape.</figcaption>
 </figure>
 
-Cleaned the surface, degreased it, aligned everything with a small level, marked the position lightly... all good.
+I marked the middle of the rod.
 
-Then I went to cut the rod.
+Then I went outside to cut the rod. Had the rod clamped to my new Parkside workbench. This was the first time I used it.
 
 You know the old saying, measure twice, cut once.
 
-I measured once, cut once... and that was enough to get two slightly different pieces.
+I measured once, cut once... aaaaand when I compared the two pieces there was a difference of a few centimeters.
 
-I marked the middle, went outside, apartment life, used the workbench for the first time, clamped the rod and cut it with the angle grinder.
-
-Not a big difference, but enough to notice. So I just adjusted them and made them equal. Good enough.
+So I just adjusted one to them equal, sadly now both are shorter. c`est la vie. Moving forward.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/cutting-metal-rod.jpeg" alt="Cutting the metal rod on the workbench" />
   <figcaption>Cutting the metal rod on the workbench.</figcaption>
 </figure>
 
-Back inside, I got the holders ready with the double-sided tape already applied before mounting them on the frame.
+Back inside, I got the 3d printed holders ready with the double sided tape already applied before mounting them on the window frame.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/mounted-holders-pvc.jpeg" alt="3D printed holders with double-sided tape applied" />
-  <figcaption>The holders with the double-sided tape applied, ready to go on the PVC window frame.</figcaption>
+  <figcaption>The holders with the double sided tape applied.</figcaption>
 </figure>
 
-The rod fits nicely, everything feels solid. I put the cloth on it just to see how it looks and it's already much better.
+Cleaned the surface, degreased it, aligned everything with a small level but in the end I eyeballed it.
+
+I applied all of them to the window.
+
+The rods fit nicely, everything feels solid. I put the cloth on both of them and it's already much better. The cloth still needs some shortening but overall it fits and looks wayyy better.
 
 <figure class="blog-figure is-narrow">
   <img src="/blog-assets/kitchen-curtain-rod/final-curtain-rod-cloth.jpeg" alt="Final setup with rod mounted and cloth hanging" />
-  <figcaption>Final setup with rod mounted and cloth hanging.</figcaption>
+  <figcaption>Final setup.</figcaption>
 </figure>
 
-I'll also put the model on MakerWorld, so if anyone needs something similar, it's there.
+I also uploaded the model on [MakerWorld](https://makerworld.com/models/placeholder), even if I know it is a pretty niche use case.
 
-One thing though... I placed the supports a bit closer than ideal. It works, but the textile feels a bit cramped. Each rod piece probably should have been around 50 cm or even a bit more.
+Of course because I had both rods shorter than I wanted them, the supports are a bit closer than I wanted. It works, but the cloth feels a bit cramped. Again c`est la vie :)
 
-We'll probably get used to it like this, but if I find a longer rod at some point, I might redo it and space them out a bit better.
+If I find a longer rod at some point, I might redo it and hopefully next time I'll measure twice before cutting.
 
 Later edit: I added simple end caps so the rod does not slide out when we move the cloth around.
 
