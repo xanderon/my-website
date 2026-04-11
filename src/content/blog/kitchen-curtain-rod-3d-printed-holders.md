@@ -65,10 +65,10 @@ Not a big difference, but enough to notice. So I just adjusted them and made the
   <figcaption>Cutting the metal rod on the workbench.</figcaption>
 </figure>
 
-Back inside, stuck the holders in place, pressed them well and left them there for a bit.
+Back inside, I got the holders ready with the double-sided tape already applied before mounting them on the frame.
 
-![3D printed holders mounted on the PVC window frame](mounted-holders-pvc.jpeg)
-_Holders mounted on the PVC window frame._
+![3D printed holders with double-sided tape applied](mounted-holders-pvc.jpeg)
+_The holders with the double-sided tape applied, ready to go on the PVC window frame._
 
 The rod fits nicely, everything feels solid. I put the cloth on it just to see how it looks and it's already much better.
 
