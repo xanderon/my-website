@@ -86,3 +86,10 @@ I'll also put the model on MakerWorld, so if anyone needs something similar, it'
 One thing though... I placed the supports a bit closer than ideal. It works, but the textile feels a bit cramped. Each rod piece probably should have been around 50 cm or even a bit more.
 
 We'll probably get used to it like this, but if I find a longer rod at some point, I might redo it and space them out a bit better.
+
+Later edit: I ended up adding a pair of simple end caps as well, just so the rod can't slide out by accident when we move the cloth around. Small detail, but it makes the whole setup feel a bit more finished and a lot safer in day-to-day use.
+
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/end-caps-installed.jpeg" alt="The finished rod with simple end caps installed" />
+  <figcaption>The rod after adding the end caps so it cannot slide out accidentally when moving the cloth.</figcaption>
+</figure>
