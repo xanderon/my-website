@@ -25,8 +25,10 @@ I already had a metal rod that my dad gave me. Measured it, around 6 mm diameter
 
 I opened Tinkercad and started working on the holders. Went through a few versions, printed a couple of prototypes just to get the fit right.
 
-![Small preview of the curtain rod holder design in Tinkercad](tinkercad-holder-design.jpeg)
-_Small preview of the holder design in Tinkercad._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/tinkercad-holder-design.jpeg" alt="Small preview of the curtain rod holder design in Tinkercad" />
+  <figcaption>Small preview of the holder design in Tinkercad.</figcaption>
+</figure>
 
 In the end I kept it simple. Two pieces.
 
@@ -67,13 +69,17 @@ Not a big difference, but enough to notice. So I just adjusted them and made the
 
 Back inside, I got the holders ready with the double-sided tape already applied before mounting them on the frame.
 
-![3D printed holders with double-sided tape applied](mounted-holders-pvc.jpeg)
-_The holders with the double-sided tape applied, ready to go on the PVC window frame._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/mounted-holders-pvc.jpeg" alt="3D printed holders with double-sided tape applied" />
+  <figcaption>The holders with the double-sided tape applied, ready to go on the PVC window frame.</figcaption>
+</figure>
 
 The rod fits nicely, everything feels solid. I put the cloth on it just to see how it looks and it's already much better.
 
-![Final setup with rod mounted and cloth hanging](final-curtain-rod-cloth.jpeg)
-_Final setup with rod mounted and cloth hanging._
+<figure class="blog-figure is-narrow">
+  <img src="/blog-assets/kitchen-curtain-rod/final-curtain-rod-cloth.jpeg" alt="Final setup with rod mounted and cloth hanging" />
+  <figcaption>Final setup with rod mounted and cloth hanging.</figcaption>
+</figure>
 
 I'll also put the model on MakerWorld, so if anyone needs something similar, it's there.
 
