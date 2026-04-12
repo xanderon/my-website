@@ -30,11 +30,6 @@ So I guess that is part of why I was attracted to software in the first place. I
 
 And that is probably also why I eventually got a 3D printer.
 
-<figure class="blog-figure is-narrow">
-  <img src="/static/portrait-light-xxxxs.jpg" alt="Portrait of Alex Nutu" />
-  <figcaption>Outside work, still thinking about what to build next.</figcaption>
-</figure>
-
 I like making things that are useful, or at least interesting enough to be worth keeping.
 
 That is more or less what I want this blog to be about too.
