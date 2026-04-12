@@ -13,6 +13,7 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   pageLabel?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   image = "/blog-assets/og-blog.svg",
   type = "website",
   pageLabel = "Post",
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(currentPath, Astro.site ?? Astro.url);
@@ -39,6 +41,7 @@ const currentYear = new Date().getFullYear();
     <link rel="canonical" href={canonical.href} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

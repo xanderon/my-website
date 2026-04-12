@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import ArticleRightRail from "../../components/blog/ArticleRightRail.astro";
 import Icon from "../../components/blog/Icon.astro";
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 const { post, posts } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 const [readingMinutes] = post.readingTime.split(" ");
 const absoluteUrl = new URL(post.permalink, Astro.site ?? Astro.url).href;
 const adjacent = getAdjacentPosts(posts, post.slug);

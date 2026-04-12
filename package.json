@@ -1,5 +1,5 @@
 {
-  "name": "@example/minimal",
+  "name": "alexnutu-website",
   "type": "module",
   "version": "0.0.1",
   "private": true,
@@ -16,14 +16,14 @@
   },
   "dependencies": {
     "@toast-ui/editor": "^3.2.2",
-    "astro": "^2.5.7",
+    "astro": "^6.1.5",
     "lucide-static": "^1.8.0",
-    "marked": "^17.0.6",
+    "marked": "^18.0.0",
     "mdast-util-to-string": "^4.0.0",
     "mermaid": "^11.14.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "simple-icons": "^16.15.0",
+    "simple-icons": "^16.16.0",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {

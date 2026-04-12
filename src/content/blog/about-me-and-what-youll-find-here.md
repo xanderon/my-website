@@ -1,9 +1,9 @@
 ---
 title: About me, and what you'll find here
-excerpt: A short introduction to who I am, what I work on, and a practical reference for the blog features I actually plan to use.
-description: Alex Nutu on software engineering, practical systems, 3D printing, work, family life, and the kinds of notes that belong on this blog.
+excerpt: A simple note about who I am, what I like to build, and a practical reference page for the blog formatting I want to keep using.
+description: Alex Nutu on software, building things, 3D printing, family life, and the simple blog patterns he wants to keep close at hand.
 date: 2026-04-11
-updatedDate: 2026-04-11
+updatedDate: 2026-04-12
 categories:
   - Writing
   - About
@@ -18,86 +18,92 @@ pin: true
 toc: true
 ---
 
-I am Alex Nutu. I am a software engineer, a husband, and a father of two.
+Hi. I'm Alex.
 
-Most of the time I am interested in practical things: software that is actually useful, systems that stay understandable, 3D printing when it solves a real problem, and small improvements that are worth documenting once and reusing later.
+I'm a software engineer, and a father of two.
 
-This post is also the reference article for the blog itself. So instead of filling it with vague filler, I want it to do two jobs at once: say who I am, and show the kinds of content blocks this blog supports.
+This is the big picture: I like to create. Sometimes that means software. Sometimes that means physical things.
 
-## Who I am
+I also helped most of my life with my father's work. He is an artist. He makes designs by hand, with pen and paper, and I often helped translate them into vector drawings, usually in CorelDRAW.
 
-I like solving problems and building user-friendly solutions.
+So I guess that is part of why I was attracted to software in the first place. I liked the idea of building things.
 
-I currently work at Lenovo, where I moved into a scrum master role after spending time learning, shipping, and improving things through actual work. Before that, I worked at SAP from 2017 to 2020, where I started my first programming job as a back-end developer.
-
-That background still shapes how I look at things now. I care about software, but I also care about clarity, process, and whether something is actually helpful once real people start using it.
+And that is probably also why I eventually got a 3D printer.
 
 <figure class="blog-figure is-narrow">
   <img src="/static/portrait-light-xxxxs.jpg" alt="Portrait of Alex Nutu" />
-  <figcaption>Me, outside the terminal.</figcaption>
+  <figcaption>Outside work, still thinking about what to build next.</figcaption>
 </figure>
 
-## What tends to show up here
+I like making things that are useful, or at least interesting enough to be worth keeping.
 
-This blog is not meant to be a content machine.
+That is more or less what I want this blog to be about too.
 
-It is for notes that are worth keeping:
+## What this blog is for
 
-- practical software lessons
-- 3D printing projects that solve something real
-- work notes when they are concrete enough to be useful
-- small household builds and fixes
-- occasional writing about structure, learning, and responsibility
+I will try to keep this place about what I like and what I am doing.
 
-If something feels too generic, too performative, or too polished without saying anything, it probably does not belong here.
+That probably means:
 
-## A few things I want this blog to support
+- software
+- practical systems
+- 3D printing
+- small household fixes
+- work notes when they are concrete enough to matter
 
-I want writing here to stay simple, but I still want a few richer blocks when they help.
+If something feels fake, overexplained, or written just to fill space, I would rather not publish it.
 
 > [!INFO]
-> The default should always be plain text and clean images. Richer blocks are for the cases where they actually clarify something.
+> Plain text, good structure, and a few clear images are usually enough for a useful post.
+
+## Why this page also exists as a demo
+
+This page is also for me.
+
+I want one post where I can quickly see examples of what I can do on this blog: formatting blocks, code snippets, embeds, image layouts, and a few other tools that are useful when writing future posts.
+
+So yes, this page is partly an introduction, but it is also a reference.
 
 > [!TIP]
-> If a post can be useful with one image, a few paragraphs, and a conclusion, that is usually enough.
+> If a future post needs a pattern I already used here, I can just come back, copy the shape, and move on.
 
-> [!WARNING]
-> Fancy formatting is easy to overuse. If everything is emphasized, nothing is emphasized.
+## A small code block
 
-## A short code example
-
-Even when a post is not deeply technical, I still want code blocks to look good when I need them.
+Sometimes a code block is the clearest way to show a thought.
 
 ```ts
-type Note = {
-  topic: "software" | "maker" | "life";
+type ThingIWantToBuild = {
+  kind: "software" | "physical";
   worthKeeping: boolean;
 };
 
-export function shouldBecomePost(note: Note) {
-  return note.worthKeeping;
+export function shouldDocument(it: ThingIWantToBuild) {
+  return it.worthKeeping;
 }
 ```
 
-Inline code should also stay readable, whether it is `mediaSubpath`, `draft: true`, or a path like `/blog`.
+And sometimes inline code is enough, like `mediaSubpath`, `draft: true`, or a simple route such as `/blog`.
 
-## A simple workflow diagram
+> [!WARNING]
+> The point is not to make every post look fancy. The point is to make useful posts easy to write.
 
-Sometimes a tiny diagram explains the process faster than a paragraph.
+## A simple diagram
+
+I do not expect to use diagrams often, but if I need one, I want to know it works.
 
 ```mermaid
 flowchart LR
-  A[Real idea] --> B[Quick note]
-  B --> C[Write clearly]
-  C --> D[Add useful images]
-  D --> E[Publish]
+  A[Idea] --> B[Make]
+  B --> C[Test]
+  C --> D[Write]
+  D --> E[Keep]
 ```
 
 ## Links and embeds
 
-Normal links should stay quiet and readable, whether they point back to the [blog index](/blog), to the [archive](/blog/archive), or to a specific build like [the kitchen curtain rod post](/blog/kitchen-curtain-rod-3d-printed-holders).
+Normal links should stay clean and easy to read, whether they go to the [blog index](/blog), the [archive](/blog/archive), or a specific post like [the kitchen curtain rod build](/blog/kitchen-curtain-rod-3d-printed-holders).
 
-If I need a video, embeds should also work without making the page feel heavy:
+If I want to include a video, embeds should work too:
 
 <figure class="embed-card">
   <div class="embed-frame">
@@ -108,25 +114,25 @@ If I need a video, embeds should also work without making the page feel heavy:
       allowfullscreen
     ></iframe>
   </div>
-  <figcaption>A simple YouTube embed for when a link alone is not enough.</figcaption>
+  <figcaption>A simple embed example.</figcaption>
 </figure>
 
 ## Images and grouped visuals
 
-Single images should look clean. If there are two related images, a grouped layout is useful.
+Sometimes I will want one image. Sometimes I will want a grouped layout.
 
 <figure class="blog-gallery">
   <div class="blog-gallery__grid">
     <img src="/blog-assets/kitchen-curtain-rod/tinkercad-holder-design.jpeg" alt="Curtain rod holder model in Tinkercad" />
     <img src="/blog-assets/kitchen-curtain-rod/final-curtain-rod-cloth.jpeg" alt="Finished kitchen curtain rod setup" />
   </div>
-  <figcaption>One design-stage image and one finished result.</figcaption>
+  <figcaption>A small gallery example with two related images.</figcaption>
 </figure>
 
-## Why I am keeping it like this
+## Final note
 
-I do not want a giant content system just to write a useful note.
+So this page is more or less for me.
 
-For me, the right setup is still a local Markdown workflow with clean frontmatter, predictable image paths, and just enough components to handle real-world posts without friction.
+But I keep it public because it is easy to access, and because it still says something real about what I am trying to do here.
 
-That is what this blog is meant to be: personal, practical, and easy to keep honest.
+Thank you for your visit.

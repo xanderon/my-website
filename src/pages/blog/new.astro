@@ -1,6 +1,11 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import PostEditor from "../../components/blog/PostEditor.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/blog");
+}
+
+const { default: PostEditor } = await import("../../components/blog/PostEditor.astro");
 ---
 
 <BlogLayout
@@ -8,6 +13,7 @@ import PostEditor from "../../components/blog/PostEditor.astro";
   description="Local helper for drafting and exporting a new blog post."
   currentPath="/blog/new"
   pageLabel="New Post"
+  noindex={true}
 >
   <section class="blog-hero">
     <span class="blog-hero__eyebrow">Authoring</span>

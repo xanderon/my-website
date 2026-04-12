@@ -2,6 +2,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { blogAuthors, defaultBlogAuthor, type BlogAuthor } from "../data/authors";
 
 export type BlogPost = CollectionEntry<"blog"> & {
+  slug: string;
   permalink: string;
   readingTime: string;
   description: string;
@@ -22,7 +23,8 @@ export async function getAllPosts() {
     })
     .map((entry) => ({
       ...entry,
-      permalink: `/blog/${entry.slug}`,
+      slug: entry.id.replace(/\.(md|markdown)$/i, ""),
+      permalink: `/blog/${entry.id.replace(/\.(md|markdown)$/i, "")}`,
       readingTime: getReadingTime(entry.body),
       description: getPostDescription(entry),
       cover: getPostCover(entry),
