@@ -3,7 +3,7 @@ title: A simple 3D printed kitchen scale holder (v2)
 excerpt: Another small but useful 3D print I made to fix a daily annoyance.
 description: A practical kitchen 3D print about redesigning a wall holder for a scale after the first PLA version slowly bent near the stove.
 date: 2026-04-19
-updatedDate: 2026-04-19
+updatedDate: 2026-04-20
 categories:
   - 3D Printing
   - Practical Builds
@@ -25,8 +25,6 @@ But... yeah... in time it bent.
 It was quite close to the stove and I printed it in PLA. Heat + time = not great 😄
 And because it bent, the scale started to slip out of the holder. At some point it even started acting weird, even with a fresh battery. Probably from a few small falls... soooo yeah.
 
----
-
 Luckily I found a kitchen scale at Lidl for like 10 Lei. So... around 2 euro / dollars.
 Nice.
 
@@ -40,8 +38,6 @@ But... same problem again.
 Where do I put it so it's not in the way, but also not annoying to grab every time?
 
 I checked MakerWorld. There are some models there, but none really fit how I wanted it. So... c'est la vie -> Tinkercad time.
-
----
 
 So I measured the scale, traced the curve on paper like a caveman, then moved that into CorelDRAW to make it a vector, and from there into Tinkercad.
 
@@ -63,8 +59,6 @@ Then I stretched it and adjusted it until it looked like it could become one sid
 And yeah, I *knew* I needed a mirrored version too...
 but future me will handle that 😄
 
----
-
 I didn't print the whole thing from the start.
 
 I did a few small test prints first, like ~2 cm slices, just to see if it fits. Way faster, way less wasted filament.
@@ -77,7 +71,9 @@ After I got that somewhat right:
 Here I had a small issue. I needed the screws to be short, but also flush.
 If not, the scale would hit / scratch every time I take it out or put it back. And that would get annoying fast.
 
----
+When testing the screws I noticed that the screw holes were not round because I was printing the model standing up.
+
+The solution was to make a tear drop shape. Basicly I added a triangle over the circle, and that was enough to solve the issue of round screws not fitting.
 
 I also added a stopper at the back, just to be safe, so it doesn't go too far in.
 
@@ -95,8 +91,6 @@ Was a bit "hmm this might snap", but I tested it and it seems fine.
   <figcaption>Front and back of the holder pieces before installation.</figcaption>
 </figure>
 
----
-
 So... of course... when everything looked good -> print.
 
 2 pieces.
@@ -108,8 +102,6 @@ I forgot to mirror one.
 Nice.
 
 Printed again :))
-
----
 
 Did a dry fit first -> all good.
 
@@ -128,8 +120,6 @@ After that:
 
 Screws went in nicely. No weird bumps, nothing sticking out. I even pulled a bit on the holders and they feel solid enough.
 
----
-
 In / out with the kitchen scale -> all good.
 
 Looks nice. Feels practical.
@@ -146,9 +136,7 @@ First few days it was a bit tighter, as usual, but now it slides in / out nicely
   <figcaption>The final result with the scale in place.</figcaption>
 </figure>
 
----
-
-I published the model on MakerWorld (link). If anyone is interested, feel free to use it.
+I published the model on [MakerWorld](https://makerworld.com/en/models/2626819-under-cabinet-holder-silvercrest-kitchen-scale#profileId-2900124). If anyone is interested, feel free to use it.
 
 As I'm writing this I've had it installed for about 1 month now, daily use, and it's holding up fine.
 And yes... still close to the stove 😄
