@@ -7,6 +7,7 @@ const posts = await getAllPosts();
 const pinnedPosts = getPinnedPosts(posts);
 const featuredPost = pinnedPosts[0] ?? posts[0];
 const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
+const aboutPost = posts.find((post) => post.slug === "about-me-and-what-youll-find-here");
 ---
 
 <BlogLayout
@@ -19,11 +20,13 @@ const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
     <header class="blog-landing__hero">
       <div class="blog-landing__intro">
         <span class="blog-hero__eyebrow">Field Notes</span>
-        <h1>Notes about work, life, systems, and useful things worth keeping.</h1>
-        <p>
-          Short essays, practical notes, and one demo article that shows the richer formatting the blog supports.
-        </p>
+        <h1>A small place for practical things worth keeping.</h1>
+        <p>Mostly software, 3D printing, small builds, and notes that are actually useful later.</p>
         <div class="blog-landing__actions">
+          {aboutPost && <a href={aboutPost.permalink}>About me</a>}
+          <span>·</span>
+          <a href="#" aria-disabled="true">My father&apos;s website</a>
+          <span>·</span>
           <a href="/blog/search">Search</a>
           <span>·</span>
           <a href="/blog/archive">Archive</a>
