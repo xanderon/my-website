@@ -135,17 +135,6 @@ const shareLinks = {
           </div>
         </div>
 
-        <div class="author-card">
-          <span class="section-eyebrow">About the author</span>
-          {authors.map((author) => (
-            <p>
-              <strong>{author.name}</strong>
-              {author.role && ` · ${author.role}`}
-              {author.bio && ` — ${author.bio}`}
-            </p>
-          ))}
-        </div>
-
         {(adjacent.previous || adjacent.next) && (
           <section class="post-sequence">
             <span class="section-eyebrow">Continue reading</span>
