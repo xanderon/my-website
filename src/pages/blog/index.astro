@@ -2,12 +2,25 @@
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import PostCard from "../../components/blog/PostCard.astro";
 import { getAllPosts, getPinnedPosts } from "../../lib/blog";
+import { blogConfig } from "../../data/blog-config";
 
 const posts = await getAllPosts();
 const pinnedPosts = getPinnedPosts(posts);
 const featuredPost = pinnedPosts[0] ?? posts[0];
 const remainingPosts = posts.filter((post) => post.slug !== featuredPost?.slug);
 const aboutPost = posts.find((post) => post.slug === "about-me-and-what-youll-find-here");
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: blogConfig.title,
+  description: blogConfig.description,
+  url: "https://alexnutu.vercel.app/blog",
+  author: {
+    "@type": "Person",
+    name: "Alex Nutu",
+    url: "https://alexnutu.vercel.app/",
+  },
+};
 ---
 
 <BlogLayout
@@ -15,6 +28,7 @@ const aboutPost = posts.find((post) => post.slug === "about-me-and-what-youll-fi
   description="Personal notes on practical builds, 3D printing, software, and small maker experiments."
   currentPath="/blog"
   pageLabel="Blog"
+  schema={schema}
 >
   <section class="blog-landing">
     <header class="blog-landing__hero">
@@ -23,12 +37,9 @@ const aboutPost = posts.find((post) => post.slug === "about-me-and-what-youll-fi
         <h1>My place for thoughts on stuff, builds, and how I do some things so I don&apos;t forget.</h1>
         <p>Mostly software, 3D printing, practical builds, and small notes worth keeping around.</p>
         <div class="blog-landing__actions">
-          {aboutPost && <a href={aboutPost.permalink}>This zone is about me</a>}
-          <span>·</span>
-          <a href="https://marcelnutu.art/" target="_blank" rel="noreferrer">This link is to my father&apos;s website, he&apos;s a great artist</a>
-          <span>·</span>
+          {aboutPost && <a href={aboutPost.permalink}>About me</a>}
+          <a href="https://marcelnutu.art/" target="_blank" rel="noreferrer">My father&apos;s art</a>
           <a href="/blog/search">Search</a>
-          <span>·</span>
           <a href="/blog/archive">Archive</a>
         </div>
       </div>

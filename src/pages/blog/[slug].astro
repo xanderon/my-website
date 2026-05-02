@@ -8,7 +8,6 @@ import {
   getAdjacentPosts,
   getAllPosts,
   getHeadingsFromMarkdown,
-  getPostAuthors,
   getPostCover,
   getPostDescription,
   getRelatedPosts,
@@ -52,6 +51,27 @@ const shareLinks = {
   facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(absoluteUrl)}`,
   telegram: `https://t.me/share/url?url=${encodeURIComponent(absoluteUrl)}&text=${encodeURIComponent(post.data.title)}`,
 };
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description,
+  datePublished: post.data.date.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.date).toISOString(),
+  mainEntityOfPage: absoluteUrl,
+  url: absoluteUrl,
+  author: {
+    "@type": "Person",
+    name: "Alex Nutu",
+    url: "https://alexnutu.vercel.app/",
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Alex Nutu",
+    url: "https://alexnutu.vercel.app/",
+  },
+  image: cover.path ? [new URL(cover.path, Astro.site ?? Astro.url).href] : undefined,
+};
 ---
 
 <BlogLayout
@@ -61,6 +81,7 @@ const shareLinks = {
   image={cover.path}
   type="article"
   pageLabel="Post"
+  schema={articleSchema}
 >
   <div class="article-shell">
     <article class="post-layout post-layout--editorial">

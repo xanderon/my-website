@@ -22,6 +22,7 @@ const posts = await getPostsByTag(tag.slug);
   title={`${tag.label} | Field Notes`}
   description={`Posts tagged ${tag.label} on Alex Nutu's blog.`}
   currentPath={`/blog/tag/${tag.slug}`}
+  noindex={true}
 >
   <section class="tag-page">
     <span class="section-eyebrow">Tag archive</span>

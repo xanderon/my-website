@@ -24,6 +24,7 @@ const posts = await getPostsByCategory(category.slug);
   description={`Posts in category ${category.label}.`}
   currentPath={`/blog/category/${category.slug}`}
   pageLabel="Category"
+  noindex={true}
 >
   <section class="tag-page">
     <span class="section-eyebrow">Category archive</span>
