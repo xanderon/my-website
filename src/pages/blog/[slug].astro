@@ -32,7 +32,6 @@ const absoluteUrl = new URL(post.permalink, Astro.site ?? Astro.url).href;
 const adjacent = getAdjacentPosts(posts, post.slug);
 const relatedPosts = getRelatedPosts(posts, post);
 const headings = post.data.toc === false ? [] : getHeadingsFromMarkdown(post.body);
-const authors = getPostAuthors(post);
 const cover = getPostCover(post);
 const description = getPostDescription(post);
 const recentPosts = posts
@@ -75,28 +74,21 @@ const shareLinks = {
         </div>
         <h1>{post.data.title}</h1>
         <div class="post-meta post-meta--editorial">
-          <div class="post-meta__details">
-            <span class="post-meta__item">
-              <span class="post-meta__label">Posted</span>
+          <div class="post-meta__details post-meta__details--compact">
+            <span class="post-meta__item post-meta__item--compact">
               <span class="post-meta__value">{formatDate(post.data.date)}</span>
             </span>
             {post.data.updatedDate && (
-              <span class="post-meta__item">
+              <span class="post-meta__item post-meta__item--compact">
                 <span class="post-meta__label">Updated</span>
                 <span class="post-meta__value">{formatDate(post.data.updatedDate)}</span>
               </span>
             )}
+            <span class="post-meta__item post-meta__item--compact">
+              <span class="post-meta__value">{readingMinutes} min read</span>
+            </span>
           </div>
-          <span class="post-meta__reading-time">
-            <span class="post-meta__value">{readingMinutes} min</span>
-            <span class="post-meta__label">read</span>
-          </span>
         </div>
-        <p class="post-meta__author">
-          <span class="post-meta__label">By</span>
-          <span class="post-meta__value">{authors.map((author) => author.name).join(", ")}</span>
-        </p>
-        <p class="article-summary">{description}</p>
       </header>
 
       {cover.path && (
