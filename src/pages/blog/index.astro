@@ -20,12 +20,12 @@ const aboutPost = posts.find((post) => post.slug === "about-me-and-what-youll-fi
     <header class="blog-landing__hero">
       <div class="blog-landing__intro">
         <span class="blog-hero__eyebrow">Field Notes</span>
-        <h1>A small place for practical things worth keeping.</h1>
-        <p>Mostly software, 3D printing, small builds, and notes that are actually useful later.</p>
+        <h1>My place for thoughts on stuff, builds, and how I do some things so I don&apos;t forget.</h1>
+        <p>Mostly software, 3D printing, practical builds, and small notes worth keeping around.</p>
         <div class="blog-landing__actions">
-          {aboutPost && <a href={aboutPost.permalink}>About me</a>}
+          {aboutPost && <a href={aboutPost.permalink}>This zone is about me</a>}
           <span>·</span>
-          <a href="#" aria-disabled="true">My father&apos;s website</a>
+          <a href="#" aria-disabled="true">This link is to my father&apos;s website, he&apos;s a great artist</a>
           <span>·</span>
           <a href="/blog/search">Search</a>
           <span>·</span>
